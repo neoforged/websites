@@ -1,0 +1,45 @@
+{{ define "main" }}
+<main class="main list" role="main">
+	{{- with .Content }}
+	<div class="content main__content clearfix">
+		{{ . }}
+	</div>
+	{{- end }}
+	{{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+	{{- range $paginator.Pages }}
+        <article class="post">
+                <header class="post__header">
+                        <h1 class="post__title">{{ .Title }}</h1>
+                        {{- with .Params.lead }}
+                        <p class="post__lead">{{ . }}</p>
+                        {{- end }}
+                        {{ with partial "post_meta.html" . -}}
+                        <div class="post__meta meta">{{ . }}</div>
+                        {{- end }}
+                </header>
+                {{ partial "post_thumbnail.html" (dict "class" "post" "page" .) }}
+                {{- partial "post_toc.html" . -}}
+                <div class="content post__content clearfix">
+                        {{ .Content }}
+                </div>
+                {{- if .Params.tags }}
+                <footer class="post__footer">
+                        {{ partial "post_tags.html" . }}
+                </footer>
+                {{- end }}
+        </article>
+        {{ partial "authorbox.html" . }}
+	{{- end }}
+	{{- if and (eq $paginator.TotalNumberOfElements 0) (not $.Content) }}
+		<div class="warning">
+			{{ partial "svg/files.svg" (dict "class" "warning__icon") }}
+			<h3 class="warning__headline">{{ T "noposts_warning_title" | safeHTML }}</h3>
+			<div class="warning__text">
+				<p class="warning__description">{{ T "noposts_warning_description" | safeHTML }}</p>
+				<p class="warning__tip">{{ T "noposts_warning_tip" | safeHTML }}</p>
+			</div>
+		</div>
+	{{ end }}
+</main>
+{{ partial "pagination.html" . }}
+{{ end }}

@@ -1,0 +1,35 @@
+{{ $author := index .Site.Data.authors (.Params.author | default "neoforgedteam") }}
+{{- if $author -}}
+<div class="authorbox clearfix">
+	{{- with $author.avatar }}
+	<figure class="authorbox__avatar">
+		<img alt="{{ $author.name }} avatar" src="{{ $author.avatar | relURL }}" class="avatar" height="90" width="90">
+	</figure>
+	{{- end }}
+	{{- with $author.name }}
+	<div class="authorbox__header">
+		<span class="authorbox__name">{{ T "authorbox_name" (dict "Name" .) }}</span>
+	</div>
+	{{- end }}
+	{{- with $author.bio }}
+	<div class="authorbox__description">
+		{{ . | markdownify }}
+	</div>
+	{{- end }}
+	{{- with $author.social }}
+	<div class="widget-social widget authorbox__socials">
+		<div class="widget-social__content widget__content authorbox__socials">
+			{{- range $key, $val := . }}
+			<div class="widget-social__item widget__item authorbox__{{ $key }}">
+				<a class="widget-social__link widget__link btn" title="{{ humanize $key }}" rel="noopener noreferrer" href="{{ $val }}">
+					{{ $partialpath := printf "svg/%s.svg" $key }}
+					{{ partial $partialpath (dict "class" "widget-social__link-icon") }}
+					<span>{{ humanize $key }}</span>
+				</a>
+			</div>
+			{{- end }}
+		</div>
+		{{- end }}
+	</div>
+</div>
+{{- end }}

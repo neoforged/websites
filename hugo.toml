@@ -1,0 +1,30 @@
+baseURL = 'https://neoforged.net/'
+languageCode = 'en-us'
+title = 'The NeoForged project'
+theme = "mainroad"
+
+[Params]
+  description = "NeoForged News and blogs" # Description of your site
+  opengraph = true
+  twitter_cards = true
+  readmore = false # Show "Read more" button in list if true
+  authorbox = true
+  pager = true
+  post_meta = ["author", "date", "categories"] # Order of post meta information
+  mainSections = ["news"]
+
+[Params.logo]
+  image = "img/logo.svg"
+  title = "News and Blogs"
+  subtitle = "News and information about the NeoForged Project" # Logo subtitle
+
+[Params.sidebar]
+  home = "right"   # Configure layout for home page
+  list = "right"   # Configure layout for list pages
+  single = "right" # Configure layout for single pages
+  # Enable widgets in given order
+  widgets = ["search", "recent", "categories", "taglist"]
+
+[Params.widgets]
+  recent_num = 5 # Set the number of articles in the "Recent articles" widget
+  tags_counter = false # Enable counter for each tag in "Tags" widget (disabled by default)
