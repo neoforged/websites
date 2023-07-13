@@ -5,8 +5,8 @@ draft: false
 categories:
 - News
 author: cpw
-summary: "An overview of what has happened here, from my perspective"
-description: "none"
+summary: "An overview of what has happened, from the perspective of cpw"
+description: "An overview of what has happened, from the perspective of cpw"
 ---
 ## What has happened here?
 
