@@ -32,7 +32,7 @@ difficulties with the team she had spent so much time to build, and Lex was the 
 I want to be clear, Lex has been a problem in the modding community for _many_, _many_ years. Almost every 
 veteran minecraft modder has had a negative interaction with him over the past 12 years. I have, when able to,
 tried to steer people to not abandon Forge just because of Lex - defending him in many a private
-conversation with a frustrated modder who'd just been called a Cunt for 1,000th time by Lex, or banned from 
+conversation with a frustrated modder who'd just been called a "Cunt" for 1,000th time by Lex, or banned from 
 our online spaces for a trivial transgression like discussing Fabric or coremods.
 
 In evaluating the situation I was in, it quickly became clear I could take one of three actions:
