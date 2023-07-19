@@ -22,7 +22,7 @@ async function loadLatestVersions(minecraftVersions) {
 
         if (versionJson) {
             const fileURL = `${DOWNLOAD_URL}/${versionJson.version}/forge-${versionJson.version}-installer.jar`;
-            document.querySelector("#filelist").innerHTML = `<a href="${fileURL}">Latest Installer - forge-${versionJson.version}-installer.jar</a>`;
+            document.querySelector("#filelist").innerHTML = `<a href="${fileURL}">Latest <em>NeoForged</em> Installer - neoforge-${versionJson.version}-installer.jar</a>`;
         }
     }
 }

@@ -1,9 +1,7 @@
 {{ $js:= resources.Get "js/neoforge.js" }}
 <script src="{{ $js.Permalink }}"></script>
-<div class="fileinfo">
-    <div id="filelist">
-        The latest file should appear here.
-    </div>
+<div id="filelist" class="fileinfo">
+    The latest file should appear here.
 </div>
 <script>
 document.addEventListener("readystatechange", evt=>{

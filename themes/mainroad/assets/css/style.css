@@ -1178,6 +1178,36 @@ textarea {
 	display: inline-block;
 }
 
+.fileinfo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.fileinfo a {
+	border: 1px solid black;
+	margin: 1em;
+	padding: 1em;
+	background: lightblue;
+    display: inline;
+	flex-grow: 1;
+	text-align: center;
+	color: black;
+}
+
+.fileinfo a:visited {
+	border: 1px solid darkred;
+	background: lightyellow;
+	color: darkred;
+}
+
+.fileinfo a:hover {
+	border: 1px solid blue;
+	background: yellow;
+	text-decoration: none;
+	color: blue;
+}
+
 .news {
 	border-top: 3px solid #999;
 	margin-top: 2em;
