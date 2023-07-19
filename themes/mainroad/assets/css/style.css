@@ -1210,7 +1210,12 @@ textarea {
 
 .news {
 	border-top: 3px solid #999;
-	margin-top: 2em;
+	margin-top: 1rem;
+}
+
+.newsbanner {
+	font-size: 1.75rem;
+	margin-top: 1rem;
 }
 
 /* Footer */

@@ -6,7 +6,7 @@
 	</div>
 	{{- end }}
         <div class="news">
-        <h1 class="newsbanner">Latest News from NeoForge</h1>
+        <h1 class="newsbanner">Latest News from The NeoForged Project</h1>
 	{{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
 	{{- range $paginator.Pages }}
 		{{- .Render "summary" }}

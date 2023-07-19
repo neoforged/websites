@@ -4,7 +4,7 @@ title = 'The NeoForged project'
 theme = "mainroad"
 
 [Params]
-  description = "NeoForged News and blogs" # Description of your site
+  description = "Files, news and information from the NeoForged Project" # Description of your site
   opengraph = true
   twitter_cards = true
   readmore = true # Show "Read more" button in list if true
@@ -15,8 +15,8 @@ theme = "mainroad"
 
 [Params.logo]
   image = "img/logo.svg"
-  title = "News and Blogs"
-  subtitle = "News and information about the NeoForged Project" # Logo subtitle
+  title = "The NeoForged Project"
+  subtitle = "Files, News and information from the NeoForged Project" # Logo subtitle
 
 [Params.sidebar]
   home = "right"   # Configure layout for home page

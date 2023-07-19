@@ -4,7 +4,6 @@ const LATEST_ENDPOINT = 'https://maven.neoforged.net/api/maven/latest/version/re
 const DOWNLOAD_URL = 'https://maven.neoforged.net/net/neoforged/forge'
 //https://maven.neoforged.net/api/maven/latest/version/releases/net%2Fneoforged%2Fforge?filter=1.20.1
 async function loadLatestVersions(minecraftVersions) {
-    console.log(minecraftVersions);
     for (const mcVersion of minecraftVersions) {
         let currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(FORGE_GAV) + '?filter=' + encodeURIComponent(mcVersion));
         let versionJson;
@@ -22,7 +21,7 @@ async function loadLatestVersions(minecraftVersions) {
 
         if (versionJson) {
             const fileURL = `${DOWNLOAD_URL}/${versionJson.version}/forge-${versionJson.version}-installer.jar`;
-            document.querySelector("#filelist").innerHTML = `<a href="${fileURL}">Latest <em>NeoForged</em> Installer - neoforge-${versionJson.version}-installer.jar</a>`;
+            document.querySelector("#filelist").innerHTML = `<a href="${fileURL}">Latest <em>NeoForge</em> Installer - neoforge-${versionJson.version}-installer.jar</a>`;
         }
     }
 }
