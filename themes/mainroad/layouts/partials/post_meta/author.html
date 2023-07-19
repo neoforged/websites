@@ -1,6 +1,11 @@
-{{- if .Site.Author.name -}}
+{{ $author := index .Site.Data.authors (.Params.author | default "neoforgedteam") }}
+{{- if $author -}}
 <div class="meta__item-author meta__item">
-	{{ partial "svg/author.svg" (dict "class" "meta__icon") -}}
-	<span class="meta__text">{{ .Site.Author.name }}</span>
+	{{- with $author.avatar }}
+	<figure class="meta__icon">
+		<img alt="{{ $author.name }} avatar" src="{{ $author.avatar | relURL }}" class="avatar" height="32" width="32">
+	</figure>
+	{{- end }}
+	<span class="meta__text">{{ $author.name }}</span>
 </div>
 {{- end -}}

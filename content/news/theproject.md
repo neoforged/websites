@@ -5,8 +5,16 @@ draft: false
 categories:
 - News
 author: cpw
-summary: "An overview of what has happened, from the perspective of cpw"
-description: "An overview of what has happened, from the perspective of cpw"
+summary: |
+    As of July 12th 2023, the discord formerly known as "Forgecord" was rebranded to a new project -
+    NeoForged. Simultaneously, the Neoforged github organization forked the original Minecraft Forge
+    project. This post discusses in detail the reasons behind that, from the point of view of cpw -
+    one of the people who triggered the takeover.
+description: |
+    As of July 12th 2023, the discord formerly known as "Forgecord" was rebranded to a new project -
+    NeoForged. Simultaneously, the Neoforged github organization forked the original Minecraft Forge
+    project. This post discusses in detail the reasons behind that, from the point of view of cpw -
+    one of the people who triggered the takeover.
 ---
 ## What has happened here?
 

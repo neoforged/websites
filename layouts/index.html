@@ -1,0 +1,17 @@
+{{ define "main" }}
+<main class="main list" role="main">
+	{{- with .Content }}
+	<div class="content main__content clearfix">
+		{{ . }}
+	</div>
+	{{- end }}
+        <div class="news">
+        <h1 class="newsbanner">Latest News from NeoForge</h1>
+	{{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+	{{- range $paginator.Pages }}
+		{{- .Render "summary" }}
+	{{- end }}
+        </div>
+</main>
+{{ partial "pagination.html" . }}
+{{ end }}

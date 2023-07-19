@@ -625,6 +625,10 @@ button:not(:-moz-focusring):focus > .menu__btn-title {
 	fill: #c4c4c4;
 }
 
+figure.meta__icon {
+	display: inline;
+}
+
 .meta__text {
 	vertical-align: middle;
 }
@@ -1172,6 +1176,11 @@ textarea {
 
 .widget-languages__link-btn {
 	display: inline-block;
+}
+
+.news {
+	border-top: 3px solid #999;
+	margin-top: 2em;
 }
 
 /* Footer */
