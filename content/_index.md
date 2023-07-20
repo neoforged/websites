@@ -27,7 +27,7 @@ assuming they don't hardcode things too much.
 ## If you have an existing mod project
 You can use neoforge in your existing mod development as well. To do so:
 1. Update your repositories to use `https://maven.neoforged.net/releases` instead of `https://maven.minecraftforge.net`
-2. Update your ForgeGradle to use NeoGradle 6.0.12 or above:
+2. Update your ForgeGradle to use NeoGradle 6.0.13 or above:
     ```
     plugins {
         ...
