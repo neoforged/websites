@@ -20,8 +20,15 @@ async function loadLatestVersions(minecraftVersions) {
         }
 
         if (versionJson) {
-            const fileURL = `${DOWNLOAD_URL}/${versionJson.version}/forge-${versionJson.version}-installer.jar`;
-            document.querySelector("#filelist").innerHTML = `<a href="${fileURL}">Latest <em>NeoForge</em> Installer - neoforge-${versionJson.version}-installer.jar</a>`;
+            const {version} = versionJson;
+            
+            const installerUrl = `${DOWNLOAD_URL}/${encodeURIComponent(version)}/forge-${encodeURIComponent(version)}-installer.jar`;
+            const changelogUrl = `${DOWNLOAD_URL}/${encodeURIComponent(version)}/forge-${encodeURIComponent(version)}-changelog.txt`;
+            document.querySelector("#filelist").innerHTML = `
+                <a href="${installerUrl}">Latest <em>NeoForge</em> Installer - neoforge-${version}-installer.jar</a>
+
+                <a href="${changelogUrl}">Latest Changelog (${version})</a>
+            `;
         }
     }
 }
