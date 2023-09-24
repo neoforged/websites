@@ -25,9 +25,11 @@ async function loadLatestVersions(minecraftVersions) {
             const installerUrl = `${DOWNLOAD_URL}/${encodeURIComponent(version)}/forge-${encodeURIComponent(version)}-installer.jar`;
             const changelogUrl = `${DOWNLOAD_URL}/${encodeURIComponent(version)}/forge-${encodeURIComponent(version)}-changelog.txt`;
             document.querySelector("#filelist").innerHTML = `
-                <a href="${installerUrl}">Latest <em>NeoForge</em> Installer - neoforge-${version}-installer.jar</a>
-
-                <a href="${changelogUrl}">Latest Changelog (${version})</a>
+                <div class="fileinfo__header">NeoForge ${version}</div>
+                <div class="fileinfo__body">
+                <a href="${installerUrl}">Latest <em>NeoForge</em> Installer<br>neoforge-${version}-installer.jar</a>
+                <a href="${changelogUrl}">Latest Changelog<br>${version}</a>
+                </div>
             `;
         }
     }
