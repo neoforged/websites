@@ -70,8 +70,9 @@ body {
 
 .container {
 	position: relative;
-	width: 100%;
+	width: 80%;
 	max-width: 1920px;
+	min-width: 1380px;
 	margin: 0 auto;
 }
 
@@ -1276,6 +1277,13 @@ textarea {
 
 .footer a:hover {
 	text-decoration: underline;
+}
+
+@media screen and (max-width: 1420px) {
+	.container {
+		width: 100%;
+		min-width: 0px;
+	}
 }
 
 @media screen and (max-width: 900px) {
