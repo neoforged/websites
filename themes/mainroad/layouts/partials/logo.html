@@ -15,7 +15,7 @@
 						{{- $image := resources.Get $logoImage -}}
 						<div class="logo__img_parent">
 							<div class="logo__img_padding" style="padding-top: {{ div (mul $image.Height 100.0) $image.Width }}%">
-								<img loading="lazy" class="logo__img logo__img_inner" src="{{ . | relURL }}" alt="{{ $logoAlt }}">
+								<img loading="lazy" class="logo__img logo__img_inner" src="{{ $image.RelPermalink }}" alt="{{ $logoAlt }}">
 							</div>
 						</div>
 					{{- else -}}
