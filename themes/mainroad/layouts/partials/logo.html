@@ -10,7 +10,22 @@
 		<a class="logo__link" href="{{ "" | relLangURL }}"{{ with $logoTitle }} title="{{ . }}"{{ end }} rel="home">
 			{{ with $logoImage -}}
 				<div class="logo__item logo__imagebox">
-					<img class="logo__img" src="{{ . | relURL }}", width = "512px">
+					{{- if $logoImage }}
+						{{- $image := resources.Get $logoImage -}}
+						{{- $post_image_webp := partial "image_converter.html" (dict "ImageSrc" $logoImage "ImgOut" (printf "%dx%d webp q100" $image.Width $image.Height)) -}}
+						{{- $post_image_png := partial "image_converter.html" (dict "ImageSrc" $logoImage "ImgOut" (printf "%dx%d png q100" $image.Width $image.Height)) -}}
+						<div class="logo__img_parent">
+							<div class="logo__img_padding" style="padding-top: {{ div (mul $image.Height 100.0) $image.Width }}%">
+								<picture class="logo__img_inner">
+									<source srcset="{{ $post_image_webp }}" type="image/webp">
+									<source srcset="{{ $post_image_png }}" type="image/png">
+									<img loading="lazy" class="img_fluid logo__img" src="{{ $post_image_png }}">
+								</picture>
+							</div>
+						</div>
+					{{- else -}}
+						<img class="logo__img" src="{{ . | relURL }}", width = "512px">
+					{{- end -}}
 					{{ with $logoSubtitle }}<div class="logo__tagline">{{ . }}</div>{{ end }}
 				</div>
 			{{- end -}}

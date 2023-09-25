@@ -1,7 +1,11 @@
 {{ $js:= resources.Get "js/neoforge.js" }}
 <script src="{{ $js.Permalink }}"></script>
 <div id="filelist" class="fileinfo">
-    The latest file should appear here.
+    <div class="fileinfo__header">NeoForge (loading version...)</div>
+    <div class="fileinfo__body">
+        <a><span>Latest <em>NeoForge</em> Installer</span><span class="fileinfo__placeholder">neoforge-??.??-??-??.??.??-installer.jar</span></a>
+        <a><span>Latest Changelog</span><span class="fileinfo__placeholder">??.??-??-??.??.??</span></a>
+    </div>
 </div>
 <script>
 document.addEventListener("readystatechange", evt=>{

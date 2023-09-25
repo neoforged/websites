@@ -424,8 +424,35 @@ select {
 }
 
 .logo__img {
-	max-height: 256px;
 	image-rendering: pixelated;
+}
+
+.logo__img_inner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+}
+
+.logo__img_padding {
+	position: relative;
+	overflow: hidden;
+	height: 0px;
+}
+
+.logo__img_parent {
+	max-width: 512px;
+	width: 100%;
+}
+
+.logo__imagebox {
+	position: relative;
+	display: flex;
+	vertical-align: middle;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
 }
 
 .logo__text {
@@ -1242,6 +1269,10 @@ textarea {
 
 .fileinfo .fileinfo__body a:hover {
 	background-color: #e5b04c;
+}
+
+.fileinfo__placeholder {
+	visibility: hidden;
 }
 
 .news {

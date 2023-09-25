@@ -1,0 +1,11 @@
+{{ $image := "/images/placeholder.png" }} 
+
+{{ $image_url := resources.Get .ImageSrc }}
+{{ $img_out := .ImgOut }}
+
+{{ if $image_url }} 
+    {{ $image_url = $image_url.Resize  $img_out }}
+    {{ $image = $image_url.RelPermalink }}             
+{{end}}
+
+{{return $image}}
