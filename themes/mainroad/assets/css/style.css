@@ -1219,7 +1219,7 @@ textarea {
 	font-weight: 700;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: stretch;
 	gap: 10px;
 	gap: .625rem;
 }
@@ -1227,7 +1227,7 @@ textarea {
 .fileinfo .fileinfo__body a {
 	padding: 10px;
 	padding: .625rem;
-	display: inline;
+	display: inline-block;
 	flex: 1 1 0px;
 	text-decoration: none;
 	background-color: #e68c37;
