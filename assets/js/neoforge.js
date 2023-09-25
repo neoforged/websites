@@ -27,8 +27,8 @@ async function loadLatestVersions(minecraftVersions) {
             document.querySelector("#filelist").innerHTML = `
                 <div class="fileinfo__header">NeoForge ${version}</div>
                 <div class="fileinfo__body">
-                <a href="${installerUrl}">Latest <em>NeoForge</em> Installer<br>neoforge-${version}-installer.jar</a>
-                <a href="${changelogUrl}">Latest Changelog<br>${version}</a>
+                <a href="${installerUrl}"><span>Latest <em>NeoForge</em> Installer</span><span>neoforge-${version}-installer.jar</span></a>
+                <a href="${changelogUrl}"><span>Latest Changelog</span><span>${version}</span></a>
                 </div>
             `;
         }
