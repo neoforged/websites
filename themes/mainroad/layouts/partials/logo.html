@@ -1,6 +1,7 @@
 {{- $logoTitle := .Site.Params.logo.title | default .Site.Title -}}
 {{- $logoSubtitle := .Site.Params.logo.subtitle | default .Site.Params.subtitle -}}
 {{- $logoImage := .Site.Params.logo.image -}}
+{{- $logoAlt := .Site.Params.logo.alt -}}
 
 {{- if or $logoTitle $logoImage }}
 	{{/* Defined when logo is mixed (image + text) */}}
@@ -19,12 +20,12 @@
 								<picture class="logo__img_inner">
 									<source srcset="{{ $post_image_webp }}" type="image/webp">
 									<source srcset="{{ $post_image_png }}" type="image/png">
-									<img loading="lazy" class="img_fluid logo__img" src="{{ $post_image_png }}">
+									<img loading="lazy" class="img_fluid logo__img" src="{{ $post_image_png }}" alt="{{ $logoAlt }}">
 								</picture>
 							</div>
 						</div>
 					{{- else -}}
-						<img class="logo__img" src="{{ . | relURL }}", width = "512px">
+						<img class="logo__img" src="{{ . | relURL }}", width = "512px" alt="{{ $logoAlt }}">
 					{{- end -}}
 					{{ with $logoSubtitle }}<div class="logo__tagline">{{ . }}</div>{{ end }}
 				</div>

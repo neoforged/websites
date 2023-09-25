@@ -15,7 +15,7 @@ theme = "mainroad"
 
 [Params.logo]
   image = "img/content/branding/banner.png"
-  title = "The NeoForged Project"
+  alt = "The NeoForged Project logo"
   subtitle = "Files, News and information from the NeoForged Project" # Logo subtitle
 
 [Params.sidebar]
