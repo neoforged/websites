@@ -3,7 +3,18 @@
 <div class="meta__item-author meta__item">
 	{{- with $author.avatar }}
 	<figure class="meta__icon">
-		<img alt="{{ $author.name }} avatar" src="{{ $author.avatar | relURL }}" class="avatar" height="32" width="32">
+		{{- $image := resources.Get ($author.avatar | relURL) -}}
+		{{- if $image -}}
+			{{- $post_image_webp := partial "image_converter.html" (dict "ImageSrc" ($author.avatar | relURL) "ImgOut" (printf "%dx%d webp q100" $image.Width $image.Height)) -}}
+			{{- $post_image_png := partial "image_converter.html" (dict "ImageSrc" ($author.avatar | relURL) "ImgOut" (printf "%dx%d png q100" $image.Width $image.Height)) -}}
+			<picture>
+				<source srcset="{{ $post_image_webp }}" type="image/webp">
+				<source srcset="{{ $post_image_png }}" type="image/png">
+				<img loading="lazy" class="img_fluid logo__img" src="{{ $post_image_png }}" alt="{{ $author.name }} avatar" class="avatar" height="32" width="32">
+			</picture>
+		{{- else -}}
+			<img alt="{{ $author.name }} avatar" src="{{ $author.avatar | relURL }}" class="avatar" height="32" width="32">
+		{{- end -}}
 	</figure>
 	{{- end }}
 	<span class="meta__text">{{ $author.name }}</span>

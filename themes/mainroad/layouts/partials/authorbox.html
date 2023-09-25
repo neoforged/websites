@@ -3,7 +3,18 @@
 <div class="authorbox clearfix">
 	{{- with $author.avatar }}
 	<figure class="authorbox__avatar">
-		<img alt="{{ $author.name }} avatar" src="{{ $author.avatar | relURL }}" class="avatar" height="90" width="90">
+		{{- $image := resources.Get ($author.avatar | relURL) -}}
+		{{- if $image -}}
+			{{- $post_image_webp := partial "image_converter.html" (dict "ImageSrc" ($author.avatar | relURL) "ImgOut" (printf "%dx%d webp q100" $image.Width $image.Height)) -}}
+			{{- $post_image_png := partial "image_converter.html" (dict "ImageSrc" ($author.avatar | relURL) "ImgOut" (printf "%dx%d png q100" $image.Width $image.Height)) -}}
+			<picture>
+				<source srcset="{{ $post_image_webp }}" type="image/webp">
+				<source srcset="{{ $post_image_png }}" type="image/png">
+				<img loading="lazy" class="img_fluid logo__img" src="{{ $post_image_png }}" alt="{{ $author.name }} avatar" class="avatar" height="90" width="90">
+			</picture>
+		{{- else -}}
+			<img alt="{{ $author.name }} avatar" src="{{ $author.avatar | relURL }}" class="avatar" height="90" width="90">
+		{{- end -}}
 	</figure>
 	{{- end }}
 	{{- with $author.name }}
