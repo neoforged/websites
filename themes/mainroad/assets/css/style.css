@@ -70,9 +70,7 @@ body {
 
 .container {
 	position: relative;
-	width: 80%;
-	max-width: 1920px;
-	min-width: 1380px;
+	width: 100%;
 	margin: 0 auto;
 }
 
@@ -80,6 +78,9 @@ body {
 	display: flex;
 	flex-direction: column;
 	margin: auto;
+	width: 80%;
+	max-width: 1920px;
+	min-width: 1380px;
 	box-shadow: 0 0 10px rgba(50, 50, 50, .17);
 }
 
@@ -1280,7 +1281,7 @@ textarea {
 }
 
 @media screen and (max-width: 1420px) {
-	.container {
+	.container--outer {
 		width: 100%;
 		min-width: 0px;
 	}
