@@ -10,7 +10,7 @@ description: |
     NeoForged installer files, as well as news and other information from the NeoForged project
 ---
 # NeoForge installer files
-You can find a direct link to our latest installer file below.
+You should be able to, but are not guaranteed, to find a direct link to our latest installer file below.
 
 {{< files "1.20.1" >}}
 
