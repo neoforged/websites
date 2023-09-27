@@ -14,8 +14,8 @@ theme = "mainroad"
   mainSections = ["news"]
 
 [Params.logo]
-  image = "img/logo.svg"
-  title = "The NeoForged Project"
+  image = "img/content/branding/banner.png"
+  alt = "The NeoForged Project logo"
   subtitle = "Files, News and information from the NeoForged Project" # Logo subtitle
 
 [Params.sidebar]
@@ -28,3 +28,9 @@ theme = "mainroad"
 [Params.widgets]
   recent_num = 5 # Set the number of articles in the "Recent articles" widget
   tags_counter = false # Enable counter for each tag in "Tags" widget (disabled by default)
+
+[Params.style]
+  vars.highlightColor = "#d7742f"
+  vars.backgroundColor = "#d5e0df"
+  vars.boxColor = "#bdc7c7"
+  vars.borderColor = "#aab0b3"

@@ -1,6 +1,7 @@
 {{- $logoTitle := .Site.Params.logo.title | default .Site.Title -}}
 {{- $logoSubtitle := .Site.Params.logo.subtitle | default .Site.Params.subtitle -}}
 {{- $logoImage := .Site.Params.logo.image -}}
+{{- $logoAlt := .Site.Params.logo.alt -}}
 
 {{- if or $logoTitle $logoImage }}
 	{{/* Defined when logo is mixed (image + text) */}}
@@ -10,15 +11,19 @@
 		<a class="logo__link" href="{{ "" | relLangURL }}"{{ with $logoTitle }} title="{{ . }}"{{ end }} rel="home">
 			{{ with $logoImage -}}
 				<div class="logo__item logo__imagebox">
-					<img class="logo__img" src="{{ . | relURL }}">
-				</div>
-			{{- end -}}
-			{{ with $logoTitle -}}
-				<div class="logo__item logo__text">
-					<div class="logo__title">{{ . }}</div>
+					{{- if $logoImage }}
+						{{- $image := resources.Get $logoImage -}}
+						<div class="logo__img_parent">
+							<div class="logo__img_padding" style="padding-top: {{ div (mul $image.Height 100.0) $image.Width }}%">
+								<img loading="lazy" class="logo__img logo__img_inner" src="{{ $image.RelPermalink }}" alt="{{ $logoAlt }}">
+							</div>
+						</div>
+					{{- else -}}
+						<img class="logo__img" src="{{ . | relURL }}" width = "512px" alt="{{ $logoAlt }}">
+					{{- end -}}
 					{{ with $logoSubtitle }}<div class="logo__tagline">{{ . }}</div>{{ end }}
 				</div>
-			{{- end }}
+			{{- end -}}
 		</a>
 	</div>
 {{- end }}
