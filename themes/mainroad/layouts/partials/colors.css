@@ -1,0 +1,365 @@
+body {
+	background: {{ .BoxColor }};
+    color: {{ .TextColor }};
+}
+
+.container--outer {
+	box-shadow: 0 0 10px rgba(50, 50, 50, .17);
+}
+
+.wrapper {
+	background: {{ .BackgroundColor }};
+}
+
+/* Button */
+.btn {
+	color: {{ .BackgroundColor }};
+	background: {{ .BtnColor }};
+}
+
+.btn:hover {
+	color: {{ .BackgroundColor }};
+	background: {{ .HighlightColor }};
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: {{ .TextColor }};
+}
+
+a {
+	color: {{ .TextColor }};
+}
+
+a:hover {
+	color: {{ .HighlightColor }};
+}
+
+hr {
+	border-top: 1px solid #dadada;
+}
+
+mark {
+	background-color: #fd5;
+}
+
+
+figcaption {
+	color: #666;
+}
+
+pre,
+code {
+	background-color: {{ .BoxColor }};
+	border: 1px solid {{ .BorderColor }};
+}
+
+code {
+	color: {{ .CodeColor }};
+}
+
+pre {
+	color: {{ .TextColor }};
+}
+
+kbd {
+	color: {{ .BackgroundColor }};
+	background-color: {{ .BtnColor }};
+}
+
+blockquote {
+	border-left: 5px solid {{ .HighlightColor }};
+}
+
+abbr[title] {
+	border-bottom: 1px dotted {{ .TextColor }};
+}
+
+.warning {
+	border: 1px solid {{ .BorderColor }};
+}
+
+.warning__icon {
+	fill: {{ .BorderColor }};
+}
+
+/* Header */
+.header {
+	background: {{ .EndsBackground }};
+}
+
+.logo__title {
+	color: {{ .TextColor }};
+}
+
+.logo__tagline {
+	color: #e7d9d3;
+}
+
+.divider {
+	background: {{ .HighlightColor }};
+}
+
+/* Main menu */
+.menu__btn {
+	color: {{ .BackgroundColor }};
+	background: {{ .BtnColor }};
+}
+
+:focus > .menu__btn-title {
+	box-shadow: inset 0 0 1px 3px {{ .HighlightColor }};
+}
+
+.js .menu__btn--active {
+	color: {{ .HighlightColor }};
+}
+
+.menu__list {
+	background: {{ .BtnColor }};
+}
+
+.menu__item:hover {
+	background: {{ .HighlightColor }};
+}
+
+.menu__item--active {
+	background: {{ .HighlightColor }};
+}
+
+.menu__link {
+	color: {{ .BackgroundColor }};
+}
+
+.menu__link:hover {
+	color: {{ .BackgroundColor }};
+}
+
+.js .menu__list--active {
+	border-top: 1px solid rgba(255, 255, 255, .1);
+	border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+@media screen and (min-width: 767px) {
+	.menu {
+		border-bottom: 5px solid {{ .HighlightColor }};
+	}
+
+	.menu__item {
+		border-left: 1px solid rgba(255, 255, 255, .1);
+	}
+}
+
+/* Posts/Pages */
+.meta,
+.meta a {
+	color: #666;
+}
+
+.meta a:hover {
+	color: {{ .HighlightColor }};
+}
+
+
+.meta__icon {
+	fill: {{ .BorderColor }};
+}
+
+
+.post__meta {
+	border-top: 1px dotted {{ .BorderColor }};
+	border-bottom: 1px dotted {{ .BorderColor }};
+}
+
+.content a,
+.warning a,
+.authorbox__description a {
+	color: {{ .HighlightColor }};
+}
+
+.content a:hover,
+.warning a:hover,
+.authorbox__description a:hover {
+	color: {{ .HighlightColor }};
+}
+
+/* Post tags */
+.tags {
+	color: {{ .BackgroundColor }};
+}
+
+.tags__item {
+	background: {{ .BtnColor }};
+}
+
+.tags__item:hover {
+	background: {{ .HighlightColor }};
+}
+
+.tags__badge {
+	background: {{ .HighlightColor }};
+	fill: {{ .BackgroundColor }};
+}
+
+/* Table of Contents */
+.toc {
+	color: #7a8288;
+	background: {{ .BackgroundColor }};
+	border-color: {{ .BorderColor }};
+}
+
+.toc__title {
+	color: {{ .BackgroundColor }};
+	background: {{ .BtnColor }};
+}
+
+.toc__menu a {
+	color: {{ .HighlightColor }};
+	border-bottom: 1px solid {{ .BorderColor }};
+}
+
+/* Author Box */
+.authorbox {
+	border-top: 1px solid {{ .BorderColor }};
+	border-bottom: 1px solid {{ .BorderColor }};
+}
+
+.authorbox__avatar {
+	border: 1px solid {{ .BorderColor }};
+}
+
+/* List content */
+.list__item {
+	border-bottom: 1px solid {{ .BorderColor }};
+}
+
+/* Pagination */
+.pagination__item {
+	color: {{ .TextColor }};
+	background: {{ .BoxColor }};
+}
+
+.pagination__item:hover,
+.pagination__item--current {
+	color: {{ .BackgroundColor }};
+	background: {{ .HighlightColor }};
+}
+
+/* Pager (prev/next links) navigation */
+.pager {
+	border-bottom: 1px solid {{ .BorderColor }};
+}
+
+/* Table */
+table {
+	border-top: 1px solid {{ .BorderColor }};
+	border-left: 1px solid {{ .BorderColor }};
+}
+
+td,
+th {
+	border-right: 1px solid {{ .BorderColor }};
+	border-bottom: 1px solid {{ .BorderColor }};
+}
+
+/* Forms */
+input {
+	background: {{ .BoxColor }};
+	border: 1px solid {{ .BorderColor }};
+	color: {{ .TextColor }};
+}
+
+input::placeholder {
+	color: {{ .TextColor }};
+}
+
+input[type=text]:hover,
+input[type=email]:hover,
+input[type=tel]:hover,
+input[type=url]:hover,
+textarea:hover {
+	border: 1px solid #aaa;
+}
+
+input[type=submit],
+input[type=reset] {
+	color: {{ .BackgroundColor }};
+	background: {{ .BtnColor }};
+}
+
+input[type=submit]:hover,
+input[type=reset]:hover {
+	background: {{ .HighlightColor }};
+}
+
+textarea {
+	background: {{ .BoxColor }};
+	border: 1px solid rgba(0, 0, 0, .1);
+}
+
+/* Widgets */
+.widget__title {
+	border-bottom: 3px solid {{ .HighlightColor }};
+}
+
+.widget__item {
+	border-bottom: 1px dotted {{ .BorderColor }};
+}
+
+.widget__counter--bubble {
+	background: {{ .BorderColor }};
+}
+
+/* Search widget */
+.widget-search__form {
+	background: {{ .BoxColor }};
+}
+
+.widget-search__field {
+	background: {{ .BackgroundColor }};
+	border: 1px solid {{ .BorderColor }};
+}
+
+/* Social widget */
+.widget-social__link-icon {
+	fill: {{ .BackgroundColor }};
+}
+
+/* Languages Widget */
+.widget-languages__link:hover .widget-languages__link-btn {
+	color: {{ .BackgroundColor }};
+	background: {{ .HighlightColor }};
+}
+
+.fileinfo {
+	background-color: {{ .BoxColor }};
+}
+
+.fileinfo .fileinfo__body a {
+	background-color: {{ .DownloadColor }};
+	color: {{ .TextColor }};
+}
+
+.fileinfo .fileinfo__body a:hover {
+	background-color: {{ .DownloadHighlightColor }};
+	color: {{ .TextColor }};
+}
+
+.news {
+	border-top: 3px solid {{ .BorderColor }};
+}
+
+/* Footer */
+.footer {
+	color: {{ .FooterTextColor }};
+	background: {{ .EndsBackground }};
+	border-top: 3px solid {{ .BorderColor }};
+}
+
+.footer a {
+	color: {{ .FooterLinkColor }};
+}
