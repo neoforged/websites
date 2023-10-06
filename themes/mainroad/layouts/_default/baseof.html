@@ -30,6 +30,10 @@
 	{{ range .Site.Params.customCSS -}}
 	<link rel="stylesheet" href="{{ . | relURL }}">
 	{{- end }}
+	{{ $lightStyle := resources.Get "css/light.css" | resources.ExecuteAsTemplate "css/light.css" . -}}
+	<link rel="stylesheet" href="{{ $lightStyle.RelPermalink }}">
+	{{ $darkStyle := resources.Get "css/dark.css" | resources.ExecuteAsTemplate "css/dark.css" . -}}
+	<link rel="stylesheet" media="(prefers-color-scheme: dark)" href="{{ $darkStyle.RelPermalink }}">
 
 	{{- with .OutputFormats.Get "rss" }}
 	{{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
