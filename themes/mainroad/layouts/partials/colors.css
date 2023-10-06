@@ -50,7 +50,7 @@ mark {
 
 
 figcaption {
-	color: #666;
+	color: {{ .MetaCaptionColor }};
 }
 
 pre,
@@ -90,7 +90,7 @@ abbr[title] {
 
 /* Header */
 .header {
-	background: {{ .EndsBackground }};
+	background: {{ .EndsBackgroundColor }};
 }
 
 .logo__title {
@@ -157,7 +157,7 @@ abbr[title] {
 /* Posts/Pages */
 .meta,
 .meta a {
-	color: #666;
+	color: {{ .MetaCaptionColor }};
 }
 
 .meta a:hover {
@@ -166,7 +166,7 @@ abbr[title] {
 
 
 .meta__icon {
-	fill: {{ .BorderColor }};
+	fill: {{ .MetaCaptionColor }};
 }
 
 
@@ -356,7 +356,7 @@ textarea {
 /* Footer */
 .footer {
 	color: {{ .FooterTextColor }};
-	background: {{ .EndsBackground }};
+	background: {{ .EndsBackgroundColor }};
 	border-top: 3px solid {{ .BorderColor }};
 }
 
