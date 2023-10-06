@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="{{ .Site.Language.Lang }}">
+<html class="no-js" lang="{{ .Site.Language.Lang }}" data-theme="light">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,6 +22,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 	<link rel="stylesheet" {{ printf `href="%s"` $googleFontsLink | safeHTMLAttr }}>
 	{{- end }}
 
@@ -30,10 +31,6 @@
 	{{ range .Site.Params.customCSS -}}
 	<link rel="stylesheet" href="{{ . | relURL }}">
 	{{- end }}
-	{{ $lightStyle := resources.Get "css/light.css" | resources.ExecuteAsTemplate "css/light.css" . -}}
-	<link rel="stylesheet" href="{{ $lightStyle.RelPermalink }}">
-	{{ $darkStyle := resources.Get "css/dark.css" | resources.ExecuteAsTemplate "css/dark.css" . -}}
-	<link rel="stylesheet" media="(prefers-color-scheme: dark)" href="{{ $darkStyle.RelPermalink }}">
 
 	{{- with .OutputFormats.Get "rss" }}
 	{{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
@@ -47,6 +44,7 @@
 		{{ template "_internal/google_analytics_async.html" . }}
 		{{- end }}
 	{{- end }}
+	<script src="{{ "js/modetoggle.js" | relURL }}"></script>
 </head>
 <body class="body">
 	<div class="container container--outer">

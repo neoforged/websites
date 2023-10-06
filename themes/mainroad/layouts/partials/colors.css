@@ -1,6 +1,6 @@
 body {
-	background: {{ .OuterColor }};
-    color: {{ .TextColor }};
+	background: var(--color-outer);
+    color: var(--color-text);
 }
 
 .container--outer {
@@ -8,18 +8,18 @@ body {
 }
 
 .wrapper {
-	background: {{ .BackgroundColor }};
+	background: var(--color-background);
 }
 
 /* Button */
 .btn {
-	color: {{ .BackgroundColor }};
-	background: {{ .BtnColor }};
+	color: var(--color-background);
+	background: var(--color-btn);
 }
 
 .btn:hover {
-	color: {{ .BackgroundColor }};
-	background: {{ .HighlightColor }};
+	color: var(--color-background);
+	background: var(--color-highlight);
 }
 
 /* Typography */
@@ -29,15 +29,15 @@ h3,
 h4,
 h5,
 h6 {
-	color: {{ .TextColor }};
+	color: var(--color-text);
 }
 
 a {
-	color: {{ .TextColor }};
+	color: var(--color-text);
 }
 
 a:hover {
-	color: {{ .HighlightColor }};
+	color: var(--color-highlight);
 }
 
 hr {
@@ -51,21 +51,21 @@ mark {
 
 
 figcaption {
-	color: {{ .MetaCaptionColor }};
+	color: var(--color-meta-caption);
 }
 
 pre,
 code {
-	background-color: {{ .BoxColor }};
-	border: 1px solid {{ .BorderColor }};
+	background-color: var(--color-box);
+	border: 1px solid var(--color-border);
 }
 
 code {
-	color: {{ .CodeColor }};
+	color: var(--color-code);
 }
 
 pre {
-	color: {{ .TextColor }};
+	color: var(--color-text);
 }
 
 pre code {
@@ -73,33 +73,33 @@ pre code {
 }
 
 kbd {
-	color: {{ .BackgroundColor }};
-	background-color: {{ .BtnColor }};
+	color: var(--color-background);
+	background-color: var(--color-btn);
 }
 
 blockquote {
-	border-left: 5px solid {{ .HighlightColor }};
+	border-left: 5px solid var(--color-highlight);
 }
 
 abbr[title] {
-	border-bottom: 1px dotted {{ .TextColor }};
+	border-bottom: 1px dotted var(--color-text);
 }
 
 .warning {
-	border: 1px solid {{ .BorderColor }};
+	border: 1px solid var(--color-border);
 }
 
 .warning__icon {
-	fill: {{ .BorderColor }};
+	fill: var(--color-border);
 }
 
 /* Header */
 .header {
-	background: {{ .EndsBackgroundColor }};
+	background: var(--color-ends-background);
 }
 
 .logo__title {
-	color: {{ .TextColor }};
+	color: var(--color-text);
 }
 
 .logo__tagline {
@@ -107,27 +107,27 @@ abbr[title] {
 }
 
 .divider {
-	background: {{ .HighlightColor }};
+	background: var(--color-highlight);
 	border: 0;
 }
 
 /* Main menu */
 .menu__btn {
-	color: {{ .BackgroundColor }};
-	background: {{ .BtnColor }};
+	color: var(--color-background);
+	background: var(--color-btn);
 	border: 0;
 }
 
 :focus > .menu__btn-title {
-	box-shadow: inset 0 0 1px 3px {{ .HighlightColor }};
+	box-shadow: inset 0 0 1px 3px var(--color-highlight);
 }
 
 .js .menu__btn--active {
-	color: {{ .HighlightColor }};
+	color: var(--color-highlight);
 }
 
 .menu__list {
-	background: {{ .BtnColor }};
+	background: var(--color-btn);
 }
 
 .menu__item:first-child {
@@ -135,19 +135,19 @@ abbr[title] {
 }
 
 .menu__item:hover {
-	background: {{ .HighlightColor }};
+	background: var(--color-highlight);
 }
 
 .menu__item--active {
-	background: {{ .HighlightColor }};
+	background: var(--color-highlight);
 }
 
 .menu__link {
-	color: {{ .BackgroundColor }};
+	color: var(--color-background);
 }
 
 .menu__link:hover {
-	color: {{ .BackgroundColor }};
+	color: var(--color-background);
 }
 
 .js .menu__list--active {
@@ -157,7 +157,7 @@ abbr[title] {
 
 @media screen and (min-width: 767px) {
 	.menu {
-		border-bottom: 5px solid {{ .HighlightColor }};
+		border-bottom: 5px solid var(--color-highlight);
 	}
 
 	.menu__item {
@@ -173,124 +173,124 @@ abbr[title] {
 /* Posts/Pages */
 .meta,
 .meta a {
-	color: {{ .MetaCaptionColor }};
+	color: var(--color-meta-caption);
 }
 
 .meta a:hover {
-	color: {{ .HighlightColor }};
+	color: var(--color-highlight);
 }
 
 
 .meta__icon {
-	fill: {{ .MetaCaptionColor }};
+	fill: var(--color-meta-caption);
 }
 
 
 .post__meta {
-	border-top: 1px dotted {{ .BorderColor }};
-	border-bottom: 1px dotted {{ .BorderColor }};
+	border-top: 1px dotted var(--color-border);
+	border-bottom: 1px dotted var(--color-border);
 }
 
 .content a,
 .warning a,
 .authorbox__description a {
-	color: {{ .HighlightColor }};
+	color: var(--color-highlight);
 }
 
 .content a:hover,
 .warning a:hover,
 .authorbox__description a:hover {
-	color: {{ .HighlightColor }};
+	color: var(--color-highlight);
 }
 
 /* Post tags */
 .tags {
-	color: {{ .BackgroundColor }};
+	color: var(--color-background);
 }
 
 .tags__item {
-	background: {{ .BtnColor }};
+	background: var(--color-btn);
 }
 
 .tags__item:hover {
-	background: {{ .HighlightColor }};
+	background: var(--color-highlight);
 }
 
 .tags__badge {
-	background: {{ .HighlightColor }};
-	fill: {{ .BackgroundColor }};
+	background: var(--color-highlight);
+	fill: var(--color-background);
 }
 
 /* Table of Contents */
 .toc {
 	color: #7a8288;
-	background: {{ .BackgroundColor }};
-	border-color: {{ .BorderColor }};
+	background: var(--color-background);
+	border-color: var(--color-border);
 }
 
 .toc__title {
-	color: {{ .BackgroundColor }};
-	background: {{ .BtnColor }};
+	color: var(--color-background);
+	background: var(--color-btn);
 }
 
 .toc__menu a {
-	color: {{ .HighlightColor }};
-	border-bottom: 1px solid {{ .BorderColor }};
+	color: var(--color-highlight);
+	border-bottom: 1px solid var(--color-border);
 }
 
 /* Author Box */
 .authorbox {
-	border-top: 1px solid {{ .BorderColor }};
-	border-bottom: 1px solid {{ .BorderColor }};
+	border-top: 1px solid var(--color-border);
+	border-bottom: 1px solid var(--color-border);
 }
 
 .authorbox__avatar {
-	border: 1px solid {{ .BorderColor }};
+	border: 1px solid var(--color-border);
 }
 
 /* List content */
 .list__item {
-	border-bottom: 1px solid {{ .BorderColor }};
+	border-bottom: 1px solid var(--color-border);
 }
 
 /* Pagination */
 .pagination__item {
-	color: {{ .TextColor }};
-	background: {{ .BoxColor }};
+	color: var(--color-text);
+	background: var(--color-box);
 }
 
 .pagination__item:hover,
 .pagination__item--current {
-	color: {{ .BackgroundColor }};
-	background: {{ .HighlightColor }};
+	color: var(--color-background);
+	background: var(--color-highlight);
 }
 
 /* Pager (prev/next links) navigation */
 .pager {
-	border-bottom: 1px solid {{ .BorderColor }};
+	border-bottom: 1px solid var(--color-border);
 }
 
 /* Table */
 table {
-	border-top: 1px solid {{ .BorderColor }};
-	border-left: 1px solid {{ .BorderColor }};
+	border-top: 1px solid var(--color-border);
+	border-left: 1px solid var(--color-border);
 }
 
 td,
 th {
-	border-right: 1px solid {{ .BorderColor }};
-	border-bottom: 1px solid {{ .BorderColor }};
+	border-right: 1px solid var(--color-border);
+	border-bottom: 1px solid var(--color-border);
 }
 
 /* Forms */
 input {
-	background: {{ .BoxColor }};
-	border: 1px solid {{ .BorderColor }};
-	color: {{ .TextColor }};
+	background: var(--color-box);
+	border: 1px solid var(--color-border);
+	color: var(--color-text);
 }
 
 input::placeholder {
-	color: {{ .TextColor }};
+	color: var(--color-text);
 }
 
 input[type=text]:hover,
@@ -303,42 +303,42 @@ textarea:hover {
 
 input[type=submit],
 input[type=reset] {
-	color: {{ .BackgroundColor }};
-	background: {{ .BtnColor }};
+	color: var(--color-background);
+	background: var(--color-btn);
 	border: 0;
 }
 
 input[type=submit]:hover,
 input[type=reset]:hover {
-	background: {{ .HighlightColor }};
+	background: var(--color-highlight);
 }
 
 textarea {
-	background: {{ .BoxColor }};
+	background: var(--color-box);
 	border: 1px solid rgba(0, 0, 0, .1);
 }
 
 /* Widgets */
 .widget__title {
-	border-bottom: 3px solid {{ .HighlightColor }};
+	border-bottom: 3px solid var(--color-highlight);
 }
 
 .widget__item {
-	border-bottom: 1px dotted {{ .BorderColor }};
+	border-bottom: 1px dotted var(--color-border);
 }
 
 .widget__counter--bubble {
-	background: {{ .BorderColor }};
+	background: var(--color-border);
 }
 
 /* Search widget */
 .widget-search__form {
-	background: {{ .BoxColor }};
+	background: var(--color-box);
 }
 
 .widget-search__field {
-	background: {{ .BackgroundColor }};
-	border: 1px solid {{ .BorderColor }};
+	background: var(--color-background);
+	border: 1px solid var(--color-border);
 }
 
 /* Social widget */
@@ -347,40 +347,51 @@ textarea {
 }
 
 .widget-social__link-icon {
-	fill: {{ .BackgroundColor }};
+	fill: var(--color-background);
 }
 
 /* Languages Widget */
 .widget-languages__link:hover .widget-languages__link-btn {
-	color: {{ .BackgroundColor }};
-	background: {{ .HighlightColor }};
+	color: var(--color-background);
+	background: var(--color-highlight);
 }
 
 .fileinfo {
-	background-color: {{ .BoxColor }};
+	background-color: var(--color-box);
 }
 
 .fileinfo .fileinfo__body a {
-	background-color: {{ .DownloadColor }};
-	color: {{ .TextColor }};
+	background-color: var(--color-download);
+	color: var(--color-text);
 }
 
 .fileinfo .fileinfo__body a:hover {
-	background-color: {{ .DownloadHighlightColor }};
-	color: {{ .TextColor }};
+	background-color: var(--color-download-highlight);
+	color: var(--color-text);
 }
 
 .news {
-	border-top: 3px solid {{ .BorderColor }};
+	border-top: 3px solid var(--color-border);
 }
 
 /* Footer */
 .footer {
-	color: {{ .FooterTextColor }};
-	background: {{ .EndsBackgroundColor }};
-	border-top: 3px solid {{ .BorderColor }};
+	color: var(--color-footer-text);
+	background: var(--color-ends-background);
+	border-top: 3px solid var(--color-border);
 }
 
 .footer a {
-	color: {{ .FooterLinkColor }};
+	color: var(--color-footer-link-text);
+}
+
+.footer_modetoggle {
+	color: var(--color-footer-text);
+	caret-color: transparent;
+}
+
+.footer_modetoggle:hover {
+	border-radius: 50%;
+	color: var(--color-text);
+	background-color: var(--color-border);
 }

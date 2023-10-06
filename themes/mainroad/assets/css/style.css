@@ -1105,7 +1105,6 @@ textarea {
 
 /* Footer */
 .footer {
-	padding: 10px 25px;
 	font-size: 12px;
 	font-size: .75rem;
 }
@@ -1115,6 +1114,11 @@ textarea {
 	flex-flow: row wrap;
 	-webkit-justify-content: space-between;
 	justify-content: space-between;
+	align-items: center;
+}
+
+.footer__inner {
+	padding: 10px 25px;
 }
 
 .footer__links {
@@ -1124,6 +1128,27 @@ textarea {
 
 .footer a:hover {
 	text-decoration: underline;
+}
+
+.footer_modetoggle {
+	font-size: 20px;
+	margin: 0 10px;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+}
+
+.footer_modetoggle-button {
+	border-radius: 50%;
+	border-collapse: separate; 
+	height: 28px;
+	width: 28px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
 }
 
 @media screen and (max-width: 1420px) {
@@ -1160,6 +1185,10 @@ textarea {
 
 	.footer__copyright {
 		text-align: center;
+	}
+
+	.footer_modetoggle {
+		display: none;
 	}
 }
 
@@ -1260,3 +1289,45 @@ textarea {
 		font-size: .6875rem;
 	}
 }
+
+[data-theme="light"] {
+	--color-highlight: #d7742f;
+    --color-background: #d5e0df;
+    --color-download: #e68c37;
+    --color-download-highlight: #e5b04c;
+    --color-box: #bdc7c7;
+    --color-outer: #bdc7c7;
+    --color-border: #aab0b3;
+    --color-btn: #2a2a2a;
+    --color-text: #000;
+    --color-code: #c33;
+    --color-footer-text: #aab0b3;
+    --color-footer-link-text: #bdc7c7;
+    --color-ends-background: #323232;
+    --color-meta-caption: #666666;
+	.footer_modetoggle-dark {
+		display: none;
+	}
+  }
+  
+[data-theme="dark"] {
+	--color-highlight: #d7742f;
+    --color-background: #323232;
+    --color-download: #d7742f;
+    --color-download-highlight: #e68c37;
+    --color-box: #222222;
+    --color-outer: #111111;
+    --color-border: #5a5a5a;
+    --color-btn: #e7d9d3;
+    --color-text: #e7d9d3;
+    --color-code: #e57;
+    --color-footer-text: #aab0b3;
+    --color-footer-link-text: #bdc7c7;
+    --color-ends-background: #222222;
+    --color-meta-caption: #aab0b3;
+	.footer_modetoggle-light {
+		display: none;
+	}
+}
+
+{{ partial "colors.css" . }}
