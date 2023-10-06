@@ -1,6 +1,6 @@
 body {
 	background: var(--color-outer);
-    color: var(--color-text);
+	color: var(--color-text);
 }
 
 .container--outer {
