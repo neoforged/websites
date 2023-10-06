@@ -41,6 +41,7 @@ a:hover {
 }
 
 hr {
+	border: 0;
 	border-top: 1px solid #dadada;
 }
 
@@ -65,6 +66,10 @@ code {
 
 pre {
 	color: {{ .TextColor }};
+}
+
+pre code {
+	border: 0;
 }
 
 kbd {
@@ -103,12 +108,14 @@ abbr[title] {
 
 .divider {
 	background: {{ .HighlightColor }};
+	border: 0;
 }
 
 /* Main menu */
 .menu__btn {
 	color: {{ .BackgroundColor }};
 	background: {{ .BtnColor }};
+	border: 0;
 }
 
 :focus > .menu__btn-title {
@@ -121,6 +128,10 @@ abbr[title] {
 
 .menu__list {
 	background: {{ .BtnColor }};
+}
+
+.menu__item:first-child {
+	border: 0;
 }
 
 .menu__item:hover {
@@ -151,6 +162,11 @@ abbr[title] {
 
 	.menu__item {
 		border-left: 1px solid rgba(255, 255, 255, .1);
+	}
+
+	.menu__list,
+	.js .menu__list {
+		border: 0;
 	}
 }
 
@@ -289,6 +305,7 @@ input[type=submit],
 input[type=reset] {
 	color: {{ .BackgroundColor }};
 	background: {{ .BtnColor }};
+	border: 0;
 }
 
 input[type=submit]:hover,
@@ -325,6 +342,10 @@ textarea {
 }
 
 /* Social widget */
+.widget-social__item {
+	border: 0;
+}
+
 .widget-social__link-icon {
 	fill: {{ .BackgroundColor }};
 }
