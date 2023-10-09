@@ -1,0 +1,397 @@
+body {
+	background: var(--color-outer);
+	color: var(--color-text);
+}
+
+.container--outer {
+	box-shadow: 0 0 10px rgba(50, 50, 50, .17);
+}
+
+.wrapper {
+	background: var(--color-background);
+}
+
+/* Button */
+.btn {
+	color: var(--color-background);
+	background: var(--color-btn);
+}
+
+.btn:hover {
+	color: var(--color-background);
+	background: var(--color-highlight);
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--color-text);
+}
+
+a {
+	color: var(--color-text);
+}
+
+a:hover {
+	color: var(--color-highlight);
+}
+
+hr {
+	border: 0;
+	border-top: 1px solid #dadada;
+}
+
+mark {
+	background-color: #fd5;
+}
+
+
+figcaption {
+	color: var(--color-meta-caption);
+}
+
+pre,
+code {
+	background-color: var(--color-box);
+	border: 1px solid var(--color-border);
+}
+
+code {
+	color: var(--color-code);
+}
+
+pre {
+	color: var(--color-text);
+}
+
+pre code {
+	border: 0;
+}
+
+kbd {
+	color: var(--color-background);
+	background-color: var(--color-btn);
+}
+
+blockquote {
+	border-left: 5px solid var(--color-highlight);
+}
+
+abbr[title] {
+	border-bottom: 1px dotted var(--color-text);
+}
+
+.warning {
+	border: 1px solid var(--color-border);
+}
+
+.warning__icon {
+	fill: var(--color-border);
+}
+
+/* Header */
+.header {
+	background: var(--color-ends-background);
+}
+
+.logo__title {
+	color: var(--color-text);
+}
+
+.logo__tagline {
+	color: #e7d9d3;
+}
+
+.divider {
+	background: var(--color-highlight);
+	border: 0;
+}
+
+/* Main menu */
+.menu__btn {
+	color: var(--color-background);
+	background: var(--color-btn);
+	border: 0;
+}
+
+:focus > .menu__btn-title {
+	box-shadow: inset 0 0 1px 3px var(--color-highlight);
+}
+
+.js .menu__btn--active {
+	color: var(--color-highlight);
+}
+
+.menu__list {
+	background: var(--color-btn);
+}
+
+.menu__item:first-child {
+	border: 0;
+}
+
+.menu__item:hover {
+	background: var(--color-highlight);
+}
+
+.menu__item--active {
+	background: var(--color-highlight);
+}
+
+.menu__link {
+	color: var(--color-background);
+}
+
+.menu__link:hover {
+	color: var(--color-background);
+}
+
+.js .menu__list--active {
+	border-top: 1px solid rgba(255, 255, 255, .1);
+	border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+@media screen and (min-width: 767px) {
+	.menu {
+		border-bottom: 5px solid var(--color-highlight);
+	}
+
+	.menu__item {
+		border-left: 1px solid rgba(255, 255, 255, .1);
+	}
+
+	.menu__list,
+	.js .menu__list {
+		border: 0;
+	}
+}
+
+/* Posts/Pages */
+.meta,
+.meta a {
+	color: var(--color-meta-caption);
+}
+
+.meta a:hover {
+	color: var(--color-highlight);
+}
+
+
+.meta__icon {
+	fill: var(--color-meta-caption);
+}
+
+
+.post__meta {
+	border-top: 1px dotted var(--color-border);
+	border-bottom: 1px dotted var(--color-border);
+}
+
+.content a,
+.warning a,
+.authorbox__description a {
+	color: var(--color-highlight);
+}
+
+.content a:hover,
+.warning a:hover,
+.authorbox__description a:hover {
+	color: var(--color-highlight);
+}
+
+/* Post tags */
+.tags {
+	color: var(--color-background);
+}
+
+.tags__item {
+	background: var(--color-btn);
+}
+
+.tags__item:hover {
+	background: var(--color-highlight);
+}
+
+.tags__badge {
+	background: var(--color-highlight);
+	fill: var(--color-background);
+}
+
+/* Table of Contents */
+.toc {
+	color: #7a8288;
+	background: var(--color-background);
+	border-color: var(--color-border);
+}
+
+.toc__title {
+	color: var(--color-background);
+	background: var(--color-btn);
+}
+
+.toc__menu a {
+	color: var(--color-highlight);
+	border-bottom: 1px solid var(--color-border);
+}
+
+/* Author Box */
+.authorbox {
+	border-top: 1px solid var(--color-border);
+	border-bottom: 1px solid var(--color-border);
+}
+
+.authorbox__avatar {
+	border: 1px solid var(--color-border);
+}
+
+/* List content */
+.list__item {
+	border-bottom: 1px solid var(--color-border);
+}
+
+/* Pagination */
+.pagination__item {
+	color: var(--color-text);
+	background: var(--color-box);
+}
+
+.pagination__item:hover,
+.pagination__item--current {
+	color: var(--color-background);
+	background: var(--color-highlight);
+}
+
+/* Pager (prev/next links) navigation */
+.pager {
+	border-bottom: 1px solid var(--color-border);
+}
+
+/* Table */
+table {
+	border-top: 1px solid var(--color-border);
+	border-left: 1px solid var(--color-border);
+}
+
+td,
+th {
+	border-right: 1px solid var(--color-border);
+	border-bottom: 1px solid var(--color-border);
+}
+
+/* Forms */
+input {
+	background: var(--color-box);
+	border: 1px solid var(--color-border);
+	color: var(--color-text);
+}
+
+input::placeholder {
+	color: var(--color-text);
+}
+
+input[type=text]:hover,
+input[type=email]:hover,
+input[type=tel]:hover,
+input[type=url]:hover,
+textarea:hover {
+	border: 1px solid #aaa;
+}
+
+input[type=submit],
+input[type=reset] {
+	color: var(--color-background);
+	background: var(--color-btn);
+	border: 0;
+}
+
+input[type=submit]:hover,
+input[type=reset]:hover {
+	background: var(--color-highlight);
+}
+
+textarea {
+	background: var(--color-box);
+	border: 1px solid rgba(0, 0, 0, .1);
+}
+
+/* Widgets */
+.widget__title {
+	border-bottom: 3px solid var(--color-highlight);
+}
+
+.widget__item {
+	border-bottom: 1px dotted var(--color-border);
+}
+
+.widget__counter--bubble {
+	background: var(--color-border);
+}
+
+/* Search widget */
+.widget-search__form {
+	background: var(--color-box);
+}
+
+.widget-search__field {
+	background: var(--color-background);
+	border: 1px solid var(--color-border);
+}
+
+/* Social widget */
+.widget-social__item {
+	border: 0;
+}
+
+.widget-social__link-icon {
+	fill: var(--color-background);
+}
+
+/* Languages Widget */
+.widget-languages__link:hover .widget-languages__link-btn {
+	color: var(--color-background);
+	background: var(--color-highlight);
+}
+
+.fileinfo {
+	background-color: var(--color-box);
+}
+
+.fileinfo .fileinfo__body a {
+	background-color: var(--color-download);
+	color: var(--color-text);
+}
+
+.fileinfo .fileinfo__body a:hover {
+	background-color: var(--color-download-highlight);
+	color: var(--color-text);
+}
+
+.news {
+	border-top: 3px solid var(--color-border);
+}
+
+/* Footer */
+.footer {
+	color: var(--color-footer-text);
+	background: var(--color-ends-background);
+	border-top: 3px solid var(--color-border);
+}
+
+.footer a {
+	color: var(--color-footer-link-text);
+}
+
+.footer_modetoggle {
+	color: var(--color-footer-text);
+	caret-color: transparent;
+}
+
+.footer_modetoggle:hover {
+	border-radius: 50%;
+	color: var(--color-text);
+	background-color: var(--color-border);
+}
