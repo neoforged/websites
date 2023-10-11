@@ -356,20 +356,6 @@ textarea {
 	background: var(--color-highlight);
 }
 
-.fileinfo {
-	background-color: var(--color-box);
-}
-
-.fileinfo .fileinfo__body a {
-	background-color: var(--color-download);
-	color: var(--color-text);
-}
-
-.fileinfo .fileinfo__body a:hover {
-	background-color: var(--color-download-highlight);
-	color: var(--color-text);
-}
-
 .news {
 	border-top: 3px solid var(--color-border);
 }
