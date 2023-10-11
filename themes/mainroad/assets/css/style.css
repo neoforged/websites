@@ -1086,6 +1086,10 @@ textarea {
 	grid-row-end: span 2;
 }
 
+.link {
+	background-color: var(--color-box);
+}
+
 .link:hover {
 	background-color: var(--color-download-highlight);
 }
