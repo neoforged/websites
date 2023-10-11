@@ -41,19 +41,19 @@ async function loadLatestVersions(minecraftVersions) {
         <div class="fileinfo">
         <div class="fileinfo__header">
         <i aria-hidden="true"></i><b>Download (Latest)</b><br>
-        <small></small><br>
+        <small>${version}</small><br>
         </div>
         <div class="fileinfo__body">
         <div class="link link-boosted">
         <a href="${installerUrl}" title="Installer...">
-        <img class="boosted-installer_icon" src="/assets/img/content/installer_icons/installer.png">
+        <img class="boosted-installer_icon" src="../../assets/img/content/installer_icons/installer.png">
         <br><span>Latest <em>NeoForge</em> Installer</span>
-        <p id="file-name">forge--installer.jar</p></a>
+        <p id="file-name">forge-${version}-installer.jar</p></a>
         </div>
         <div class="link">
         <a href="${changelogUrl}" title="Changelog...">
-        <img class="installer_icons" src="/assets/img/content/installer_icons/changelog.png">
-        <br><span>Latest Changelog</span><br><span></span></a>
+        <img class="installer_icons" src="../../assets/img/content/installer_icons/changelog.png">
+        <br><span>Latest Changelog</span><br><span>${version}</span></a>
         </div>
         <div class="link">
         <a href="https://maven.neoforged.net/#/releases/net/neoforged/forge" title="Older Versions...">
