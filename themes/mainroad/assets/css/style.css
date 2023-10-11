@@ -1054,10 +1054,8 @@ textarea {
 
 /* Installer */
 .fileinfo {
-	color: white;
 	padding: 0;
 	text-decoration: none;
-	transition: background 0.2s ease-in-out;
 	text-align: center;
 	font-size: 1.5rem;
 	line-height: 1.4;
@@ -1065,6 +1063,7 @@ textarea {
 }
 
 .fileinfo__header {
+	color: var(--color-download-header);
 	background-color: var(--color-download);
 	padding: 10px;
 	line-height: 1.2rem;
@@ -1073,7 +1072,6 @@ textarea {
 .fileinfo__body {
 	background-color: var(--color-box);
 	position: relative;
-	border-radius: 0 0 3px 3px;
 	border-top: 1px solid var(--color-border);
 	margin: 0;
 	display: grid;
@@ -1293,7 +1291,8 @@ textarea {
 	--color-highlight: #d7742f;
 	--color-background: #d5e0df;
 	--color-download: #e68c37;
-	--color-download-highlight: #a9aeb1;
+	--color-download-header: #ffffff;
+	--color-download-highlight: #e7f1f0;
 	--color-box: #bdc7c7;
 	--color-outer: #bdc7c7;
 	--color-border: #aab0b3;
@@ -1313,7 +1312,8 @@ textarea {
 	--color-highlight: #d7742f;
 	--color-background: #323232;
 	--color-download: #d7742f;
-	--color-download-highlight: #a9aeb1;
+	--color-download-header: #ffffff;
+	--color-download-highlight: #bdc5c5;
 	--color-box: #222222;
 	--color-outer: #111111;
 	--color-border: #5a5a5a;
