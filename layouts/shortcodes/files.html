@@ -3,33 +3,27 @@
 <div id="filelist">
   <div class="fileinfo">
     <div class="fileinfo__header">
-      <i aria-hidden="true"></i><b>Latest <em>Neoforge</em>Installer</b><br />
+      <i aria-hidden="true"></i><b>Latest <em>Neoforge</em> Installer</b><br />
       <small id="installer-version"></small><br />
     </div>
     <div class="fileinfo__body">
       <div class="link link-boosted">
-        <div class="boosted-installer_icon">
-          {{ partial "svg/installer_icons/installer.svg" }}
-        </div>
+        {{ partial "svg/installer_icons/installer.svg" }} <br>
         <a id="installer" title="Installer...">
-          <br /><span>Installer</span>
+          <span>Installer</span>
         </a>
       </div>
       <div class="link">
-        <div class="installer_icons">
-          {{ partial "svg/installer_icons/changelog.svg" }}
-        </div>
-        <a id="changelog" title="Changelog..."><br /><span>Changelog</span></a>
+        {{ partial "svg/installer_icons/changelog.svg" }} <br>
+        <a id="changelog" title="Changelog..."><span>Changelog</span></a>
       </div>
       <div class="link">
-        <div class="installer_icons">
-          {{ partial "svg/installer_icons/history.svg" }}
-        </div>
+        {{ partial "svg/installer_icons/history.svg" }} <br>
         <a
           href="https://maven.neoforged.net/#/releases/net/neoforged/forge"
           title="Older Versions..."
         >
-          <br /><span>Older<br />Versions</span></a
+          <span>Older<br />Versions</span></a
         >
       </div>
     </div>

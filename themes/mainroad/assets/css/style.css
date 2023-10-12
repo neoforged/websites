@@ -1094,14 +1094,6 @@ textarea {
 	background-color: var(--color-download-highlight);
 }
 
-.boosted-installer_icon {
-	height: 128px;
-} 
-
-.installer_icons {
-	height: 64px;
-} 
-
 /* News */
 .news {
 	margin-top: 1rem;
