@@ -1,7 +1,7 @@
 ---
 title: "Event system changes in NeoForge 20.2"
 date: 2023-10-11T13:36:00+02:00
-draft: true
+draft: false
 categories:
 - News
 author: technici4n
