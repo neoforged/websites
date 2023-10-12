@@ -3,38 +3,33 @@
 <div id="filelist">
   <div class="fileinfo">
     <div class="fileinfo__header">
-      <i aria-hidden="true"></i><b>Download (Latest)</b><br />
-      <small></small><br />
+      <i aria-hidden="true"></i><b>Latest <em>Neoforge</em>Installer</b><br />
+      <small id="installer-version"></small><br />
     </div>
     <div class="fileinfo__body">
       <div class="link link-boosted">
-        <a href="${installerUrl}" title="Installer...">
-          <img
-            class="boosted-installer_icon"
-            src="installer_icons/installer.png"
-          />
-          <br /><span>Latest <em>NeoForge</em> Installer</span>
-          <p id="file-name">forge--installer.jar</p></a
-        >
+        <div class="boosted-installer_icon">
+          {{ partial "svg/installer_icons/installer.svg" }}
+        </div>
+        <a id="installer" title="Installer...">
+          <br /><span>Installer</span>
+        </a>
       </div>
       <div class="link">
-        <a href="${changelogUrl}" title="Changelog...">
-          <img
-            class="installer_icons"
-            src="installer_icons/changelog.png" />
-          <br /><span>Latest Changelog</span><br /><span></span
-        ></a>
+        <div class="installer_icons">
+          {{ partial "svg/installer_icons/changelog.svg" }}
+        </div>
+        <a id="changelog" title="Changelog..."><br /><span>Changelog</span></a>
       </div>
       <div class="link">
+        <div class="installer_icons">
+          {{ partial "svg/installer_icons/history.svg" }}
+        </div>
         <a
           href="https://maven.neoforged.net/#/releases/net/neoforged/forge"
           title="Older Versions..."
         >
-          <img
-            class="installer_icons"
-            src="installer_icons/history.png"
-          />
-          <br /><span>Older Versions -></span></a
+          <br /><span>Older<br />Versions</span></a
         >
       </div>
     </div>

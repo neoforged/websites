@@ -33,34 +33,26 @@ async function loadLatestVersions(minecraftVersions) {
     }
 
     if (versionJson) {
-      const {version} = versionJson;
-            
-      const installerUrl = `${DOWNLOAD_URL}/${encodeURIComponent(version)}/forge-${encodeURIComponent(version)}-installer.jar`;
-      const changelogUrl = `${DOWNLOAD_URL}/${encodeURIComponent(version)}/forge-${encodeURIComponent(version)}-changelog.txt`;
-      document.querySelector("#filelist").innerHTML = `
-        <div class="fileinfo">
-        <div class="fileinfo__header">
-        <i aria-hidden="true"></i><b>Download (Latest)</b><br>
-        <small>${version}</small><br>
-        </div>
-        <div class="fileinfo__body">
-        <div class="link link-boosted">
-        <a href="${installerUrl}" title="Installer...">
-        <img class="boosted-installer_icon" src="../../assets/img/content/installer_icons/installer.png">
-        <br><span>Latest <em>NeoForge</em> Installer</span>
-        <p id="file-name">forge-${version}-installer.jar</p></a>
-        </div>
-        <div class="link">
-        <a href="${changelogUrl}" title="Changelog...">
-        <img class="installer_icons" src="../../assets/img/content/installer_icons/changelog.png">
-        <br><span>Latest Changelog</span><br><span>${version}</span></a>
-        </div>
-        <div class="link">
-        <a href="https://maven.neoforged.net/#/releases/net/neoforged/forge" title="Older Versions...">
-        <img class="installer_icons" src="/assets/img/content/installer_icons/history.png">
-        <br><span>Older Versions -></span></a>
-        </div></div></div>
+      const { version } = versionJson;
+
+      const installerUrl = `${DOWNLOAD_URL}/${encodeURIComponent(
+        version
+      )}/forge-${encodeURIComponent(version)}-installer.jar`;
+      const changelogUrl = `${DOWNLOAD_URL}/${encodeURIComponent(
+        version
+      )}/forge-${encodeURIComponent(version)}-changelog.txt`;
+
+      document.querySelector("#installer-version").innerHTML = `
+      ${version}
       `;
+
+      document
+        .getElementById("installer")
+        .setAttribute("href", `${installerUrl}`);
+
+      document
+        .getElementById("changelog")
+        .setAttribute("href", `${changelogUrl}`);
     }
   }
 }
