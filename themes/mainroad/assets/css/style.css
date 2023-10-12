@@ -1088,9 +1088,10 @@ textarea {
 
 .link {
 	background-color: var(--color-box);
-	position: relative;
-  	top: 50%;
-  	transform: translateY(-50%);
+	top:0;
+	left:0;
+	right:0;
+	bottom:0
 }
 
 .link:hover {
