@@ -1088,8 +1088,8 @@ textarea {
 
 .link {
 	background-color: var(--color-box);
-	padding-top: 100%;
-	padding-bottom: 100%;
+	padding-top: auto;
+	padding-bottom: auto;
 }
 
 .link:hover {
