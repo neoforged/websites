@@ -53,6 +53,18 @@ async function loadLatestVersions(minecraftVersions) {
       document
         .getElementById("changelog")
         .setAttribute("href", `${changelogUrl}`);
+        
+        var linkHeight = document.getElementsByClassName('link');
+        var height = linkHeight.clientHeight;
+        var padding = num.toString((height - convertRem)/2);
+
+        convertRemToPixels()
+
+        linkHeight = document.getElementsByClassName('link-boosted');
+        var height = linkHeight.clientHeight;
+        var padding = num.toString((height - 152)/2);
+
+        simpleHeight.style.padding = `${padding}px 0`;
     }
   }
 }
