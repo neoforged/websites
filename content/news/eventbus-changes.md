@@ -1,7 +1,7 @@
 ---
 title: "Event system changes in NeoForge 20.2"
-date: 2023-10-11T13:36:00+02:00
-draft: false
+date: 2023-10-21T18:30:00+02:00
+draft: true
 categories:
 - News
 author: technici4n
@@ -12,7 +12,6 @@ description: |
     This post goes over the changes made to the "EventBus" subsystem of NeoForge 20.2.
     This does not cover specific events, but rather changes made to the event machinery itself.
 ---
-_Draft: This is only valid up to commit 86e69ce. Still missing a few planned changes._
 
 ## Introduction
 Over the past few weeks, we have been working on updating our event system.
@@ -54,6 +53,32 @@ Use `setCanceled(true)` to cancel events and `isCanceled()` to check if events a
   }
 ```
 
+### Updated `@SubscribeEvent` semantics
+We changed some details about how `@SubscribeEvent` methods are detected when an object or class is `register`ed to the an event bus:
+
+This the new behavior for registering objects or classes to new behavior is as follows:
+- All `@SubscribeEvent` methods (regardless of visibility) in the target object are registered. There is no inheritance of `@SubscribeEvent` methods anymore, and private methods can now be used.
+- Superclasses or superinterfaces of the registered class are not allowed to have any declared method with `@SubscribeEvent`. This prevents mistakes where a developer would assume that inheritance works.
+- An error will be thrown if any `@SubscribeEvent` method has mismatching static-ness: registrations with a `Class` must be `static`, and registrations with an object must be non-`static`. This prevents mistakes where `static` is forgotten or unnecessary.
+- An error will be thrown if no `@SubscribeEvent` method exists. This prevents forgetting the `@SubscribeEvent` annotation.
+
+### `abstract` events cannot be listened to anymore
+`abstract` events cannot be listened to anymore.
+This should help prevent mistakes where a developer would accidentally listen to a superclass,
+for example by listening to `SomeEvent` instead of `SomeEvent.Pre`.
+All the superclasses of `abstract` events must now be abstract themselves.
+
+A number of NeoForge events were made `abstract` to guard against developer mistakes.
+
+### Updated mod bus semantics
+The Forge bus will not allow listeners to events that implement `IModBusEvent` anymore.
+This should prevent subscribing to the wrong event bus.
+
+Additionally, events dispatched on the mod busses via `ModLoader` such as all the
+NeoForge registration events now respect event priority across different busses.
+(For example, a listener registered with `EventPriority.LOW` will
+always run before listeners from other mods registered with `EventPriority.NORMAL`.)
+
 ### More `addListener` overloads
 We added a few convenient overloads for lambda registration with `IEventBus#addListener`. For example, the following is now possible:
 ```java
@@ -63,7 +88,7 @@ bus.addListener(SomeEvent.class, event -> {
 ```
 
 ### Generic events are deprecated for removal
-Generic events are deprecated for removal, and will be removed in the future[^1]. We encourage modders to move away from them as soon as possible. NeoForge is still using them for `GatherCapabilitiesEvent` only. We will address this in capability rework.
+Generic events are deprecated for removal, and will be removed in the future[^1]. We encourage modders to move away from them as soon as possible. NeoForge is still using them for the `AttachCapabilitiesEvent` only. We will address this in the capability rework.
 
 ### Event results are being phased out
 For now, only the `@Event.HasResult` annotation is deprecated for removal.
@@ -74,16 +99,17 @@ as they are clearer to users of your API.
 
 If you are a user of only the `getResult` and `setResult` methods, there is nothing for you to do.
 
-### Other changes
-- The Forge bus will not allow listeners to events that implement `IModBusEvent` anymore.
-This should prevent subscribing to the wrong event bus.
+## Other changes
 - Removal of the subclass transformer:
 Previously, the no-arguments constructor of an event subclass had to be `public`.
 This is no longer the case - you can now make such constructors `protected`, package-private or `private` if you want to.
 - `Event#getPhase` and `Event#setPhase` were removed.
 - `@Event.HasResult` is now checked when calling `Event#setResult`. `Event#hasResult` and `Event#getResult` are now final.
 - `EventListenerHelper` was removed from the API.
-- `IEventListener`s use `toString` for human-readable description (`listenerName` was removed).
+- `EventListener`s use `toString` for human-readable description (`listenerName` was removed).
 - Performance improvement: `isCanceled` checks are automatically removed for non-cancelable events.
+- `IEventListener` is renamed to `EventListener` and changed to an abstract class for performance reasons.
+- The ModLauncher hooks were removed, greatly simplifying the implementation of the event bus.
+- `IEventBusInvokeDispatcher` was removed.
 
 [^1]: Not before NeoForge 20.3, don't worry.
