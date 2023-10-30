@@ -1,16 +1,38 @@
 {{ $js:= resources.Get "js/neoforge.js" }}
 <script src="{{ $js.RelPermalink }}"></script>
-<div id="filelist" class="fileinfo">
-    <div class="fileinfo__header">NeoForge (loading version...)</div>
-    <div class="fileinfo__body">
-        <a><span>Latest <em>NeoForge</em> Installer</span><span class="fileinfo__placeholder">neoforge-0.00.00-00.00.00-installer.jar</span></a>
-        <a><span>Latest Changelog</span><span class="fileinfo__placeholder">0.00.00-00.00.00</span></a>
+<div id="filelist">
+  <div class="fileinfo">
+    <div class="fileinfo__header">
+      <i aria-hidden="true"></i><b>Latest <em>Neoforge</em> Installer</b><br />
+      <small id="installer-version"></small><br />
     </div>
+    <div class="fileinfo__body">
+      <div class="link link-boosted">
+        {{ partial "svg/installer_icons/installer.svg" }} <br>
+        <a id="installer" title="Installer...">
+          <span>Installer</span>
+        </a>
+      </div>
+      <div class="link">
+        {{ partial "svg/installer_icons/changelog.svg" }} <br>
+        <a id="changelog" title="Changelog..."><span>Changelog</span></a>
+      </div>
+      <div class="link">
+        {{ partial "svg/installer_icons/history.svg" }} <br>
+        <a
+          href="https://maven.neoforged.net/#/releases/net/neoforged/forge"
+          title="Older Versions..."
+        >
+          <span>Older<br />Versions</span></a
+        >
+      </div>
+    </div>
+  </div>
 </div>
 <script>
-document.addEventListener("readystatechange", evt=>{
-    if (evt.target.readyState === "complete") {
-        loadLatestVersions([{{ .Get 0 }}]);
-    }
-});
+  document.addEventListener("readystatechange", evt=>{
+      if (evt.target.readyState === "complete") {
+          loadLatestVersions([{{ .Get 0 }}]);
+      }
+  });
 </script>
