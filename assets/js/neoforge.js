@@ -1,8 +1,8 @@
 const VERSIONS_ENDPOINT = 'https://maven.neoforged.net/api/maven/versions/releases/'
-const FORGE_GAV = 'net/neoforged/forge'
+const FORGE_GAV = 'net/neoforged/neoforge'
 const LATEST_ENDPOINT = 'https://maven.neoforged.net/api/maven/latest/version/releases/'
-const DOWNLOAD_URL = 'https://maven.neoforged.net/net/neoforged/forge'
-//https://maven.neoforged.net/api/maven/latest/version/releases/net%2Fneoforged%2Fforge?filter=1.20.1
+const DOWNLOAD_URL = 'https://maven.neoforged.net/releases/net/neoforged/neoforge'
+//https://maven.neoforged.net/api/maven/latest/version/releases/net%2Fneoforged%2Fneoforge?filter=20.2
 async function loadLatestVersions(minecraftVersions) {
     for (const mcVersion of minecraftVersions) {
         let currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(FORGE_GAV) + '?filter=' + encodeURIComponent(mcVersion));
@@ -22,8 +22,8 @@ async function loadLatestVersions(minecraftVersions) {
         if (versionJson) {
             const {version} = versionJson;
             
-            const installerUrl = `${DOWNLOAD_URL}/${encodeURIComponent(version)}/forge-${encodeURIComponent(version)}-installer.jar`;
-            const changelogUrl = `${DOWNLOAD_URL}/${encodeURIComponent(version)}/forge-${encodeURIComponent(version)}-changelog.txt`;
+            const installerUrl = `${DOWNLOAD_URL}/${encodeURIComponent(version)}/neoforge-${encodeURIComponent(version)}-installer.jar`;
+            const changelogUrl = `${DOWNLOAD_URL}/${encodeURIComponent(version)}/neoforge-${encodeURIComponent(version)}-changelog.txt`;
             document.querySelector("#filelist").innerHTML = `
                 <div class="fileinfo__header">NeoForge ${version}</div>
                 <div class="fileinfo__body">

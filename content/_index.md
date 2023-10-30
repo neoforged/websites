@@ -12,7 +12,7 @@ description: |
 # NeoForge installer files
 You can find a direct link to our latest installer file below.
 
-{{< files "1.20.1" >}}
+{{< files "20.2" >}}
 
 Note: this file is still called forge because we're trying to maintain compatibility with launchers,
 assuming they don't hardcode things too much.
