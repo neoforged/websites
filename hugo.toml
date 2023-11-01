@@ -11,7 +11,7 @@ theme = "mainroad"
   authorbox = true
   pager = true
   post_meta = ["author", "date", "categories"] # Order of post meta information
-  mainSections = ["news"]
+  mainSections = ["news", "blog"]
 
 [Params.logo]
   image = "img/content/branding/banner.png"
@@ -23,8 +23,26 @@ theme = "mainroad"
   list = "right"   # Configure layout for list pages
   single = "right" # Configure layout for single pages
   # Enable widgets in given order
-  widgets = ["search", "recent", "categories", "taglist"]
+  widgets = ["search", "recent", "categories", "social", "taglist"]
 
 [Params.widgets]
   recent_num = 5 # Set the number of articles in the "Recent articles" widget
   tags_counter = false # Enable counter for each tag in "Tags" widget (disabled by default)
+
+[Params.widgets.social]
+  cached = true
+
+[[Params.widgets.social.custom]]
+  title = "GitHub"
+  url = "https://github.com/neoforged/"
+  icon = "svg/github.svg"
+
+[[Params.widgets.social.custom]]
+  title = "Discord"
+  url = "https://discord.neoforged.net/"
+  icon = "svg/discord.svg"
+
+[[Params.widgets.social.custom]]
+  title = "Open Collective"
+  url = "https://opencollective.com/neoforged"
+  icon = "svg/opencollective.svg"
