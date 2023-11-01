@@ -1083,11 +1083,22 @@ textarea {
 	padding: .625rem;
 	align-items: center;
   	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: stretch;
 	justify-content: center;
 	flex: 1 1 0px;
 	text-decoration: none;
+}
+
+.fileinfo__icon {
+}
+
+.fileinfo__content {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: center;
+	flex: 1 1 0px;
 }
 
 .fileinfo__placeholder {

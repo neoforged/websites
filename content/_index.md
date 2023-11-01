@@ -17,7 +17,7 @@ You can find a direct link to our latest installer files below.
 Note: this file is still called forge because we're trying to maintain compatibility with launchers,
 assuming they don't hardcode things too much.
 
-## The new version is here, and still in beta
+## The new version is here
 
 {{<files "20.2" >}}
 
