@@ -46,3 +46,8 @@ theme = "mainroad"
   title = "Open Collective"
   url = "https://opencollective.com/neoforged"
   icon = "svg/opencollective.svg"
+
+[[Params.widgets.social.custom]]
+  title = "Current backend service status"
+  url = "https://status.neoforged.net"
+  icon = "svg/time.svg"
