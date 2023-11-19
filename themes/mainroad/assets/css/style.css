@@ -1052,6 +1052,18 @@ textarea {
 	display: inline-block;
 }
 
+details {
+	border: .15rem solid transparent;
+}
+
+details:hover {
+	border: .15rem solid var(--color-border);
+}
+
+summary:hover {
+	filter: brightness(.85);
+}
+
 .fileinfo {
 	text-align: center;
 	margin: 0 0 20px;

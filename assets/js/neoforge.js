@@ -15,12 +15,14 @@ async function loadLatestVersions(minecraftVersions) {
 		gav = LEGACY_GAV;
         fn = "forge";
 		mcvers = "1.20.1";
-        note = `<br><br>Note: This file is still called <i>forge</i> because we're trying to maintain compatibility with launchers, assuming they don't hardcode things too much.`;
-        dropDown_VAL = ` open="open"`
+        note = `Note: This file is still called <i>forge</i> because we're trying to maintain compatibility with launchers, assuming they don't hardcode things too much.`;
+        dropDown_VAL = ` open="open"`;
 	} else {
 		gav = FORGE_GAV;
-                fn = "neoforge";
-		mcvers = `1.${mcVersion}`
+        fn = "neoforge";
+		mcvers = `1.${mcVersion}`;
+        note="";
+        dropDown_VAL = "";
 	}
         let currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav) + '?filter=' + encodeURIComponent(mcVersion));
         let versionJson;
@@ -43,7 +45,7 @@ async function loadLatestVersions(minecraftVersions) {
             const changelogUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(version)}/${fn}-${encodeURIComponent(version)}-changelog.txt`;
             document.querySelector(vs).innerHTML = `
                 <details${dropDown_VAL}>
-                <summary><div class="fileinfo__header">NeoForge ${version} for Minecraft ${mcvers}</div></summary>
+                <summary class="fileinfo__header">NeoForge ${version} for Minecraft ${mcvers}</summary>
                 <div class="fileinfo__body">
                 <a href="${installerUrl}"><span class="fileinfo__icon"><i class="bi-file-earmark-zip-fill" style="font-size: 2rem;"></i></span>
 			<span class="fileinfo__content"><span>Latest <em>NeoForge</em> Installer</span><span>${fn}-${version}-installer.jar</span></span></a>
