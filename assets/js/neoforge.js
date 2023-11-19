@@ -17,7 +17,7 @@ async function loadLatestVersions(minecraftVersions) {
 		gav = LEGACY_GAV;
         fn = "forge";
 		mcvers = "1.20.1";
-        note = `Note: This file is still called <i>forge</i> because we're trying to maintain compatibility with launchers, assuming they don't hardcode things too much.`;
+        note = `<b>Note:</b> This file is still called <i>forge</i> because we're trying to maintain compatibility with launchers, assuming they don't hardcode things too much.`;
         dropDown_VAL = ` open="open"`;
         badges_one = `<font class="badges_stable">RECOMMENDED</font>`;
         badges_two = "";
