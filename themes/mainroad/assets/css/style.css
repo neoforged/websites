@@ -1316,6 +1316,9 @@ summary:hover {
 [data-theme="light"] {
 	--color-highlight: #d7742f;
 	--color-background: #d5e0df;
+	--color-badges-beta: #d7742f;
+	--color-badges-new: #e57;
+	--color-badges-stable: #d5e0df;
 	--color-download: #e68c37;
 	--color-download-highlight: #e5b04c;
 	--color-box: #bdc7c7;
@@ -1336,6 +1339,9 @@ summary:hover {
 [data-theme="dark"] {
 	--color-highlight: #d7742f;
 	--color-background: #323232;
+	--color-badges-beta: #d7742f;
+	--color-badges-new: #e57;
+	--color-badges-stable: #d5e0df;
 	--color-download: #d7742f;
 	--color-download-highlight: #e68c37;
 	--color-box: #222222;

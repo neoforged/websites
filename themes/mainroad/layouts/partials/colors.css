@@ -356,6 +356,18 @@ textarea {
 	background: var(--color-highlight);
 }
 
+.badges_beta {
+	background-color: var(--color-badges-beta);
+}
+
+.badges_new {
+	background-color: var(--color-badges-new);
+}
+
+.badges_stable {
+	background-color: var(--color-badges-stable);
+}
+
 .fileinfo {
 	background-color: var(--color-box);
 }
