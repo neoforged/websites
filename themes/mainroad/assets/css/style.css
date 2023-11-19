@@ -1064,6 +1064,18 @@ summary:hover {
 	filter: brightness(.85);
 }
 
+.badges_beta {
+	padding: 0 5px;
+}
+
+.badges_new {
+	padding: 0 5px;
+}
+
+.badges_stable {
+	padding: 0 5px;
+}
+
 .fileinfo {
 	text-align: center;
 	margin: 0 0 20px;
@@ -1318,7 +1330,7 @@ summary:hover {
 	--color-background: #d5e0df;
 	--color-badges-beta: #d7742f;
 	--color-badges-new: #e57;
-	--color-badges-stable: #d5e0df;
+	--color-badges-stable: #e3d8d2;
 	--color-badges-stable-text: #000;
 	--color-download: #e68c37;
 	--color-download-highlight: #e5b04c;
@@ -1342,7 +1354,7 @@ summary:hover {
 	--color-background: #323232;
 	--color-badges-beta: #d7742f;
 	--color-badges-new: #e57;
-	--color-badges-stable: #d5e0df;
+	--color-badges-stable: #e3d8d2;
 	--color-badges-stable-text: #000;
 	--color-download: #d7742f;
 	--color-download-highlight: #e68c37;
