@@ -19,7 +19,7 @@ async function loadLatestVersions(minecraftVersions) {
 		mcvers = "1.20.1";
         note = `Note: This file is still called <i>forge</i> because we're trying to maintain compatibility with launchers, assuming they don't hardcode things too much.`;
         dropDown_VAL = ` open="open"`;
-        badges_one = `<div class="badges_stable">RECOMMENDED</div>`;
+        badges_one = `<font class="badges_stable">RECOMMENDED</font>`;
         badges_two = "";
 	} else {
 		gav = FORGE_GAV;
@@ -27,8 +27,8 @@ async function loadLatestVersions(minecraftVersions) {
 		mcvers = `1.${mcVersion}`;
         note="";
         dropDown_VAL = "";
-        badges_one = `<div class="badges_beta">BETA</div>`;
-        badges_two = `<div class="badges_new">NEW</div>`;
+        badges_one = `<font class="badges_beta">BETA</font>`;
+        badges_two = `<font class="badges_new">NEW</font>`;
 	}
         let currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav) + '?filter=' + encodeURIComponent(mcVersion));
         let versionJson;

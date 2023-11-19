@@ -365,6 +365,7 @@ textarea {
 }
 
 .badges_stable {
+	color: var(--color-badges-stable-text);
 	background-color: var(--color-badges-stable);
 }
 
