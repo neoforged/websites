@@ -11,24 +11,24 @@ async function loadLatestVersions(minecraftVersions) {
 	let mcvers;
     let note;
     let dropDown_VAL;
-    let badges_one;
-    let badges_two;
+    let badges_beta;
+    let badges_new;
 	if (mcVersion.startsWith("1.20.1")) {
 		gav = LEGACY_GAV;
         fn = "forge";
 		mcvers = "1.20.1";
         note = `<b>Note:</b> This file is still called <i>forge</i> because we're trying to maintain compatibility with launchers, assuming they don't hardcode things too much.`;
-        dropDown_VAL = ` open="open"`;
-        badges_one = `<font class="badges_stable">RECOMMENDED</font>`;
-        badges_two = "";
+        badges_new = "";
+        badges_beta = "";
+        dropDown_VAL = "";
 	} else {
 		gav = FORGE_GAV;
         fn = "neoforge";
 		mcvers = `1.${mcVersion}`;
         note="";
-        dropDown_VAL = "";
-        badges_one = `<font class="badges_beta">BETA</font>`;
-        badges_two = `<font class="badges_new">NEW</font>`;
+        badges_new = `<font class="badges_new">NEW</font>`;
+        badges_beta = "";
+        dropDown_VAL = ` open="open"`;
 	}
         let currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav) + '?filter=' + encodeURIComponent(mcVersion));
         let versionJson;
@@ -46,12 +46,17 @@ async function loadLatestVersions(minecraftVersions) {
 
         if (versionJson) {
             const {version} = versionJson;
+            if (version.includes("beta")) {
+                badges_beta = `<font class="badges_beta">BETA</font>`;
+            }
+            
             const vs = `#filelist${mcVersion}`.split('.').join("");
             const installerUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(version)}/${fn}-${encodeURIComponent(version)}-installer.jar`;
             const changelogUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(version)}/${fn}-${encodeURIComponent(version)}-changelog.txt`;
+           
             document.querySelector(vs).innerHTML = `
                 <details${dropDown_VAL}>
-                <summary class="fileinfo__header">${badges_one} ${badges_two}  NeoForge ${version} for Minecraft ${mcvers}</summary>
+                <summary class="fileinfo__header">${badges_beta} ${badges_new} NeoForge ${version} for Minecraft ${mcvers}</summary>
                 <div class="fileinfo__body">
                 <a href="${installerUrl}"><span class="fileinfo__icon"><i class="bi-file-earmark-zip-fill" style="font-size: 2rem;"></i></span>
 			<span class="fileinfo__content"><span>Latest <em>NeoForge</em> Installer</span><span>${fn}-${version}-installer.jar</span></span></a>
