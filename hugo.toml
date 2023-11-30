@@ -51,3 +51,8 @@ theme = "mainroad"
   title = "Current backend service status"
   url = "https://status.neoforged.net"
   icon = "svg/time.svg"
+
+[[Params.widgets.social.custom]]
+  title = "Documentation"
+  url = "https://docs.neoforged.net"
+  icon = "svg/files.svg"
