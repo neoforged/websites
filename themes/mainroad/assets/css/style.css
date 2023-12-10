@@ -1058,7 +1058,7 @@ details {
 }
 
 details:hover {
-	border: .15rem solid var(--color-border);
+	border: .15rem solid;
 }
 
 summary:hover {
@@ -1066,13 +1066,13 @@ summary:hover {
 }
 
 /* Installer */
-.fileinfo {
+.fileinfo, #versions {
 	text-align: center;
 	margin: 0 0 20px;
 	margin: 0 0 1.25rem;
 }
 
-.fileinfo .fileinfo__header {
+.fileinfo .fileinfo__header, #versions {
 	padding: 10px 15px;
 	padding: .625rem .9375rem;
 	font-size: 16px;

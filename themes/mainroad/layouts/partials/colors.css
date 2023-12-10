@@ -356,8 +356,13 @@ textarea {
 	background: var(--color-highlight);
 }
 
+/* Installer Dropdowns */
+details:hover {
+	border-color:  var(--color-border);
+}
+
 /* Installer */
-.fileinfo {
+.fileinfo, #versions {
 	background-color: var(--color-box);
 }
 

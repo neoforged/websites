@@ -12,9 +12,8 @@ description: |
 # NeoForge installer files
 You can find a direct link to our latest installer files below.
 
-{{< files "20.2" >}}
-
-{{< files "1.20.1" >}}
+{{< files "20.4" >}}
+{{< versions >}}
 
 # Using NeoForge for mod development
 
