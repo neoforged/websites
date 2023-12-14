@@ -14,6 +14,7 @@ You can find a direct link to our latest installer files below.
 
 <!--Change with the latest version here and in assets/js/neoforge.js-->
 {{< files "20.4" >}}
+{{< files "1.20.1" >}}
 {{< versions >}}
 
 # Using NeoForge for mod development

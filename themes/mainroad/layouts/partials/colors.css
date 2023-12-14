@@ -362,8 +362,17 @@ details:hover {
 }
 
 /* Installer */
-.fileinfo, #versions {
+.fileinfo, .versions-border {
 	background-color: var(--color-box);
+}
+
+.versions {
+	background-color: var(--color-background);
+}
+
+.versions-border:hover > .versions:hover  {
+	text-decoration: none;
+	color: var(--color-download-highlight);
 }
 
 .fileinfo .fileinfo__body a {

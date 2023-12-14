@@ -24,13 +24,9 @@ async function loadLatestVersions(minecraftVersions) {
 		gav = FORGE_GAV;
         fn = "neoforge";
 		mcvers = `1.${mcVersion}`;
-        badges_new = "";
         badges_beta = "";
-        dropDown_VAL = ``;
-        if (mcVersion == "20.4") { // Change with the latest version here and in content/_index.md
-            badges_new = `<font class="badges_new">NEW</font>`;
-            dropDown_VAL = ` open="open"`;
-        }
+        badges_new = `<font class="badges_new">NEW</font>`;
+        dropDown_VAL = ` open="open"`;
 	}
         let currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav) + '?filter=' + encodeURIComponent(mcVersion));
         let versionJson;
