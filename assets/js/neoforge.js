@@ -3,33 +3,38 @@ const FORGE_GAV = 'net/neoforged/neoforge'
 const LEGACY_GAV = 'net/neoforged/forge'
 const LATEST_ENDPOINT = 'https://maven.neoforged.net/api/maven/latest/version/releases/'
 const DOWNLOAD_URL = 'https://maven.neoforged.net/releases'
-//https://maven.neoforged.net/api/maven/latest/version/releases/net%2Fneoforged%2Fneoforge?filter=20.2
+// For the latest version: https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/neoforge
+// For legacy version(s): https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/forge
 async function loadLatestVersions(minecraftVersions) {
     for (const mcVersion of minecraftVersions) {
 	let gav;
 	let fn;
 	let mcvers;
-    let note;
-    let dropDown_VAL;
-    let badges_beta;
-    let badges_new;
+        let dropDown_VAL;
+        let badges_beta;
+        let badges_new;
 	if (mcVersion.startsWith("1.20.1")) {
 		gav = LEGACY_GAV;
-        fn = "forge";
+                fn = "forge";
 		mcvers = "1.20.1";
-        badges_new = "";
-        badges_beta = "";
-        dropDown_VAL = "";
+                badges_new = "";
+                badges_beta = "";
+                dropDown_VAL = "";
 	} else {
-		gav = FORGE_GAV;
-        fn = "neoforge";
-		mcvers = `1.${mcVersion}`;
-        badges_beta = "";
-        badges_new = `<font class="badges_new">NEW</font>`;
-        dropDown_VAL = ` open="open"`;
+	    gav = FORGE_GAV;
+            fn = "neoforge";
+            badges_beta = "";
+            badges_new = `<font class="badges_new">NEW</font>`;
+            dropDown_VAL = ` open="open"`;
 	}
-        let currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav) + '?filter=' + encodeURIComponent(mcVersion));
+
+        let currentMcVersionUrl;
         let versionJson;
+        if (mcvers == "1.20.1") {
+            currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav) + '?filter=' + encodeURIComponent(mcVersion));
+        } else {
+            currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav));
+        }
 
         try {
             const response = await fetch(currentMcVersionUrl);
@@ -44,6 +49,9 @@ async function loadLatestVersions(minecraftVersions) {
 
         if (versionJson) {
             const {version} = versionJson;
+            if (mcVersion == "latest") {
+                mcvers = "1." + Array.from(version)[0] + Array.from(version)[1] + Array.from(version)[2] + Array.from(version)[3];
+            }
             if (version.includes("beta")) {
                 badges_beta = `<font class="badges_beta">BETA</font>`;
             }

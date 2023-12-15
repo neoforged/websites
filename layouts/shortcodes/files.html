@@ -16,9 +16,9 @@
     </div>
 
 <script>
-document.addEventListener("readystatechange", evt=>{
-    if (evt.target.readyState === "complete") {
-	loadLatestVersions([{{ .Get 0 }}]);
-    }
-});
+    document.addEventListener("readystatechange", evt=>{
+        if (evt.target.readyState === "complete") {
+            loadLatestVersions([{{ .Get 0 }}]);
+        }
+    });
 </script>

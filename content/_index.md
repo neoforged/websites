@@ -12,8 +12,7 @@ description: |
 # NeoForge installer files
 You can find a direct link to our latest installer files below.
 
-<!--Change with the latest version here-->
-{{< files "20.4" >}}
+{{< files "latest" >}}
 {{< files "1.20.1" >}}
 {{< versions >}}
 
