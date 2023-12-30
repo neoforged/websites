@@ -1073,21 +1073,6 @@ summary:hover {
 	margin-bottom: 5px;
 }
 
-.versions {
-	padding: 5px 10px;
-}
-
-.versions-border {
-	padding: 10px 20px;
-	text-align: center;
-	width: max-content;
-}
-
-.versions-border:hover > .versions:hover  {
-	text-decoration: none;
-	color: var(--color-download-highlight);
-}
-
 .fileinfo .fileinfo__header {
 	padding: 10px 15px;
 	padding: .625rem .9375rem;
