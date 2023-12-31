@@ -20,7 +20,7 @@ jobs:
           hugo-version: "0.119.0"
 
       - name: Build
-        run: hugo
+        run: hugo -F
 
       - uses: matyrobbrt/cloudflare-pr-previews/upload@v1
         name: Upload website
