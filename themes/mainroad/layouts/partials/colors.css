@@ -61,6 +61,7 @@ code {
 }
 
 div.notice code {
+	color: var(--color-code-notice);
 	background-color: var(--color-code-notice-background);
 }
 
