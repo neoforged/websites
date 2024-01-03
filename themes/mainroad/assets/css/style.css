@@ -1314,6 +1314,7 @@ textarea {
 	--color-text: #000;
 	--color-code: #b12a48;
 	--color-code-background: #bdc7c7;
+	--color-code-notice-background: transparent;
 	--color-code-block-background: #2e3135;
 	--color-footer-text: #aab0b3;
 	--color-footer-link-text: #bdc7c7;
@@ -1336,6 +1337,7 @@ textarea {
 	--color-text: #e7d9d3;
 	--color-code: #e57;
 	--color-code-background: #2e3135;
+	--color-code-notice-background: #2e3135;
 	--color-code-block-background: #2e3135;
 	--color-footer-text: #aab0b3;
 	--color-footer-link-text: #bdc7c7;
