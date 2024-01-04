@@ -356,6 +356,12 @@ textarea {
 	background: var(--color-highlight);
 }
 
+/* Installer Dropdowns */
+details:hover {
+	border-color:  var(--color-border);
+}
+
+/* Installer */
 .fileinfo {
 	background-color: var(--color-box);
 }
@@ -370,6 +376,16 @@ textarea {
 	color: var(--color-text);
 }
 
+/* Installer Badges */
+.badges_beta {
+	background-color: var(--color-badges-beta);
+}
+
+.badges_new {
+	background-color: var(--color-badges-new);
+}
+
+/* News Section */
 .news {
 	border-top: 3px solid var(--color-border);
 }

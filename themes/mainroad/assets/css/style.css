@@ -1052,10 +1052,25 @@ textarea {
 	display: inline-block;
 }
 
+/* Installer Dropdowns */
+details {
+	border: .15rem solid transparent;
+}
+
+details:hover {
+	border: .15rem solid;
+}
+
+summary:hover {
+	filter: brightness(.85);
+}
+
+/* Installer */
 .fileinfo {
 	text-align: center;
 	margin: 0 0 20px;
 	margin: 0 0 1.25rem;
+	margin-bottom: 5px;
 }
 
 .fileinfo .fileinfo__header {
@@ -1105,6 +1120,16 @@ textarea {
 	visibility: hidden;
 }
 
+/* Installer Badges */
+.badges_beta {
+	padding: 0 5px;
+}
+
+.badges_new {
+	padding: 0 5px;
+}
+
+/* News Section */
 .news {
 	margin-top: 1rem;
 }
@@ -1304,6 +1329,8 @@ textarea {
 [data-theme="light"] {
 	--color-highlight: #d7742f;
 	--color-background: #d5e0df;
+	--color-badges-beta: #d7742f;
+	--color-badges-new: #e57;
 	--color-download: #e68c37;
 	--color-download-highlight: #e5b04c;
 	--color-box: #bdc7c7;
@@ -1324,6 +1351,8 @@ textarea {
 [data-theme="dark"] {
 	--color-highlight: #d7742f;
 	--color-background: #323232;
+	--color-badges-beta: #d7742f;
+	--color-badges-new: #e57;
 	--color-download: #d7742f;
 	--color-download-highlight: #e68c37;
 	--color-box: #222222;
