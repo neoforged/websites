@@ -56,8 +56,13 @@ figcaption {
 
 pre,
 code {
-	background-color: var(--color-box);
-	border: 1px solid var(--color-border);
+	background-color: var(--color-code-background);
+	border-radius: 0.2em;
+}
+
+div.notice code {
+	color: var(--color-code-notice);
+	background-color: var(--color-code-notice-background);
 }
 
 code {
@@ -410,4 +415,8 @@ details:hover {
 	border-radius: 50%;
 	color: var(--color-text);
 	background-color: var(--color-border);
+}
+
+pre[style] {
+	background-color: var(--color-code-block-background) !important;
 }

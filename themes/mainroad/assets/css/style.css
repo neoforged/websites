@@ -1178,7 +1178,7 @@ summary:hover {
 
 .footer_modetoggle-button {
 	border-radius: 50%;
-	border-collapse: separate; 
+	border-collapse: separate;
 	height: 28px;
 	width: 28px;
 	display: flex;
@@ -1338,7 +1338,11 @@ summary:hover {
 	--color-border: #aab0b3;
 	--color-btn: #2a2a2a;
 	--color-text: #000;
-	--color-code: #c33;
+	--color-code: #b12a48;
+	--color-code-background: #bdc7c7;
+	--color-code-notice: #e57;
+	--color-code-notice-background: #2e3135;
+	--color-code-block-background: #2e3135;
 	--color-footer-text: #aab0b3;
 	--color-footer-link-text: #bdc7c7;
 	--color-ends-background: #323232;
@@ -1347,20 +1351,24 @@ summary:hover {
 		display: none;
 	}
   }
-  
+
 [data-theme="dark"] {
 	--color-highlight: #d7742f;
-	--color-background: #323232;
 	--color-badges-beta: #d7742f;
 	--color-badges-new: #e57;
+	--color-background: #222427;
 	--color-download: #d7742f;
 	--color-download-highlight: #e68c37;
-	--color-box: #222222;
+	--color-box: #2e3135;
 	--color-outer: #111111;
 	--color-border: #5a5a5a;
 	--color-btn: #e7d9d3;
 	--color-text: #e7d9d3;
 	--color-code: #e57;
+	--color-code-background: #2e3135;
+	--color-code-notice: #e57;
+	--color-code-notice-background: #2e3135;
+	--color-code-block-background: #2e3135;
 	--color-footer-text: #aab0b3;
 	--color-footer-link-text: #bdc7c7;
 	--color-ends-background: #222222;
