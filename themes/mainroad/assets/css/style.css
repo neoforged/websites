@@ -141,12 +141,7 @@ textarea {
 	padding: 5px 10px;
 	font-weight: 700;
 	white-space: pre-line;
-}
-
-/* Animation */
-.menu__item,
-.btn {
-	transition: background-color .25s ease-out;
+	border-radius: 0.2rem;
 }
 
 /* Typography */
@@ -994,6 +989,7 @@ textarea {
 	display: block;
 	padding: 5%;
 	margin: 0 auto;
+	border-radius: 0.2rem;
 }
 
 .widget-search__form .widget-search__submit {
@@ -1008,7 +1004,7 @@ textarea {
 	margin: 0 auto;
 	font-size: 11px;
 	cursor: pointer;
-	border-radius: 0;
+	border-radius: 0.2rem;
 	outline-offset: -2px;
 	transition: none;
 	-webkit-appearance: none;
@@ -1055,10 +1051,12 @@ textarea {
 /* Installer Dropdowns */
 details {
 	border: .15rem solid transparent;
+	border-radius: 0.2rem;
 }
 
 details:hover {
 	border: .15rem solid;
+	border-radius: 0.2rem;
 }
 
 summary:hover {
@@ -1071,6 +1069,7 @@ summary:hover {
 	margin: 0 0 20px;
 	margin: 0 0 1.25rem;
 	margin-bottom: 5px;
+	border-radius: 0.2rem;
 }
 
 .fileinfo .fileinfo__header {
@@ -1097,12 +1096,13 @@ summary:hover {
 	padding: 10px;
 	padding: .625rem;
 	align-items: center;
-  	display: flex;
+	display: flex;
 	flex-direction: row;
 	align-items: stretch;
 	justify-content: center;
 	flex: 1 1 0px;
 	text-decoration: none;
+	border-radius: 0.2rem;
 }
 
 .fileinfo__icon {
