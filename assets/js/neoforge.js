@@ -5,6 +5,7 @@ const LATEST_ENDPOINT = 'https://maven.neoforged.net/api/maven/latest/version/re
 const DOWNLOAD_URL = 'https://maven.neoforged.net/releases'
 // For the latest version: https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/neoforge
 // For legacy version(s): https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/forge
+// To filter a specific MC version: https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/neoforge?filter=20.4
 async function loadLatestVersions(minecraftVersions) {
     for (const mcVersion of minecraftVersions) {
 	let gav;

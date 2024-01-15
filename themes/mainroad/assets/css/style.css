@@ -343,7 +343,6 @@ select {
 
 .warning {
 	padding: 20px 10px;
-	text-align: center;
 }
 
 .warning__icon {
@@ -772,6 +771,7 @@ figure.meta__icon {
 	float: left;
 	padding: 3px;
 	margin: 0 25px 0 0;
+	border-radius: 0.2rem;
 }
 
 .authorbox__header {
@@ -1139,6 +1139,10 @@ summary:hover {
 	margin-top: 1rem;
 }
 
+.avatar {
+	border-radius: 0.2rem;
+}
+
 /* Footer */
 .footer {
 	font-size: 12px;
@@ -1278,6 +1282,7 @@ summary:hover {
 		display: inline-block;
 		float: none;
 		margin: 0 0 20px;
+		border-radius: 0.2rem;
 	}
 
 	.pager {
@@ -1341,7 +1346,7 @@ summary:hover {
 	--color-code: #b12a48;
 	--color-code-background: #bdc7c7;
 	--color-code-notice: #e57;
-	--color-code-notice-background: #2e3135;
+	--color-code-notice-background: #bdc7c7;
 	--color-code-block-background: #2e3135;
 	--color-footer-text: #aab0b3;
 	--color-footer-link-text: #bdc7c7;
