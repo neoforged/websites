@@ -1052,11 +1052,25 @@ textarea {
 details {
 	border: .15rem solid transparent;
 	border-radius: 0.2rem;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 details:hover {
 	border: .15rem solid;
 	border-radius: 0.2rem;
+}
+
+summary {
+	cursor: grabbing;
+}
+
+details[open] summary {
+	cursor: grab;
 }
 
 summary:hover {
