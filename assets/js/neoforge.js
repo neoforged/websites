@@ -8,26 +8,26 @@ const DOWNLOAD_URL = 'https://maven.neoforged.net/releases'
 // To filter a specific MC version: https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/neoforge?filter=20.4
 async function loadLatestVersions(minecraftVersions) {
     for (const mcVersion of minecraftVersions) {
-	let gav;
-	let fn;
-	let mcvers;
+        let gav;
+        let fn;
+        let mcvers;
         let dropDown_VAL;
         let badges_beta;
         let badges_new;
-	if (mcVersion.startsWith("1.20.1")) {
-		gav = LEGACY_GAV;
-                fn = "forge";
-		mcvers = "1.20.1";
-                badges_new = "";
-                badges_beta = "";
-                dropDown_VAL = "";
-	} else {
-	    gav = FORGE_GAV;
+        if (mcVersion.startsWith("1.20.1")) {
+            gav = LEGACY_GAV;
+            fn = "forge";
+            mcvers = "1.20.1";
+            badges_new = "";
+            badges_beta = "";
+            dropDown_VAL = "";
+        } else {
+            gav = FORGE_GAV;
             fn = "neoforge";
             badges_beta = "";
             badges_new = `<font class="badges_new">NEW</font>`;
             dropDown_VAL = ` open="open"`;
-	}
+        }
 
         let currentMcVersionUrl;
         let versionJson;
