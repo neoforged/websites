@@ -12,11 +12,9 @@ description: |
 # NeoForge installer files
 You can find a direct link to our latest installer files below.
 
-{{<projects>}}
-
+{{< files "latest" >}}
 {{< files "1.20.1" >}}
-
-Note: the file is still called forge in 1.20.1 to maintain compatibility with launchers.
+{{< versions >}}
 
 # Using NeoForge for mod development
 
