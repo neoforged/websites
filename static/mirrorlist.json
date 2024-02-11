@@ -2,6 +2,7 @@
         {
                 "name": "NeoForged", "image": null,
                 "homepage": "https://neoforged.net/",
-                "url": "https://maven.neoforged.net/releases/"
+                "url": "https://maven.neoforged.net/releases/",
+                "advertised": false
         }
 ]

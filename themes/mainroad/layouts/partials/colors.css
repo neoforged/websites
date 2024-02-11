@@ -56,12 +56,18 @@ figcaption {
 
 pre,
 code {
-	background-color: var(--color-box);
-	border: 1px solid var(--color-border);
+	background-color: var(--color-code-background);
+	border-radius: 4px;
+}
+
+div.notice code {
+	color: var(--color-code-notice);
+	background-color: var(--color-code-notice-background);
 }
 
 code {
 	color: var(--color-code);
+	border: 1px solid var(--color-border);
 }
 
 pre {
@@ -83,10 +89,6 @@ blockquote {
 
 abbr[title] {
 	border-bottom: 1px dotted var(--color-text);
-}
-
-.warning {
-	border: 1px solid var(--color-border);
 }
 
 .warning__icon {
@@ -356,6 +358,12 @@ textarea {
 	background: var(--color-highlight);
 }
 
+/* Installer Dropdowns */
+details:hover {
+	border-color:  var(--color-border);
+}
+
+/* Installer */
 .fileinfo {
 	background-color: var(--color-box);
 }
@@ -370,6 +378,16 @@ textarea {
 	color: var(--color-text);
 }
 
+/* Installer Badges */
+.badges_beta {
+	background-color: var(--color-badges-beta);
+}
+
+.badges_new {
+	background-color: var(--color-badges-new);
+}
+
+/* News Section */
 .news {
 	border-top: 3px solid var(--color-border);
 }
@@ -394,4 +412,8 @@ textarea {
 	border-radius: 50%;
 	color: var(--color-text);
 	background-color: var(--color-border);
+}
+
+pre[style] {
+	background-color: var(--color-code-block-background) !important;
 }

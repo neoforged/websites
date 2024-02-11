@@ -1,7 +1,7 @@
 baseURL = 'https://neoforged.net/'
 languageCode = 'en-us'
 title = 'The NeoForged project'
-theme = "mainroad"
+theme = ["hugo-notice", "mainroad"]
 
 [Params]
   description = "Files, news and information from the NeoForged Project" # Description of your site
