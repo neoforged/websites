@@ -11,7 +11,7 @@ theme = ["hugo-notice", "mainroad"]
   authorbox = true
   pager = true
   post_meta = ["author", "date", "categories"] # Order of post meta information
-  images = ["img/content/branding/thumbnail.png", "img/content/branding/banner.png"]
+  images = ["img/authors/neoforged.png", "img/content/branding/banner.png"]
   mainSections = ["news", "blog"]
 
 [Params.logo]
