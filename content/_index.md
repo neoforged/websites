@@ -1,5 +1,5 @@
 ---
-title: "Installer files and modder information"
+title: "The NeoForged Project: Installer and Modder Information"
 date: 2023-07-19T09:40:37-04:00
 draft: false
 categories:
