@@ -58,7 +58,7 @@ Every other change should be submitted to the main branch as usual.
 Currently this is the `1.20.x` branch.
 
 Commits submitted to a snapshot branch will be squashed with the rest of the port into a single commit.
-Large changes will not be accepted, and should wait for a breaking change window.
+Large changes will not be accepted on snapshot branches, and will have to wait for a breaking change window.
 
 ## Conclusion
 We hope that this new approach will allow for more polished NeoForge updates to new Minecraft versions.
