@@ -9,10 +9,7 @@
 *::before,
 *::after {
 	box-sizing: border-box;
-}
-
-html, body, .container--outer {
-	height: 100%;
+	transition: all 0.5s;
 }
 
 article,
@@ -66,15 +63,6 @@ body {
 	position: relative;
 	width: 100%;
 	margin: 0 auto;
-}
-
-.container--outer {
-	display: flex;
-	flex-direction: column;
-	margin: auto;
-	width: 80%;
-	max-width: 1920px;
-	min-width: 1380px;
 }
 
 .wrapper {
@@ -1135,11 +1123,7 @@ summary:hover {
 }
 
 /* Installer Badges */
-.badges_beta {
-	padding: 0 5px;
-}
-
-.badges_new {
+.badges_beta, .badges_new, .badges_legacy {
 	padding: 0 5px;
 }
 
@@ -1350,6 +1334,10 @@ summary:hover {
 	--color-background: #d5e0df;
 	--color-badges-beta: #d7742f;
 	--color-badges-new: #e57;
+	--color-badges-legacy: #13cace;
+	--color-border-badges-beta: #dd9460;
+	--color-border-badges-new: #e2899c;
+	--color-border-badges-legacy: #4cd2d4;
 	--color-download: #e68c37;
 	--color-download-highlight: #e5b04c;
 	--color-box: #bdc7c7;
@@ -1360,7 +1348,7 @@ summary:hover {
 	--color-code: #b12a48;
 	--color-code-background: #bdc7c7;
 	--color-code-notice: #e57;
-	--color-code-notice-background: #bdc7c7;
+	--color-code-notice-background: #fff;
 	--color-code-block-background: #2e3135;
 	--color-footer-text: #aab0b3;
 	--color-footer-link-text: #bdc7c7;
@@ -1375,6 +1363,10 @@ summary:hover {
 	--color-highlight: #d7742f;
 	--color-badges-beta: #d7742f;
 	--color-badges-new: #e57;
+	--color-badges-legacy: #13cace;
+	--color-border-badges-beta: #875938;
+	--color-border-badges-new: #8b5460;
+	--color-border-badges-legacy: #218384;
 	--color-background: #222427;
 	--color-download: #d7742f;
 	--color-download-highlight: #e68c37;

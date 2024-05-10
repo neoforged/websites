@@ -14,11 +14,13 @@ async function loadLatestVersions(minecraftVersions) {
         let dropDown_VAL;
         let badges_beta;
         let badges_new;
+        let badges_legacy;
         if (mcVersion.startsWith("1.20.1")) {
             gav = LEGACY_GAV;
             fn = "forge";
             mcvers = "1.20.1";
             badges_new = "";
+            badges_legacy = `<font class="badges_legacy">LEGACY</font>`;
             badges_beta = "";
             dropDown_VAL = "";
         } else {
@@ -26,6 +28,7 @@ async function loadLatestVersions(minecraftVersions) {
             fn = "neoforge";
             badges_beta = "";
             badges_new = `<font class="badges_new">NEW</font>`;
+            badges_legacy = "";
             dropDown_VAL = ` open="open"`;
         }
 
@@ -63,7 +66,7 @@ async function loadLatestVersions(minecraftVersions) {
            
             document.querySelector(vs).innerHTML = `
                 <details${dropDown_VAL}>
-                <summary class="fileinfo__header">${badges_beta} ${badges_new} NeoForge ${version} for Minecraft ${mcvers}</summary>
+                <summary class="fileinfo__header">${badges_beta} ${badges_new} ${badges_legacy} NeoForge ${version} for Minecraft ${mcvers}</summary>
                 <div class="fileinfo__body">
                 <a href="${installerUrl}"><span class="fileinfo__icon"><i class="bi-file-earmark-zip-fill" style="font-size: 2rem;"></i></span>
 			    <span class="fileinfo__content"><span>Latest <em>NeoForge</em> Installer</span><span>${fn}-${version}-installer.jar</span></span></a>

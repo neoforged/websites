@@ -1,3 +1,6 @@
 public/
 .hugo_build.lock
 .idea
+*.sublime-project
+*.sublime-workspace
+.vscode/*
