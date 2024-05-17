@@ -65,6 +65,15 @@ body {
 	margin: 0 auto;
 }
 
+.container--outer {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	width: 80%;
+	max-width: 1920px;
+	min-width: 1380px;
+}
+
 .wrapper {
 	padding: 25px;
 	flex-grow: 1;
@@ -237,6 +246,11 @@ samp {
 
 code {
 	padding: 0 5px;
+}
+
+code:hover {
+	filter: brightness(.85);
+	cursor: pointer;
 }
 
 pre {
@@ -1061,8 +1075,9 @@ details[open] summary {
 	cursor: grab;
 }
 
-summary:hover {
+.badges:hover {
 	filter: brightness(.85);
+	cursor: pointer;
 }
 
 /* Installer */
@@ -1122,6 +1137,10 @@ summary:hover {
 	visibility: hidden;
 }
 
+.installer-version {
+	font-family: monospace;
+}
+
 /* Installer Badges */
 .badges_beta, .badges_new, .badges_legacy {
 	padding: 0 5px;
@@ -1176,10 +1195,10 @@ summary:hover {
 	align-items: center;
 	text-align: center;
 	justify-content: center;
+	border-radius: 25%;
 }
 
 .footer_modetoggle-button {
-	border-radius: 50%;
 	border-collapse: separate;
 	height: 28px;
 	width: 28px;
@@ -1337,7 +1356,7 @@ summary:hover {
 	--color-badges-legacy: #13cace;
 	--color-border-badges-beta: #dd9460;
 	--color-border-badges-new: #e2899c;
-	--color-border-badges-legacy: #4cd2d4;
+	--color-border-badges-legacy: #53d8da;
 	--color-download: #e68c37;
 	--color-download-highlight: #e5b04c;
 	--color-box: #bdc7c7;
@@ -1348,7 +1367,7 @@ summary:hover {
 	--color-code: #b12a48;
 	--color-code-background: #bdc7c7;
 	--color-code-notice: #e57;
-	--color-code-notice-background: #fff;
+	--color-code-notice-background: #ffffff85;
 	--color-code-block-background: #2e3135;
 	--color-footer-text: #aab0b3;
 	--color-footer-link-text: #bdc7c7;
@@ -1363,10 +1382,10 @@ summary:hover {
 	--color-highlight: #d7742f;
 	--color-badges-beta: #d7742f;
 	--color-badges-new: #e57;
-	--color-badges-legacy: #13cace;
+	--color-badges-legacy: #079b9e;
 	--color-border-badges-beta: #875938;
 	--color-border-badges-new: #8b5460;
-	--color-border-badges-legacy: #218384;
+	--color-border-badges-legacy: #227778;
 	--color-background: #222427;
 	--color-download: #d7742f;
 	--color-download-highlight: #e68c37;

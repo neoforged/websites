@@ -1,5 +1,6 @@
 public/
 .hugo_build.lock
+hugo.exe
 .idea
 *.sublime-project
 *.sublime-workspace
