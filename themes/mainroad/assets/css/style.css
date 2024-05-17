@@ -1071,7 +1071,7 @@ details[open] summary {
 }
 
 summary code:hover {
-        filter: brightness(.85);
+	filter: brightness(.85);
 }
 
 .badges:hover {
