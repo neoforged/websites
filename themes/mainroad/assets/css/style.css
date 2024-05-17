@@ -9,10 +9,7 @@
 *::before,
 *::after {
 	box-sizing: border-box;
-}
-
-html, body, .container--outer {
-	height: 100%;
+	transition: all 0.5s;
 }
 
 article,
@@ -1073,7 +1070,11 @@ details[open] summary {
 	cursor: grab;
 }
 
-summary:hover {
+summary code:hover {
+	filter: brightness(.85);
+}
+
+.badges:hover {
 	filter: brightness(.85);
 }
 
@@ -1134,12 +1135,12 @@ summary:hover {
 	visibility: hidden;
 }
 
-/* Installer Badges */
-.badges_beta {
-	padding: 0 5px;
+.installer-version {
+	font-family: monospace;
 }
 
-.badges_new {
+/* Installer Badges */
+.badges_beta, .badges_new, .badges_legacy {
 	padding: 0 5px;
 }
 
@@ -1192,10 +1193,10 @@ summary:hover {
 	align-items: center;
 	text-align: center;
 	justify-content: center;
+	border-radius: 25%;
 }
 
 .footer_modetoggle-button {
-	border-radius: 50%;
 	border-collapse: separate;
 	height: 28px;
 	width: 28px;
@@ -1350,6 +1351,10 @@ summary:hover {
 	--color-background: #d5e0df;
 	--color-badges-beta: #d7742f;
 	--color-badges-new: #e57;
+	--color-badges-legacy: #13cace;
+	--color-border-badges-beta: #dd9460;
+	--color-border-badges-new: #e2899c;
+	--color-border-badges-legacy: #53d8da;
 	--color-download: #e68c37;
 	--color-download-highlight: #e5b04c;
 	--color-box: #bdc7c7;
@@ -1360,7 +1365,7 @@ summary:hover {
 	--color-code: #b12a48;
 	--color-code-background: #bdc7c7;
 	--color-code-notice: #e57;
-	--color-code-notice-background: #bdc7c7;
+	--color-code-notice-background: #ffffff85;
 	--color-code-block-background: #2e3135;
 	--color-footer-text: #aab0b3;
 	--color-footer-link-text: #bdc7c7;
@@ -1375,6 +1380,10 @@ summary:hover {
 	--color-highlight: #d7742f;
 	--color-badges-beta: #d7742f;
 	--color-badges-new: #e57;
+	--color-badges-legacy: #079b9e;
+	--color-border-badges-beta: #875938;
+	--color-border-badges-new: #8b5460;
+	--color-border-badges-legacy: #227778;
 	--color-background: #222427;
 	--color-download: #d7742f;
 	--color-download-highlight: #e68c37;

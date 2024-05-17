@@ -61,7 +61,9 @@ theme = ["hugo-notice", "mainroad"]
 [[Params.widgets.social.custom]]
   title = "Team member application form"
   url = "https://links.neoforged.net/apply"
+  icon = "svg/team.svg"
 
 [[Params.widgets.social.custom]]
   title = "Discord ban appeal form"
   url = "https://links.neoforged.net/appeal"
+  icon = "svg/email.svg"

@@ -14,18 +14,21 @@ async function loadLatestVersions(minecraftVersions) {
         let dropDown_VAL;
         let badges_beta;
         let badges_new;
+        let badges_legacy;
         if (mcVersion.startsWith("1.20.1")) {
             gav = LEGACY_GAV;
             fn = "forge";
             mcvers = "1.20.1";
             badges_new = "";
+            badges_legacy = `<font class="badges badges_legacy">LEGACY</font>`;
             badges_beta = "";
             dropDown_VAL = "";
         } else {
             gav = FORGE_GAV;
             fn = "neoforge";
             badges_beta = "";
-            badges_new = `<font class="badges_new">NEW</font>`;
+            badges_new = `<font class="badges badges_new">NEW</font>`;
+            badges_legacy = "";
             dropDown_VAL = ` open="open"`;
         }
 
@@ -54,7 +57,7 @@ async function loadLatestVersions(minecraftVersions) {
                 mcvers = "1." + Array.from(version)[0] + Array.from(version)[1] + Array.from(version)[2] + Array.from(version)[3];
             }
             if (version.includes("beta")) {
-                badges_beta = `<font class="badges_beta">BETA</font>`;
+                badges_beta = `<font class="badges badges_beta">BETA</font>`;
             }
             
             const vs = `#filelist${mcVersion}`.split('.').join("");
@@ -63,10 +66,10 @@ async function loadLatestVersions(minecraftVersions) {
            
             document.querySelector(vs).innerHTML = `
                 <details${dropDown_VAL}>
-                <summary class="fileinfo__header">${badges_beta} ${badges_new} NeoForge ${version} for Minecraft ${mcvers}</summary>
+                <summary class="fileinfo__header">${badges_beta} ${badges_new} ${badges_legacy} NeoForge <code>${version}</code> for Minecraft ${mcvers}</summary>
                 <div class="fileinfo__body">
                 <a href="${installerUrl}"><span class="fileinfo__icon"><i class="bi-file-earmark-zip-fill" style="font-size: 2rem;"></i></span>
-			    <span class="fileinfo__content"><span>Latest <em>NeoForge</em> Installer</span><span>${fn}-${version}-installer.jar</span></span></a>
+			    <span class="fileinfo__content"><span>Latest <em>NeoForge</em> Installer</span><span class="installer-version">${fn}-${version}-installer.jar</span></span></a>
                 <a href="${changelogUrl}"><span class="fileinfo__icon"><i class="bi-file-earmark-text-fill" style="font-size: 2rem;"></i></span>
 			    <span class="fileinfo__content"><span>Latest Changelog</span><span>${version}</span></span></a>
                 </div>

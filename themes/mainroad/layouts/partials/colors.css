@@ -381,10 +381,17 @@ details:hover {
 /* Installer Badges */
 .badges_beta {
 	background-color: var(--color-badges-beta);
+	border: 2px solid var(--color-border-badges-beta);
 }
 
 .badges_new {
 	background-color: var(--color-badges-new);
+	border: 2px solid var(--color-border-badges-new);
+}
+
+.badges_legacy {
+	background-color: var(--color-badges-legacy);
+	border: 2px solid var(--color-border-badges-legacy);
 }
 
 /* News Section */
