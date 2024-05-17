@@ -11,6 +11,7 @@ theme = ["hugo-notice", "mainroad"]
   authorbox = true
   pager = true
   post_meta = ["author", "date", "categories"] # Order of post meta information
+  images = ["img/authors/neoforged.png", "img/content/branding/banner.png"]
   mainSections = ["news", "blog"]
 
 [Params.logo]
@@ -56,3 +57,11 @@ theme = ["hugo-notice", "mainroad"]
   title = "Documentation"
   url = "https://docs.neoforged.net"
   icon = "svg/files.svg"
+
+[[Params.widgets.social.custom]]
+  title = "Team member application form"
+  url = "https://links.neoforged.net/apply"
+
+[[Params.widgets.social.custom]]
+  title = "Discord ban appeal form"
+  url = "https://links.neoforged.net/appeal"
