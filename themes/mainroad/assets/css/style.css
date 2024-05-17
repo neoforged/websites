@@ -1075,9 +1075,14 @@ details[open] summary {
 	cursor: grab;
 }
 
+summary code:hover {
+	font-size: 15px;
+}
+
 .badges:hover {
 	filter: brightness(.85);
 	cursor: pointer;
+	font-size: 15px;
 }
 
 /* Installer */
