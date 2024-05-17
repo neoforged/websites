@@ -1071,13 +1071,11 @@ details[open] summary {
 }
 
 summary code:hover {
-	font-size: 15px;
- filter: brightness(.85);
+        filter: brightness(.85);
 }
 
 .badges:hover {
 	filter: brightness(.85);
-	font-size: 15px;
 }
 
 /* Installer */
