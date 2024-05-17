@@ -248,11 +248,6 @@ code {
 	padding: 0 5px;
 }
 
-code:hover {
-	filter: brightness(.85);
-	cursor: pointer;
-}
-
 pre {
 	display: block;
 	padding: 0;
@@ -1077,11 +1072,11 @@ details[open] summary {
 
 summary code:hover {
 	font-size: 15px;
+ filter: brightness(.85);
 }
 
 .badges:hover {
 	filter: brightness(.85);
-	cursor: pointer;
 	font-size: 15px;
 }
 
