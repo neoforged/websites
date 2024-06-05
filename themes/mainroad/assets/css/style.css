@@ -1351,6 +1351,10 @@ summary code:hover {
 	display: inline-block;
 }
 
+.anchor-wrapper * {
+	transition: none;
+}
+
 .anchor-wrapper .anchor-icon svg {
 	height: 0.75em;
 	width: 0.75em;
