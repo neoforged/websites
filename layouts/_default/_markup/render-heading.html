@@ -1,0 +1,5 @@
+<a href="#{{ .Anchor | safeURL }}" class="anchor-wrapper">
+    <h{{ .Level }} id="{{ .Anchor | safeURL }}">{{ .Text | safeHTML }}
+        <span class="anchor-icon">{{ partial "svg/link.svg" }}</span>
+    </h{{ .Level }}>
+</a>

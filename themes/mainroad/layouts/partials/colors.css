@@ -32,6 +32,10 @@ h6 {
 	color: var(--color-text);
 }
 
+.anchor-icon {
+	fill: var(--color-text);
+}
+
 a {
 	color: var(--color-text);
 }
