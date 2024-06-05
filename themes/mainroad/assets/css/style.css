@@ -1346,6 +1346,24 @@ summary code:hover {
 	}
 }
 
+.anchor-wrapper .anchor-icon {
+    visibility: hidden;
+	display: inline-block;
+}
+
+.anchor-wrapper .anchor-icon svg {
+	height: 0.75em;
+	width: 0.75em;
+}
+
+.anchor-wrapper:hover .anchor-icon, .anchor-wrapper:focus .anchor-icon {
+    visibility: visible;
+}
+
+a.anchor-wrapper:hover, a.anchor-wrapper:focus {
+	text-decoration: none;
+}
+
 [data-theme="light"] {
 	--color-highlight: #d7742f;
 	--color-background: #d5e0df;
