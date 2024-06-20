@@ -20,12 +20,12 @@ You can find a direct link to our latest installer files below.
 
 ## If you don't have a current mod project
 
-1. Go to [The MDK] and click `Use This Template` to create a copy in your personal GitHub space.
-2. Clone this project locally, and get started! Our [Documentation] and the [Modding Wiki] are great places to learn more.
+1. Go to the [MDK list], select the one for the version you're interested in, and click `Use This Template` to create a copy under your personal GitHub account.
+2. Clone the MDK locally, and get started! Our [Documentation] and the [Modding Wiki] are great places to learn more.
 
 ## If you have an existing mod project
-Refer to [The MDK] for an example of how to update your build script to use NeoForge.
+Refer to the [MDK list] for examples of how to update your build script to use NeoForge.
 
-[The MDK]: https://github.com/neoforged/MDK
+[MDK list]: https://github.com/neoforgemdks
 [Documentation]: https://docs.neoforged.net
 [Modding Wiki]: https://forge.gemwire.uk
