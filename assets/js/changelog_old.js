@@ -47,7 +47,7 @@ async function loadChangelog() {
     const data = await response.text();
 
     document.querySelector(vs).innerHTML = `
-      <h2>${encodeURIComponent(version)}</h2>
+      <h2>${encodeURIComponent(version)} for Minecraft ${mcvers}</h2>
       <pre class="changelog">${data}</pre>
       `;
   }
