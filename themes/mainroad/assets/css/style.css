@@ -1144,6 +1144,11 @@ summary code:hover {
 	padding: 0 5px;
 }
 
+/* Changelogs */
+.changelog {
+	max-height: 650px;
+}
+
 /* News Section */
 .news {
 	margin-top: 1rem;

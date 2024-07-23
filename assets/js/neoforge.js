@@ -4,7 +4,7 @@ const LEGACY_GAV = 'net/neoforged/forge'
 const LATEST_ENDPOINT = 'https://maven.neoforged.net/api/maven/latest/version/releases/'
 const DOWNLOAD_URL = 'https://maven.neoforged.net/releases'
 // For the latest version: https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/neoforge
-// For legacy version(s): https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/forge
+// For legacy version(s): https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/forge?filter=1.20.1
 // To filter a specific MC version: https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/neoforge?filter=20.4
 async function loadLatestVersions(minecraftVersions) {
     for (const mcVersion of minecraftVersions) {
@@ -15,6 +15,7 @@ async function loadLatestVersions(minecraftVersions) {
         let badges_beta;
         let badges_new;
         let badges_legacy;
+        let changelogUrl;
         if (mcVersion.startsWith("1.20.1")) {
             gav = LEGACY_GAV;
             fn = "forge";
@@ -23,6 +24,7 @@ async function loadLatestVersions(minecraftVersions) {
             badges_legacy = `<font class="badges badges_legacy">LEGACY</font>`;
             badges_beta = "";
             dropDown_VAL = "";
+            changelogUrl = "/changelog/legacy";
         } else {
             gav = FORGE_GAV;
             fn = "neoforge";
@@ -30,6 +32,7 @@ async function loadLatestVersions(minecraftVersions) {
             badges_new = `<font class="badges badges_new">NEW</font>`;
             badges_legacy = "";
             dropDown_VAL = ` open="open"`;
+            changelogUrl = "/changelog/latest";
         }
 
         let currentMcVersionUrl;
@@ -62,7 +65,6 @@ async function loadLatestVersions(minecraftVersions) {
             
             const vs = `#filelist${mcVersion}`.split('.').join("");
             const installerUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(version)}/${fn}-${encodeURIComponent(version)}-installer.jar`;
-            const changelogUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(version)}/${fn}-${encodeURIComponent(version)}-changelog.txt`;
            
             document.querySelector(vs).innerHTML = `
                 <details${dropDown_VAL}>
