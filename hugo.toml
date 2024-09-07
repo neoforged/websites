@@ -32,6 +32,7 @@ theme = ["hugo-notice", "mainroad"]
 
 [Params.widgets.social]
   cached = true
+  twitter = "NeoForged_MC"
 
 [[Params.widgets.social.custom]]
   title = "GitHub"
