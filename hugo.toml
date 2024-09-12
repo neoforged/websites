@@ -60,6 +60,11 @@ theme = ["hugo-notice", "mainroad"]
   icon = "svg/files.svg"
 
 [[Params.widgets.social.custom]]
+  title = "Order a server from CreeperHost"
+  url = "https://www.creeperhost.net/partner/neoforge-aww"
+  icon = "svg/creeperhost.svg"
+
+[[Params.widgets.social.custom]]
   title = "Team member application form"
   url = "https://links.neoforged.net/apply"
   icon = "svg/team.svg"
