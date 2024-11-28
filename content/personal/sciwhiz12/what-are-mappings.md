@@ -10,9 +10,7 @@ description: "In this post, we take a look at the topic of mappings: a set of cl
 ---
 
 {{< box note >}}
-This article was originally posted by me to the now-defunct Minecraft Forge blog, in July 2022. As such, the information here may be outdated or inaccurate, with respect to current practice.
-
-However, I believe the concepts in this article are still generally applicable (at the time of posting), and this article would still be useful as a (historical) reference for what mappings are/were.
+This article was originally posted by me to the now-defunct Minecraft Forge blog, in July 2022. As such, the information here may be outdated or inaccurate, with respect to current practice as of publication of this repost.
 
 For posterity, this article remains unchanged from its final form. If any updates are made, it will probably be in a new post, with a link to that attached here.
 {{< /box >}}
