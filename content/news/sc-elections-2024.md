@@ -4,7 +4,7 @@ date: 2024-12-08T18:00:00+00:00
 draft: false
 categories:
 - News
-author: IchHabeHunger54
+author: ichhabehunger54
 summary: "Steering Council Elections 2024"
 description: "Steering Council Elections 2024"
 ---
