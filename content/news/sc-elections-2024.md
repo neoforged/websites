@@ -1,6 +1,6 @@
 ---
 title: "Steering Council Elections 2024"
-date: 2024-12-08T18:00:00+00:00
+date: 2024-12-08T12:00:00+00:00
 draft: false
 categories:
 - News
@@ -87,19 +87,30 @@ At the end, the following candidates had been nominated (in alphabetical order b
 
 The voting phase started at Monday, 2024-12-02, 12 AM UTC, and was conducted using a closed election within the [Helios voting service](https://vote.heliosvoting.org). It ended at Sunday, 2024-12-08, 12 PM UTC. I put out internal announcements 3 days and 1 day before the end of voting.
 
+Late during the process, we realized that we had no policy in place for a tie. We conferred about this a bit, and ended on the conclusion that a random choice would be best to use. Luckily, this wasn't actually necessary in practice.
+
 There is not a lot more to be said about this, except that due to a mistake on my end, we actually started voting about half a day late (oops).
 
 ## Phase Four: Results
 
 After the election ended, I looked at the results and announced them internally first. I then edited this post and pushed it to the public.
 
-The following candidates were among the top three, and will as such make up the Steering Council for the upcoming year:
+The candidates scored as follows (in descending order):
 
-- TBD
+- Orion (`@oriononline`): **19 votes**
+- gigaherz (`@gigaherz`): **16 votes**
+- TelepathicGrunt (`@telepathicgrunt`): **13 votes**
+- shartte (`@gimpansor`): 12 votes
+- Matyrobbrt (`@matyrobbrt`): 11 votes
+- Monica (`@monica`): 10 votes
+- Shadows (`@shadows_of_fire`): 9 votes
+- dpeter99 (`@dpeter99`): 6 votes
+- Technici4n (`@technici4n`): 5 votes
+- Paul_T (`@paul_t`): 4 votes
 
 I would like to thank all team members for making this a rather uncomplicated process. I would also like to thank cpw, Curle, sci and Orion for their great leadership of the NeoForged project up to this point, and I hope that we can call them members of the team for a long time to come.
 
-Finally, the election results will need to be put into effect, that is, roles and permissions will need to be redistributed. This may or may not happened already at the time of releasing this post.
+Finally, the election results will need to be put into effect, that is, roles and permissions will need to be redistributed. This may or may not have happened already at the time of releasing this post.
 
 ## TL;DR
 
@@ -126,7 +137,9 @@ The following members were nominated for the next term:
 
 The following members were among the top three in the election, and as such will constitute the new Steering Council:
 
-- TBD
+- gigaherz (`@gigaherz`)
+- Orion (`@oriononline`)
+- TelepathicGrunt (`@telepathicgrunt`)
 
 That would be all. Thank you for your time, and onto a new year of modding!
 
