@@ -21,7 +21,7 @@ One of the main reasons NeoForged was created was because of the "one person in 
 
 Due to the rough nature of the transition from Forge to NeoForge, two of Forge's now-former admins - cpw and Curle - were appointed permanent seats on the Steering Council. A third member was quickly elected via an informal Discord poll: SizableShrimp. Shrimp later stepped down, and Orion was elected by similar means as his replacement.
 
-So to reiterate, the current members of the Steering Council are:
+So to reiterate, as of before the election, the members of the Steering Council are:
 
 - cpw (`@cpw`, permanent)
 - sci (`@sciwhiz12`, appointed to represent Curle (`@thecurle`) who would normally hold the seat, permanent)
@@ -77,7 +77,7 @@ At the end, the following candidates had been nominated (in alphabetical order b
 - shartte (`@gimpansor`): "\[...\] he does try to be reasonable and prevent conflict, understands large portion of neoforge, and gets what direction neoforge should go"
 - Matyrobbrt (`@matyrobbrt`): _No reason provided._
 - Monica (`@monica`): _No reason provided._
-- Orion (`@oriononline`): _No reason provided, sitting candidate._
+- Orion (`@oriononline`): "Orion has been the lynchpin that has kept this group together"
 - Paul_T (`@paul_t`): _No reason provided._
 - Shadows (`@shadows_of_fire`): _No reason provided._
 - Technici4n (`@technici4n`): "\[... to continue\] to modernize and simplify our systems"
@@ -94,6 +94,8 @@ There is not a lot more to be said about this, except that due to a mistake on m
 ## Phase Four: Results
 
 After the election ended, I looked at the results and announced them internally first. I then edited this post and pushed it to the public.
+
+A total of **25 votes** were cast, out of 30 eligible. As such, the turnout is at **83.3%**.
 
 The candidates scored as follows (in descending order):
 
