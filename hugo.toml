@@ -32,6 +32,7 @@ theme = ["hugo-notice", "mainroad"]
 
 [Params.widgets.social]
   cached = true
+  twitter = "NeoForged_MC"
 
 [[Params.widgets.social.custom]]
   title = "GitHub"
@@ -57,6 +58,11 @@ theme = ["hugo-notice", "mainroad"]
   title = "Documentation"
   url = "https://docs.neoforged.net"
   icon = "svg/files.svg"
+
+[[Params.widgets.social.custom]]
+  title = "Order a server from CreeperHost"
+  url = "https://www.creeperhost.net/partner/neoforge-aww"
+  icon = "svg/creeperhost.svg"
 
 [[Params.widgets.social.custom]]
   title = "Team member application form"

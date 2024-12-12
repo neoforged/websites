@@ -8,40 +8,17 @@ const DOWNLOAD_URL = 'https://maven.neoforged.net/releases'
 // To filter a specific MC version: https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/neoforge?filter=20.4
 async function loadLatestVersions(minecraftVersions) {
     for (const mcVersion of minecraftVersions) {
-        let gav;
-        let fn;
+        let gav = FORGE_GAV;
+        let fn = "neoforge";
         let mcvers;
-        let dropDown_VAL;
-        let badges_beta;
-        let badges_new;
-        let badges_legacy;
-        let changelogUrl;
-        if (mcVersion.startsWith("1.20.1")) {
-            gav = LEGACY_GAV;
-            fn = "forge";
-            mcvers = "1.20.1";
-            badges_new = "";
-            badges_legacy = `<font class="badges badges_legacy">LEGACY</font>`;
-            badges_beta = "";
-            dropDown_VAL = "";
-            changelogUrl = "/changelog/legacy";
-        } else {
-            gav = FORGE_GAV;
-            fn = "neoforge";
-            badges_beta = "";
-            badges_new = `<font class="badges badges_new">NEW</font>`;
-            badges_legacy = "";
-            dropDown_VAL = ` open="open"`;
-            changelogUrl = "/changelog/latest";
-        }
+        let dropDown_VAL = ` open="open"`;
+        let badges_beta = "";
+        let badges_new = "";
+        let badges_legacy = "";
+        let changelogUrl = "/changelog/latest";
 
-        let currentMcVersionUrl;
+        let currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav));
         let versionJson;
-        if (mcvers == "1.20.1") {
-            currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav) + '?filter=' + encodeURIComponent(mcVersion));
-        } else {
-            currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav));
-        }
 
         try {
             const response = await fetch(currentMcVersionUrl);

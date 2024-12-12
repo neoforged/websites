@@ -13,7 +13,6 @@ description: |
 You can find a direct link to our latest installer files below.
 
 {{< files "latest" >}}
-{{< files "1.20.1" >}}
 {{< versions >}}
 
 # Using NeoForge for mod development
