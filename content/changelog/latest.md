@@ -6,4 +6,4 @@ categories:
 author: neoforgedteam
 ---
 
-{{< changelog_l >}}
+{{< changelog >}}

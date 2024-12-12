@@ -1145,8 +1145,26 @@ summary code:hover {
 }
 
 /* Changelogs */
-.changelog {
+.changelog_body {
+	display: block;
+	padding: 0;
+	padding: 1.25rem;
+	margin-bottom: 20px;
+	margin-bottom: 1.25rem;
+	border-radius: 4px;
 	max-height: 650px;
+	overflow: auto;
+}
+
+.badges_mc, .badges_coauth {
+	padding: 0 5px;
+	border-radius: 4px;
+	font-family: monospace;
+}
+
+.changelog-item-desc {
+	list-style-type: none;
+	padding-left: 20px;
 }
 
 /* News Section */

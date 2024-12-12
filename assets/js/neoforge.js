@@ -6,6 +6,7 @@ const DOWNLOAD_URL = 'https://maven.neoforged.net/releases'
 // For the latest version: https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/neoforge
 // For legacy version(s): https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/forge?filter=1.20.1
 // To filter a specific MC version: https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/neoforge?filter=20.4
+
 async function loadLatestVersions(minecraftVersions) {
     for (const mcVersion of minecraftVersions) {
         let gav = FORGE_GAV;
@@ -34,15 +35,15 @@ async function loadLatestVersions(minecraftVersions) {
         if (versionJson) {
             const {version} = versionJson;
             if (mcVersion == "latest") {
-                mcvers = "1." + Array.from(version)[0] + Array.from(version)[1] + Array.from(version)[2] + Array.from(version)[3];
+                mcvers = "1." + version.slice(0, 4);
             }
             if (version.includes("beta")) {
                 badges_beta = `<font class="badges badges_beta">BETA</font>`;
             }
-            
+
             const vs = `#filelist${mcVersion}`.split('.').join("");
             const installerUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(version)}/${fn}-${encodeURIComponent(version)}-installer.jar`;
-           
+
             document.querySelector(vs).innerHTML = `
                 <details${dropDown_VAL}>
                 <summary class="fileinfo__header">${badges_beta} ${badges_new} ${badges_legacy} NeoForge <code>${version}</code> for Minecraft ${mcvers}</summary>
