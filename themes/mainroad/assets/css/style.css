@@ -1139,9 +1139,11 @@ summary code:hover {
 	font-family: monospace;
 }
 
-/* Installer Badges */
-.badges_beta, .badges_new, .badges_legacy {
+/* Badges */
+.badges {
 	padding: 0 5px;
+	border-radius: 4px;
+	font-family: monospace;
 }
 
 /* Changelogs */
@@ -1152,14 +1154,8 @@ summary code:hover {
 	margin-bottom: 20px;
 	margin-bottom: 1.25rem;
 	border-radius: 4px;
-	max-height: 650px;
+	max-height: 825px;
 	overflow: auto;
-}
-
-.badges_mc, .badges_coauth {
-	padding: 0 5px;
-	border-radius: 4px;
-	font-family: monospace;
 }
 
 .changelog_item {
