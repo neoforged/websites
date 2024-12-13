@@ -37,12 +37,6 @@
 	{{- end }}
 
 	<link rel="shortcut icon" href="{{ "favicon.ico" | relURL }}">
-	{{- if not hugo.IsServer }}
-		{{- if hasPrefix .Site.GoogleAnalytics "G-" }}
-		{{ template "_internal/google_analytics.html" . }}
-		{{- else }}
-		{{- end }}
-	{{- end }}
 	<script src="{{ "js/modetoggle.js" | relURL }}"></script>
 </head>
 <body class="body">
