@@ -1,8 +1,8 @@
-const VERSIONS_ENDPOINT = 'https://maven.neoforged.net/api/maven/versions/releases/'
-const FORGE_GAV = 'net/neoforged/neoforge'
-const LEGACY_GAV = 'net/neoforged/forge'
-const LATEST_ENDPOINT = 'https://maven.neoforged.net/api/maven/latest/version/releases/'
-const DOWNLOAD_URL = 'https://maven.neoforged.net/releases'
+const VERSIONS_ENDPOINT = "https://maven.neoforged.net/api/maven/versions/releases/"
+const FORGE_GAV = "net/neoforged/neoforge"
+const LEGACY_GAV = "net/neoforged/forge"
+const LATEST_ENDPOINT = "https://maven.neoforged.net/api/maven/latest/version/releases/"
+const DOWNLOAD_URL = "https://maven.neoforged.net/releases"
 // For the latest version: https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/neoforge
 // For legacy version(s): https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/forge?filter=1.20.1
 // To filter a specific MC version: https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/neoforge?filter=20.4
@@ -26,9 +26,9 @@ async function loadLatestVersions(minecraftVersions) {
             versionJson = await response.json();
         } catch (error) {
             if (error instanceof SyntaxError) {
-                console.log('There was a SyntaxError parsing the JSON response from the maven server.', error);
+                console.log("There was a SyntaxError parsing the JSON response from the maven server.", error);
             } else {
-                console.log('There was an error processing the request for a new version.', error);
+                console.log("There was an error processing the request for a new version.", error);
             }
         }
 
@@ -41,7 +41,7 @@ async function loadLatestVersions(minecraftVersions) {
                 badges_beta = `<font class="badges badges_beta">BETA</font>`;
             }
 
-            const vs = `#filelist${mcVersion}`.split('.').join("");
+            const vs = `#filelist${mcVersion}`.split(".").join("");
             const installerUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(version)}/${fn}-${encodeURIComponent(version)}-installer.jar`;
 
             document.querySelector(vs).innerHTML = `

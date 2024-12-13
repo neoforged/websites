@@ -17,9 +17,9 @@ async function loadChangelog() {
         versionJson = await response.json();
     } catch (error) {
         if (error instanceof SyntaxError) {
-            console.log('There was a SyntaxError parsing the JSON response from the maven server.', error);
+            console.log("There was a SyntaxError parsing the JSON response from the maven server.", error);
         } else {
-            console.log('There was an error processing the request for a new version.', error);
+            console.log("There was an error processing the request for a new version.", error);
         }
     }
 
@@ -36,20 +36,41 @@ async function loadChangelog() {
 
         data.forEach(line => {
             if (line.startsWith(" - ")) {
-                line = line.replace(" - ", `<li class="changelog-item">`);
-                line = line + "</li>";
+                const lineVersion = line.substring(line.indexOf("`") + 1, line.indexOf("`", line.indexOf("`") + 1));
+                const installerUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(version)}/${fn}-${encodeURIComponent(version)}-installer.jar`;
+                line = line.replace("`" + lineVersion + "`", `<a href="${installerUrl}" class="changelog_version"><code>${lineVersion}</code></a>`);
 
-                const lineVersion = line.substring(line.indexOf('`') + 1, line.indexOf('`', line.indexOf('`') + 1));
-                line = line.replace("`" + lineVersion + "`", `<code>${lineVersion}</code>`);
+                line = line.replace(" - ", `<li class="changelog_item" title="Install ${lineVersion} for Minecraft ${mcvers}">`);
+                line = line + "</li>";
 
                 const pr = line.substring(line.indexOf("(#") + 2, line.indexOf(")", line.indexOf("(#")));
                 line = line.replace(`(#${pr})`, `<a class="pr-link" href="${GITHUB_URL}/pull/${pr}">(#${pr})</a>`);
 
                 const mcBadgeText = line.substring(line.indexOf("[") + 1, line.indexOf("]", line.indexOf("[")));
                 line = line.replace(`[${mcBadgeText}]`, `<font class="badges badges_mc">${mcBadgeText}</font>`);
-            } else {
-                line = `<li class="changelog-item-desc">` + line + `</li>`
+            } else if (line != "") {
+                if (line != "   ") {
+                    line = "▸" + line;
+                }
+
+                line = `<li class="changelog_item_desc">` + line + `</li>`
                 line = line.replace("Co-authored-by:", `<font class="badges badges_coauth">Co-authored-by</font>`)
+            }
+
+            line = line.replace(/`([^`]+)`/g, `<code>$1</code>`);
+
+            if (line.includes("#")) {
+                const startIndex = line.indexOf("#") + 1;
+                let endIndex = line.indexOf(" ", startIndex);
+
+                if (endIndex === -1) {
+                    endIndex = line.length - 5; // exclude </li>
+                }
+
+                const issue = line.substring(startIndex, endIndex);
+                if (!isNaN(issue)) {
+                    line = line.replace(`#${issue}`, `<a href="${GITHUB_URL}/issues/${issue}">#${issue}</a>`);
+                }
             }
 
             resultArray.push(line);

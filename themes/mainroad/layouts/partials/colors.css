@@ -400,7 +400,7 @@ details:hover {
 
 /* Changelogs */
 .changelog_body {
-	background-color: var(--color-code-block-background);
+	background-color: var(--color-changelog-background);
 }
 
 .badges_mc {
@@ -414,7 +414,15 @@ details:hover {
 	color: var(--color-text);
 }
 
-.changelog-item-desc {
+.changelog_item:hover {
+	background-color: var(--color-border);
+}
+
+.changelog_item_desc:hover {
+	background-color: var(--color-background);
+}
+
+.changelog_item_desc {
 	color: var(--color-meta-caption);
 }
 
