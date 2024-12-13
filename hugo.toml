@@ -35,6 +35,11 @@ theme = ["hugo-notice", "mainroad"]
   twitter = "NeoForged_MC"
 
 [[Params.widgets.social.custom]]
+  title = "NeoForged Project Listing"
+  url = "https://projects.neoforged.net/"
+  icon = "svg/projects.svg"
+
+[[Params.widgets.social.custom]]
   title = "GitHub"
   url = "https://github.com/neoforged/"
   icon = "svg/github.svg"
