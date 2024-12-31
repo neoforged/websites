@@ -58,7 +58,8 @@ And last, but not least, 1.21.4 (yes, there is no hotfix for it... at least not 
 Don't worry, we're not done modernizing the project, this was just the beginning. We're currently experimenting with multiple changes related to FML and its sister projects, so stay tuned!
 
 ### MDKs
-We have split our MDK repo into per-version and per-plugin MDK mirrors on a [separate organization](https://github.com/neoforgemdks) to make it easier to create repositories using GitHub's template feature. We're also working on a MDK generator website, expect it to be usable sometime in the first half of 2025.
+We have split our MDK repo into per-version and per-plugin MDK mirrors on a [separate organization](https://github.com/neoforgemdks) to make it easier to create repositories using GitHub's template feature.  
+Additionally, we have just released a MDK generator. It is still work-in-progress but it is usable!
 
 ### Installer changes
 - A CLI argument to install a client (`--install-client`) has been added to the installer, making automating installations easier;
