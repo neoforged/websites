@@ -59,7 +59,7 @@ Don't worry, we're not done modernizing the project, this was just the beginning
 
 ### MDKs
 We have split our MDK repo into per-version and per-plugin MDK mirrors on a [separate organization](https://github.com/neoforgemdks) to make it easier to create repositories using GitHub's template feature.  
-Additionally, we have just released a MDK generator. It is still work-in-progress but it is usable!
+Additionally, we have just released a [MDK generator](https://neoforged.net/mod-generator/). We're still working on it, but it is usable!
 
 ### Installer changes
 - A CLI argument to install a client (`--install-client`) has been added to the installer, making automating installations easier;
