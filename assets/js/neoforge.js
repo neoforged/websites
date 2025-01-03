@@ -16,7 +16,7 @@ async function loadLatestVersions(minecraftVersions) {
         let badges_beta = "";
         let badges_new = "";
         let badges_legacy = "";
-        let changelogUrl = "/changelog/latest";
+        let changelogUrl = "/changelog";
 
         let currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav));
         let versionJson;

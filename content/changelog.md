@@ -1,8 +1,6 @@
 ---
 title: "Latest Changelog"
 draft: false
-categories: 
-- Changelogs
 author: neoforgedteam
 ---
 

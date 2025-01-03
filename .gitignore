@@ -5,3 +5,4 @@ hugo.exe
 *.sublime-project
 *.sublime-workspace
 .vscode/*
+*~

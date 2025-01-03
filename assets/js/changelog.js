@@ -37,11 +37,11 @@ async function loadChangelog() {
         data.forEach(line => {
             if (line.startsWith(" - ")) {
                 const lineVersion = line.substring(line.indexOf("`") + 1, line.indexOf("`", line.indexOf("`") + 1));
-                const installerUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(version)}/${fn}-${encodeURIComponent(version)}-installer.jar`;
+                const installerUrl = `${DOWNLOAD_URL}/${gav}/${lineVersion}/${fn}-${lineVersion}-installer.jar`;
                 line = line.replace("`" + lineVersion + "`", `<a href="${installerUrl}" class="changelog_version"><code>${lineVersion}</code></a>`);
 
                 line = line.replace(" - ", `<li class="changelog_item" title="Install ${lineVersion} for Minecraft ${mcvers}">`);
-                line = line + "</li>";
+                line += "</li>";
 
                 const pr = line.substring(line.indexOf("(#") + 2, line.indexOf(")", line.indexOf("(#")));
                 line = line.replace(`(#${pr})`, `<a class="pr-link" href="${GITHUB_URL}/pull/${pr}">(#${pr})</a>`);
@@ -79,7 +79,7 @@ async function loadChangelog() {
         const result = resultArray.join("\n");
 
         document.querySelector(vs).innerHTML = `
-        <h2>${encodeURIComponent(version)} for Minecraft ${mcvers}</h2><hr>
+        <h2><code>${encodeURIComponent(version)}</code> for Minecraft ${mcvers}</h2><hr>
         <div class="changelog">${result}</div>
         `;
     }
