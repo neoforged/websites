@@ -18,9 +18,8 @@ You can find a direct link to our latest installer files below.
 # Using NeoForge for mod development
 
 ## If you don't have a current mod project
-
-1. Go to the [MDK list], select the one for the version you're interested in, and click `Use This Template` to create a copy under your personal GitHub account.
-2. Clone the MDK locally, and get started! Our [Documentation] and the [Modding Wiki] are great places to learn more.
+1. Go to the [Mod Generator page] and enter the settings for your new mod.
+2. Download the generated mod, unzip it, and get started! Our [Documentation] and the [Modding Wiki] are great places to learn more.
 
 ## If you have an existing mod project
 Refer to the [MDK list] for examples of how to update your build script to use NeoForge.
@@ -28,3 +27,4 @@ Refer to the [MDK list] for examples of how to update your build script to use N
 [MDK list]: https://github.com/neoforgemdks
 [Documentation]: https://docs.neoforged.net
 [Modding Wiki]: https://forge.gemwire.uk
+[Mod Generator page]: /mod-generator
