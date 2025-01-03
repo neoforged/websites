@@ -837,6 +837,7 @@ figure.meta__icon {
 	display: inline-block;
 	padding: 10px 15px;
 	font-weight: 700;
+	border-radius: 0.2rem;
 }
 
 /* Pager (prev/next links) navigation */
@@ -1139,9 +1140,40 @@ summary code:hover {
 	font-family: monospace;
 }
 
-/* Installer Badges */
-.badges_beta, .badges_new, .badges_legacy {
+/* Badges */
+.badges {
 	padding: 0 5px;
+	border-radius: 4px;
+	font-family: monospace;
+}
+
+/* Changelogs */
+.changelog_body {
+	display: block;
+	padding: 0;
+	padding: 1.25rem;
+	margin-bottom: 20px;
+	margin-bottom: 1.25rem;
+	border-radius: 4px;
+	max-height: 825px;
+	overflow: auto;
+}
+
+.changelog_item {
+	border-radius: 5px;
+	padding: 0 4px;
+}
+
+.changelog_version code:hover {
+	text-decoration: underline;
+	filter: brightness(.85);
+}
+
+.changelog_item_desc {
+	list-style-type: none;
+	border-radius: 5px;
+	margin-left: 20px;
+	padding: 0 4px;
 }
 
 /* News Section */
@@ -1389,6 +1421,7 @@ a.anchor-wrapper:hover, a.anchor-wrapper:focus {
 	--color-code-notice: #e57;
 	--color-code-notice-background: #ffffff85;
 	--color-code-block-background: #2e3135;
+	--color-changelog-background: #bdc7c7;
 	--color-footer-text: #aab0b3;
 	--color-footer-link-text: #bdc7c7;
 	--color-ends-background: #323232;
@@ -1419,6 +1452,7 @@ a.anchor-wrapper:hover, a.anchor-wrapper:focus {
 	--color-code-notice: #e57;
 	--color-code-notice-background: #2e3135;
 	--color-code-block-background: #2e3135;
+	--color-changelog-background: #2e3135;
 	--color-footer-text: #aab0b3;
 	--color-footer-link-text: #bdc7c7;
 	--color-ends-background: #222222;

@@ -398,6 +398,34 @@ details:hover {
 	border: 2px solid var(--color-border-badges-legacy);
 }
 
+/* Changelogs */
+.changelog_body {
+	background-color: var(--color-changelog-background);
+}
+
+.badges_mc {
+	background-color: var(--color-badges-new);
+	border: 2px solid var(--color-border-badges-new);
+}
+
+.badges_coauth {
+	background-color: var(--color-badges-legacy);
+	border: 2px solid var(--color-border-badges-legacy);
+	color: var(--color-text);
+}
+
+.changelog_item:hover {
+	background-color: var(--color-border);
+}
+
+.changelog_item_desc:hover {
+	background-color: var(--color-background);
+}
+
+.changelog_item_desc {
+	color: var(--color-meta-caption);
+}
+
 /* News Section */
 .news {
 	border-top: 3px solid var(--color-border);
