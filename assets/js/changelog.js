@@ -38,9 +38,9 @@ async function loadChangelog() {
             if (line.startsWith(" - ")) {
                 const lineVersion = line.substring(line.indexOf("`") + 1, line.indexOf("`", line.indexOf("`") + 1));
                 const installerUrl = `${DOWNLOAD_URL}/${gav}/${lineVersion}/${fn}-${lineVersion}-installer.jar`;
-                line = line.replace("`" + lineVersion + "`", `<a href="${installerUrl}" class="changelog_version"><code>${lineVersion}</code></a>`);
+                line = line.replace("`" + lineVersion + "`", `<a href="${installerUrl}" class="changelog_version" title="Install ${lineVersion} for Minecraft ${mcvers}"><code>${lineVersion}</code></a>`);
 
-                line = line.replace(" - ", `<li class="changelog_item" title="Install ${lineVersion} for Minecraft ${mcvers}">`);
+                line = line.replace(" - ", `<li class="changelog_item">`);
                 line += "</li>";
 
                 const pr = line.substring(line.indexOf("(#") + 2, line.indexOf(")", line.indexOf("(#")));

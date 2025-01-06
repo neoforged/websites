@@ -1,7 +1,7 @@
-{{ if not ( .Page.Scratch.Get "nfJS") }}
+{{ if not ( .Page.Scratch.Get "changelogJS") }}
   {{ $js:= resources.Get "js/changelog.js" }}
   <script src="{{ $js.RelPermalink }}"></script>
-  {{ .Page.Scratch.Set "nfJS" "hi" }}
+  {{ .Page.Scratch.Set "changelogJS" "hi" }}
 {{ end }}
 
 <div class="changelog_body" id="changelog">
