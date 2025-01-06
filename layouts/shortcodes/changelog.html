@@ -1,0 +1,17 @@
+{{ if not ( .Page.Scratch.Get "changelogJS") }}
+  {{ $js:= resources.Get "js/changelog.js" }}
+  <script src="{{ $js.RelPermalink }}"></script>
+  {{ .Page.Scratch.Set "changelogJS" "hi" }}
+{{ end }}
+
+<div class="changelog_body" id="changelog">
+    <pre class="changelog"></pre>
+</div>
+
+<script>
+    document.addEventListener("readystatechange", evt=>{
+        if (evt.target.readyState === "complete") {
+            loadChangelog();
+        }
+    });
+</script>

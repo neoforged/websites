@@ -4,7 +4,7 @@ Website for NeoForged. Built using [Hugo](https://gohugo.io/).
 
 ## Development
 
-Download or install [Hugo v0.118.2](https://github.com/gohugoio/hugo/releases/tag/v0.118.2). (The executable is self-contained.)
+Download or install [Hugo](https://github.com/gohugoio/hugo/releases/latest). (The executable is self-contained.)
 
 To build the website, run `hugo`. The site files will be found in the `public` directory.
 
