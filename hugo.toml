@@ -47,7 +47,7 @@ theme = ["hugo-notice", "mainroad"]
 
 [[Params.widgets.social.custom]]
   title = "Twitter"
-  url = "https://https://twitter.com/NeoForged_MC"
+  url = "https://twitter.com/NeoForged_MC"
   icon = "svg/twitter.svg"
 
 [[Params.widgets.social.custom]]
