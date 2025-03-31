@@ -3,7 +3,7 @@ title: "Open Source Licenses: A Quick Guide"
 date: 2025-03-31T00:33:12+08:00
 categories:
 - Personal Blog
-author: TelepathicGrunt
+author: telepathicgrunt
 summary: "There are numerous licenses and options one can pick from to use for their mod. We are going to dive into a small subset of them, Open-Source Licenses."
 description: "This guide will talk about what are Open-Source Licenses, why they are good for the community, go into detail about some commonly used Open-Source Licenses, and what to watch out for with some. It is not a fully comprehensive guide but is a good strt. Reminder, neither me nor the NeoForge team are lawyers and anything we say cannot be taken as legal advice."
 ---
