@@ -19,4 +19,4 @@ The focus is on **mods that run on servers without needing to be on the client**
 
 More info on the rules, submission forms, and more will be announced on June 1st. Clear out a spot in your calendar for this contest if you wish to join! 
 
-If you want to look at what Open-Source licenses will be allowed for the context, check out [the Open-Source License blog post here](https://neoforged.net/personal/telepathicgrunt/open-source-licenses/)! Any Open Source Initiative (OSI) approved license from [this list is allowed](https://opensource.org/licenses).
+Any Open Source Initiative (OSI) approved license from [this list is allowed](https://opensource.org/licenses) for the contest. For a guide into what an Open-Source license actually is and which ones are commonly used, check out [the Open-Source License blog post here](https://neoforged.net/personal/telepathicgrunt/open-source-licenses/)! 
