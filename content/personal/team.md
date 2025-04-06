@@ -157,7 +157,9 @@ _No description provided._
 
 **Roles:** Moderator, Docs Team
 
-_No description provided._
+IHH54 is one of the main people behind the NeoForged documentation, and also an active moderator in the NeoForged Discord server. His other projects include mods such as [Bibliocraft: Legacy](https://www.curseforge.com/minecraft/mc-mods/bibliocraft-legacy), [Ars Magica: Legacy](https://www.curseforge.com/minecraft/mc-mods/ars-magica-legacy) or [Potion Bundles](https://www.curseforge.com/minecraft/mc-mods/potion-bundles).
+
+Outside of modding Minecraft, he is an avid music enjoyer, listening to various genres, playing the piano and sometimes even creating some EDM himself. He is also involved with his local volunteer-based firefighter association.
 
 ### matyrobbrt (@matyrobbrt)
 
