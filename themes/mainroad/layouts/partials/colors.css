@@ -368,6 +368,19 @@ details:hover {
 }
 
 /* Installer */
+select, button, input {
+	background-color: var(--color-box);
+	border-color: var(--color-border);
+}
+
+select:hover, input:hover {
+	border-color: var(--color-btn);
+}
+
+button:hover {
+	background-color: var(--color-code);
+}
+
 .fileinfo {
 	background-color: var(--color-box);
 }
