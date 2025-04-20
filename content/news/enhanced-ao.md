@@ -186,7 +186,7 @@ For some reason I don't understand, vanilla will sometimes sample outside of the
 |:--:|:--:|
 | *Using the vanilla lighting pipeline. The seams below the sculk sensor are due to sampling the center light outside for some reason. The seams on the stone blocks are due to the mixing formula (see above).* | *Using the enhanced lighting pipeline, which fixes both issues.* |
 
-The enhanced lighting pipeline does sample the center light level differently than the edges and corners, so it does not have this problem.
+The enhanced lighting pipeline does not sample the center light level differently than the edges and corners, so it does not have this problem.
 
 ### Partial faces
 Partial faces are quads that are axis-aligned, but that are smaller than a full block face. To compute smooth lighting for partial faces, we first compute the corresponding full or inside face, then we perform interpolation based on the positions of the vertices of the partial face.
@@ -197,6 +197,18 @@ For example in the following picture, we first compute the red square, then we u
 | ![partial face with enhanced](partial-face.png) |
 |:--:|
 | *We first compute the light levels at the 4 corners of the red square. Then we interpolate to compute the light levels at the 4 corners of the blue and orange quads.* |
+
+### Partial faces: Careful with outside vertices
+*NOTE: This section was added a few days after the original blog post release because the problem of outside vertices was overlooked. This issue got fixed in NeoForge 21.5.51-beta.*
+
+We have to be careful when computing the bilinear interpolation for partial faces.
+If a vertex is outside of the block, some interpolation weights can be negative.
+The fix is to clamp the vertex coordinates to the block bounds `[0, 1]` before computing the bilinear interpolation.
+In some cases, the negative weights can cause a spectacular failure where the outside vertex ends up being too bright because of an underflow:
+
+| ![lectern vanilla](lectern-vanilla.png) | ![lectern enhanced without clamping](lectern-enhanced-noclamp.png) | ![lectern enhanced](lectern-enhanced.png) |
+|:--:|:--:|:--:|
+| *Lectern above a magma cube, using the vanilla lighting pipeline.* | *Same scene using the enhanced lighting pipeline, but before fixing the negative weights.* | *Same scene using the fixed enhanced lighting pipeline.* |
 
 ### Irregular faces
 Irregular faces are faces that are not axis-aligned. Vanilla will compute the closest axis, and then treat the irregular face like an inset partial face. As shown in the picture below, this really does not work. The enhanced pipeline will instead project the face onto the 3 axis, compute the light level for each axis, and then recombine the 3 light levels based on the components of the face normal vector. This is similar to what is done for flat lighting.
