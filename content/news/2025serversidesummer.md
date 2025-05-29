@@ -27,7 +27,7 @@ A mod is considered a serverside mod if it can run on a server and retains most 
 
 - **Ports of Bukkit/Paper plugins** (Note: Make sure you pick a unique name and do not copy any code from the plugins. You would have to remake the idea from scratch with your own code and should not have a name that could cause confusion with the plugin. For example, the Economy Plugin allows players to be “paid” for doing tasks. A NeoForge mod equivalent could be call Payroll that does a very similar thing with a few twists of its own)
 
-- **Datapacks packaged as a mod qualifies.** Do not simply re-upload a pre-existing datapack as a mod. You still have to actively develop the datapack within this contest’s timeframe and then package it as a mod to upload to CurseForge.
+- **Datapack packaged as a mod qualifies.** Do not simply re-upload a pre-existing datapack as a mod. You still have to actively develop the datapack within this contest’s timeframe and then package it as a mod to upload to CurseForge.
 
 - Mods that have the server send a resourcepack that auto-applies on the client is ok as long as the vanilla client can handle it and it works. See this gist by Leet for how to properly set up a server-provided resourcepack: <https://gist.github.com/AEAEAEAE4343/575ad5aeb4cd7d9bd69148185cd8738e>
 
@@ -35,17 +35,17 @@ A mod is considered a serverside mod if it can run on a server and retains most 
 
 - And many more options you can think of! Essentially, the rule is, if I can connect using a vanilla client to a server with your mod and everything works perfectly, it counts!
 
-The main caveat is **please do not make a mod that is solely a library** for other mods to use. We would like the mods being submitted to be mods that players can slap on a server and see benefits right away. Furthermore, creating a Fabric mod and then using Sinytra Connector to run it on NeoForge will not be accepted. The mod needs to be built to run on NeoForge without the use of Sinytra Connector.
+The main caveat is **please do not make a mod that is solely a library** for other mods to use. We would like the mods being submitted to be mods that players can slap on a server and see benefits right away. Furthermore, creating a Fabric mod and then using Sinytra Connector to run it on NeoForge will not be accepted. Also, we encourage usage of NeoForge's APIs so using Forgified Fabric API is prohibited. The mod needs to be built to run on NeoForge without the use of Sinytra Connector or Forgified Fabric API.
 
 As for sources and licenses, **we require all submissions to be using an Open-Source license** approved by the OSI (Open Source Initiative). You can see a list of approved licenses here <https://opensource.org/licenses> but keep in mind not every Open-Source license is usable for mods. For more info about what it means to use an Open-Source license and what is commonly used for mods, scroll down to the Licenses section.
 
 ## Prizes
 
-- **$150 USD to the top 30 mods!** This will be judged on the quality, usefulness, functionality, and documentation of the mod. That’s right, adding wiki or more detail to your modpage will be a factor here! If your mod has reduced functionality when a vanilla client connects, we will be judging based on that reduced functionality instead of the modded client’s functionality. The $150 will go to the team that made the mod so members among the team have to decide among themselves how to divide up the reward. Keep in mind that anyone under the age of 18 will not be able to receive the money.
+- **$150 USD to the top 30 mods!** This will be judged on the quality, usefulness, functionality, and documentation of the mod. That’s right, adding a wiki or more detail to your modpage will be a factor here! If your mod has reduced functionality when a vanilla client connects, we will be judging based on that reduced functionality instead of the modded client’s functionality. The $150 will go to the team that made the mod so members among the team have to decide among themselves how to divide up the reward. Keep in mind that anyone under the age of 18 will not be able to receive the money.
 
 **A person on multiple teams or submits multiple mods can only claim their share of the prize for ONE of their submitted mods. If this happens, we will contact the person to ask which mod they would like to claim the prize from and forfeit their reward share for the other mods. (This is to prevent people from submitting a ton of mods to get more than $150. We do not want that. Remember, quality, not quantity is what is desired here for mods)*
 
-**For mods created by multiple people on a team, the prize is divided among the team members. How it is divided among the members will be decided by the team members. Make sure you and your team decide ahead of time how to split the rewards to prevent infighting later !We will have a group DM with the mod’s team members so everyone can say what their agreed share of the reward is. Please make sure everyone on the team has DMs enabled if collecting rewards. We will likely have a Steering Council member be contacting the team.*
+**For mods created by multiple people on a team, the prize is divided among the team members. How it is divided among the members will be decided by the team members. Make sure you and your team decide ahead of time how to split the rewards to prevent infighting later! We will have a group DM with the mod’s team members so everyone can say what their agreed share of the reward is. Please make sure everyone on the team has DMs enabled if collecting rewards. We will likely have a Steering Council member be contacting the team.*
 
 **If you do not want to receive a prize, the form submission link below has a prize opt-out option. You will not be contacted about being paid the prize but you will still be showcased properly if you win!*
 
