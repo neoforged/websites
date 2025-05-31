@@ -37,9 +37,9 @@ A mod is considered a serverside mod if it can run on a server and retains most 
 
 The main caveat is **please do not make a mod that is solely a library** for other mods to use. We would like the mods being submitted to be mods that players can slap on a server and see benefits right away. 
 
-Furthermore, creating a Fabric mod and then using Sinytra Connector to run it on NeoForge will not be accepted. Also, we encourage usage of NeoForge's APIs so using Forgified Fabric API is prohibited. The mod needs to be built to run on NeoForge without the use of Sinytra Connector or Forgified Fabric API. We are also disallowing SpongeNeo as well for the same reasons above.
+Furthermore, creating a Fabric mod and then using Sinytra Connector to run it on NeoForge will not be accepted. Also, we encourage usage of NeoForge's APIs so using Forgified Fabric API is prohibited. The mod needs to be built to run on NeoForge without the use of Sinytra Connector or Forgified Fabric API. We are also disallowing SpongeNeo as well for the same reason that we want the mods to be designed for NeoForge's systems and not other loader's.
 
-If a mod exists already on Fabric and then is ported to NeoForge, we do not allow that. The contest is meant to have people create new mods from scratch.The new mod can be made to work on multiple loaders, that is allowed. However, we will be judging on the portion of the code that will be running when on NeoForge.
+If a mod exists already on Fabric and then is ported to NeoForge, we do not allow that. The contest is meant to have people create new mods from scratch. The new mod can be made to work on multiple loaders, that is allowed. However, we will be judging on the portion of the code that will be running when on NeoForge.
 
 As for sources and licenses, **we require all submissions to be using an Open-Source license** approved by the OSI (Open Source Initiative). You can see a list of approved licenses here <https://opensource.org/licenses> but keep in mind not every Open-Source license is usable for mods. For more info about what it means to use an Open-Source license and what is commonly used for mods, scroll down to the Licenses section.
 
