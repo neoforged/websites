@@ -51,7 +51,7 @@ As for sources and licenses, **we require all submissions to be using an Open-So
 
 ## Timeframe
 
-The contest **starts on June 1st** and **ends on July 31st**. In that time frame, you need to create the mod from scratch, get the mod page approved and public on CurseForge, and the link submitted to the submission form here: 
+The contest **starts on June 1st** and **ends on July 31st**. In that time frame, you need to create the mod from scratch, get the mod page approved and public on CurseForge, and the link submitted to the submission form here: <https://docs.google.com/forms/d/e/1FAIpQLSfGvXDdqn10P7XCps2yuk0t7ytfi1NNJEKvFzgM97fVw5ejow/viewform?usp=dialog>
 
 From August 1st to August 8th, all submissions will be reviewed by the NeoForge team and applicants contacted for how to get their prize reward if they are eligible for it! On **August 9th**, we will announce all the winners and honorable mention mods to the NeoForge Discord’s Announcement channel so even players can try out and enjoy the mods! Keep in mind that this is a target date for us to announce the winners. If the contest gets an unexpected amount of entries, we may need a bit more time to finish judging all the entries. If this is the case, we will make an announcement of this so everyone is kept in the loop.
 
