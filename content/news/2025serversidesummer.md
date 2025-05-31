@@ -17,7 +17,7 @@ Special thanks to CurseForge and CreeperHost for helping to contribute to this c
 
 ## Qualifications
 
-The aim of this contest is for modders to create serverside only mods for **NeoForge 1.21.1**! You can work solo or in a team of people. *(note the prize money is divided among team members)*
+The aim of this contest is for modders to create serverside only mods for **NeoForge 1.21.1**! You can work solo or in a team of people. *(Note the prize money is divided among team members)*
 
 A mod is considered a serverside mod if it can run on a server and retains most functionalities when a vanilla client connects. *(You will be judged based on what functionalities work with vanilla clients)* This means the mod should not be needed on clientside at all to do anything. At minimum, the mod should work on dedicated servers but would ideally also work in singleplayer’s integrated server as well. Some possible serverside mod ideas you can do are:
 
@@ -28,6 +28,8 @@ A mod is considered a serverside mod if it can run on a server and retains most 
 - **Ports of Bukkit/Paper plugins** (Note: Make sure you pick a unique name and do not copy any code from the plugins. You would have to remake the idea from scratch with your own code and should not have a name that could cause confusion with the plugin. For example, the Economy Plugin allows players to be “paid” for doing tasks. A NeoForge mod equivalent could be call Payroll that does a very similar thing with a few twists of its own)
 
 - **Datapack packaged as a mod qualifies.** Do not simply re-upload a pre-existing datapack as a mod. You still have to actively develop the datapack within this contest’s timeframe and then package it as a mod to upload to CurseForge.
+
+- Mods that have the server send a resourcepack that auto-applies on the client is ok as long as the vanilla client can handle it and it works. See this gist by Leet for how to properly set up a server-provided resourcepack: <https://gist.github.com/AEAEAEAE4343/9d8c0a1f89c7d0722dc1452710952532>
 
 - **Enchantments**, **mob effect**, **veinminers**, improving **mob AI**, **advancements**…
 
