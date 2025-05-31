@@ -75,7 +75,7 @@ This modjam requires all submissions to use an Open Source license that can be f
 
 The reason for this is we feel that Open Source license is a good practice to encourage in the modding community. It allows modders to learn from each other and be able to contribute code to repositories or fork a mod if that mod goes abandoned. *(Note, once you pick a license for your mod, it is highly discouraged to change that license in the future. Especially if many other people helped contribute code to the mod)*
 
-**However, you should not put a license on your mod without understanding what that license entails. **
+**However, you should not put a license on your mod without understanding what that license entails.**
 
 For more information about what Open Source licenses are, detailed summaries of various common Open Source licenses in modded communities, and how to apply licenses to a mod, please read this blog on NeoFOrge site: <https://neoforged.net/personal/telepathicgrunt/open-source-licenses/>
 
