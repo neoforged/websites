@@ -77,6 +77,6 @@ The reason for this is we feel that Open Source license is a good practice to en
 
 **However, you should not put a license on your mod without understanding what that license entails.**
 
-For more information about what Open Source licenses are, detailed summaries of various common Open Source licenses in modded communities, and how to apply licenses to a mod, please read this blog on NeoFOrge site: <https://neoforged.net/personal/telepathicgrunt/open-source-licenses/>
+For more information about what Open Source licenses are, detailed summaries of various common Open Source licenses in modded communities, and how to apply licenses to a mod, please read this blog on NeoForge site: <https://neoforged.net/personal/telepathicgrunt/open-source-licenses/>
 
 We can help give advice in [#serverside-summer-modjam](https://discord.com/channels/313125603924639766/1377416841378529432) channel in the NeoForge discord if you are still stumped on what license to choose but once again, we are not lawyers. If you ever need actual legal advice on what a license entails for a Minecraft mod, please consult a real lawyer.
