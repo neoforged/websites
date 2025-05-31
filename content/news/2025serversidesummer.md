@@ -31,7 +31,7 @@ A mod is considered a serverside mod if it can run on a server and retains most 
 
 - Mods that have the server send a resourcepack that auto-applies on the client is ok as long as the vanilla client can handle it and it works. See this gist by Leet for how to properly set up a server-provided resourcepack: <https://gist.github.com/AEAEAEAE4343/9d8c0a1f89c7d0722dc1452710952532>
 
-- **Enchantments**, **mob effect**, **veinminers**, improving **mob AI**, **advancements**…
+- **Enchantments**, **veinminers**, improving **mob AI**, **advancements**…
 
 - And many more options you can think of! Essentially, the rule is, if I can connect using a vanilla client to a server with your mod and everything works perfectly, it counts!
 
