@@ -56,7 +56,7 @@ async function loadLatestVersions(minecraftVersions) {
                 </details>
             `;
 
-            document.querySelector("projectlinkdetails").open = true;
+            document.querySelector("#projectlinkdetails").open = true;
         }
     }
 }
