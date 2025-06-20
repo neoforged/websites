@@ -6,19 +6,32 @@
 
 
     <div id="filelist{{ replace (.Get 0) "." "" }}" class="fileinfo">
-        <details>
-            <summary class="fileinfo__header">NeoForge (loading version...)</summary>
-            <div class="fileinfo__body">
-                <a><span>Latest <em>NeoForge</em> Installer</span><span class="fileinfo__placeholder">neoforge-0.00.00-00.00.00-installer.jar</span></a>
-                <a><span>Latest Changelog</span><span class="fileinfo__placeholder">0.00.00-00.00.00</span></a>
+        <div class="fileinfo__body">
+            <div class="selection_row">
+                <div class="selection_block">
+                    <label for="minecraftversions">Minecraft Version:&nbsp;</label>
+                    <select name="Minecraft Versions" id="minecraftversions">
+                        <option value="">Loading...</option>
+                    </select>
+                </div>
+                <div class="selection_block">
+                    <label for="neoforgeversions">NeoForge Version:&nbsp;</label>
+                    <select name="Neoforge Versions" id="neoforgeversions">
+                        <option value="">Loading...</option>
+                    </select>
+                </div>
             </div>
-        </details>
+            <div class="download_row">
+                <a class="installerlink"><span>Click Here to Download:&nbsp;<br><span class="normal__font__weight">neoforge-0.00.00-00.00.00-installer.jar</span></span></a>
+                <a class="changeloglink"><span>See changelog</span></a>
+            </div>
+        </div>
     </div>
 
 <script>
     document.addEventListener("readystatechange", evt=>{
         if (evt.target.readyState === "complete") {
-            loadLatestVersions([{{ .Get 0 }}]);
+            //loadVersions([{{ .Get 0 }}]);
         }
     });
 </script>

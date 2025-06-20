@@ -372,6 +372,11 @@ details:hover {
 	background-color: var(--color-box);
 }
 
+.fileinfo .fileinfo__body .selection_row .selection_block {
+	background-color: var(--color-selection-box-background);
+	color: var(--color-text);
+}
+
 .fileinfo .fileinfo__body a {
 	background-color: var(--color-download);
 	color: var(--color-text);

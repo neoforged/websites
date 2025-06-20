@@ -7,7 +7,7 @@ const DOWNLOAD_URL = "https://maven.neoforged.net/releases"
 // For legacy version(s): https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/forge?filter=1.20.1
 // To filter a specific MC version: https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/neoforge?filter=20.4
 
-async function loadLatestVersions(minecraftVersions) {
+async function loadVersions(minecraftVersions) {
     for (const mcVersion of minecraftVersions) {
         let gav = FORGE_GAV;
         let fn = "neoforge";
@@ -55,8 +55,6 @@ async function loadLatestVersions(minecraftVersions) {
                 </div>
                 </details>
             `;
-
-            document.querySelector("#projectlinkdetails").open = true;
         }
     }
 }
