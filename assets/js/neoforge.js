@@ -56,17 +56,7 @@ async function loadLatestVersions(minecraftVersions) {
                 </details>
             `;
 
-            document.querySelector("projectlink").innerHTML = `
-                <div id="projectlink" class="fileinfo">
-                    <details${dropDown_VAL}>
-                        <summary class="fileinfo__header">For Other Versions</summary>
-                        <div class="fileinfo__body">
-                            <a href="https://projects.neoforged.net/neoforged/neoforge"><span class="fileinfo__icon"><i class="bi-file-earmark-arrow-down-fill" style="font-size: 2rem;"></i></span>
-                            <span class="fileinfo__content"><span>Click here to go to the version list!</span></span></a>
-                        </div>
-                    </details>
-                </div>
-            `;
+            document.querySelector("projectlinkdetails").open = true;
         }
     }
 }
