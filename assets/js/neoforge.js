@@ -17,7 +17,10 @@ function setLinks(neoforgeVersion) {
         changelogUrl = `${DOWNLOAD_URL}/${NEOFORGE_GAV}/${encodeURIComponent(neoforgeVersion)}/neoforge-${encodeURIComponent(neoforgeVersion)}-changelog.txt`;
     }
 
-    document.getElementById("installerlink").href = installerUrl;
+    const installerLink = document.getElementById("installerlink");
+    installerLink.href = installerUrl;
+    installerLink.innerHTML = `<span>Click Here to Download:&nbsp;<br><span class="normal__font__weight">neoforge-${latestMinecraftVersion}-${latestNeoForgeVersion}-installer.jar</span></span>`;
+    
     document.getElementById("changeloglink").href = changelogUrl;
 }
 
@@ -33,12 +36,14 @@ function minecraftValueChanged(selectedMinecraftVersion) {
         if (!neoforgeVersion.startsWith(neoforgeVersionPrefixForCurrentMinecraft)) {
             option.hidden = true;
             option.disabled = true;
+            option.style.display = 'hidden';
             option.selected = false;
         }
         // Unhide versions that are for currently selected mc version
         else {
             option.hidden = false;
             option.disabled = false;
+            option.style.display = 'block';
 
             if (newestNeoforgeForCurrentMinecraft == undefined) {
                 newestNeoforgeForCurrentMinecraft = neoforgeVersion;
@@ -144,6 +149,7 @@ async function loadVersions() {
                 if (!neoforgeVersion.startsWith(neoforgeVersionPrefixForCurrentMinecraft)) {
                     neoforgeVersionOption.hidden = true;
                     neoforgeVersionOption.disabled = true;
+                    neoforgeVersionOption.style.display = 'hidden';
                 }
                 neoforgeVersionSelect.appendChild(neoforgeVersionOption);
             }
