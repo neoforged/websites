@@ -12,7 +12,7 @@ description: |
 # NeoForge installer files
 You can find a direct link to our latest installer files below.
 
-{{< files "latest" >}}
+{{< files >}}
 
 # Using NeoForge for mod development
 

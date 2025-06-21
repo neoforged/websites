@@ -1,11 +1,6 @@
-{{ if not ( .Page.Scratch.Get "nfJS") }}
-  {{ $js:= resources.Get "js/neoforge.js" }}
-  <script src="{{ $js.RelPermalink }}"></script>
-  {{ .Page.Scratch.Set "nfJS" "hi" }}
-{{ end }}
+<script src="{{ "js/neoforge.js" | relURL }}"></script>
 
-
-    <div id="filelist{{ replace (.Get 0) "." "" }}" class="fileinfo">
+    <div id="filelist" class="fileinfo">
         <div class="fileinfo__body">
             <div class="selection_row">
                 <div class="selection_block">
@@ -22,8 +17,8 @@
                 </div>
             </div>
             <div class="download_row">
-                <a class="installerlink"><span>Click Here to Download:&nbsp;<br><span class="normal__font__weight">neoforge-0.00.00-00.00.00-installer.jar</span></span></a>
-                <a class="changeloglink"><span>See changelog</span></a>
+                <a id="installerlink"><span>Click Here to Download:&nbsp;<br><span class="normal__font__weight">neoforge-0.00.00-00.00.00-installer.jar</span></span></a>
+                <a id="changeloglink"><span>See changelog</span></a>
             </div>
         </div>
     </div>
@@ -31,7 +26,7 @@
 <script>
     document.addEventListener("readystatechange", evt=>{
         if (evt.target.readyState === "complete") {
-            //loadVersions([{{ .Get 0 }}]);
+            loadVersions();
         }
     });
 </script>
