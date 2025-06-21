@@ -10,6 +10,7 @@ const DOWNLOAD_URL = "https://maven.neoforged.net/releases"
 function setLinks(neoforgeVersion) {
     const neoforgeDropdown = document.getElementById("neoforgeversions");
     const latestNeoforgeVersion = neoforgeDropdown.options[0].value;
+    const selectedMinecraftVersion = "1." + neoforgeVersion.slice(0, 4);
 
     const installerUrl = `${DOWNLOAD_URL}/${NEOFORGE_GAV}/${encodeURIComponent(neoforgeVersion)}/neoforge-${encodeURIComponent(neoforgeVersion)}-installer.jar`;
     let changelogUrl = "/changelog";
@@ -19,7 +20,7 @@ function setLinks(neoforgeVersion) {
 
     const installerLink = document.getElementById("installerlink");
     installerLink.href = installerUrl;
-    installerLink.innerHTML = `<span>Click Here to Download:&nbsp;<br><span class="normal__font__weight">neoforge-${latestMinecraftVersion}-${latestNeoForgeVersion}-installer.jar</span></span>`;
+    installerLink.innerHTML = `<span>Click Here to Download:&nbsp;<br><span class="normal__font__weight">neoforge-${selectedMinecraftVersion}-${neoforgeVersion}-installer.jar</span></span>`;
     
     document.getElementById("changeloglink").href = changelogUrl;
 }
