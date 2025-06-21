@@ -7,6 +7,14 @@ const DOWNLOAD_URL = "https://maven.neoforged.net/releases"
 // For legacy version(s): https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/forge?filter=1.20.1
 // To filter a specific MC version: https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/neoforge?filter=20.4
 
+function removeAllOptions(selectElement) {
+   let i;
+   let length = selectElement.options.length - 1
+   for(i = length; i >= 0; i--) {
+      selectElement.remove(i);
+   }
+}
+
 function setLinks(neoforgeVersion) {
     const neoforgeDropdown = document.getElementById("neoforgeversions");
     const latestNeoforgeVersion = neoforgeDropdown.options[0].value;
@@ -28,29 +36,31 @@ function setLinks(neoforgeVersion) {
 function minecraftValueChanged(selectedMinecraftVersion) {
     var neoforgeVersionPrefixForCurrentMinecraft = selectedMinecraftVersion.slice(2, 6);
 
+    const allNeoforgeVersionDropdown = document.getElementById("allneoforgeversions");
     const neoforgeDropdown = document.getElementById("neoforgeversions");
-    let newestNeoforgeForCurrentMinecraft = undefined;
-    for (var index = 0; index < neoforgeDropdown.options.length; index++) {
-        const option = neoforgeDropdown.options[index];
-        const neoforgeVersion = option.value;
-        // Hide versions that are not for the currently selected mc version
-        if (!neoforgeVersion.startsWith(neoforgeVersionPrefixForCurrentMinecraft)) {
-            option.hidden = true;
-            option.disabled = true;
-            option.style.display = 'hidden';
-            option.selected = false;
-        }
-        // Unhide versions that are for currently selected mc version
-        else {
-            option.hidden = false;
-            option.disabled = false;
-            option.style.display = 'block';
 
-            if (newestNeoforgeForCurrentMinecraft == undefined) {
-                newestNeoforgeForCurrentMinecraft = neoforgeVersion;
-                option.selected = true;
-            }
+    // Nuke all options as we will re-add the new eligible versions
+    removeAllOptions(neoforgeDropdown);
+    
+    let newestNeoforgeForCurrentMinecraft = undefined;
+    for (var index = 0; index < allNeoforgeVersionDropdown.options.length; index++) {
+        const option = allNeoforgeVersionDropdown.options[index];
+        const neoforgeVersion = option.value;
+
+        // Skip versions that are not eligible for current minecraft version
+        if (!neoforgeVersion.startsWith(neoforgeVersionPrefixForCurrentMinecraft)) {
+            continue;
         }
+
+        var neoforgeVersionOption = document.createElement('option');
+        neoforgeVersionOption.value = neoforgeVersion;
+        neoforgeVersionOption.innerHTML = neoforgeVersion;
+        if (newestNeoforgeForCurrentMinecraft == undefined) {
+            newestNeoforgeForCurrentMinecraft = neoforgeVersion;
+            neoforgeVersionOption.selected = true;
+        }
+
+        neoforgeDropdown.appendChild(neoforgeVersionOption);
     }
 
     setLinks(newestNeoforgeForCurrentMinecraft);
@@ -129,12 +139,13 @@ async function loadVersions() {
         });
         document.getElementById("minecraftversionscontainer").appendChild(minecraftVersionSelect);
 
-        // Creates the select element for NeoForge versions
-        var neoforgeVersionSelect = document.createElement('select');
-        neoforgeVersionSelect.name = 'NeoForge Versions';
-        neoforgeVersionSelect.id = 'neoforgeversions';
-        neoforgeVersionSelect.onchange = function(){neoforgeValueChanged(this.value);};
-        var neoforgeVersionPrefixForCurrentMinecraft = latestNeoForgeVersion.slice(0, 4);
+        // Creates the hidden select element for holding all neoforge versions.
+        // We need to do this because Safari will show hidden/disabled option elements. Thus this workaround
+        var allNeoforgeVersionSelect = document.createElement('select');
+        allNeoforgeVersionSelect.id = 'allneoforgeversions';
+        allNeoforgeVersionSelect.hidden = true;
+        allNeoforgeVersionSelect.disabled = true;
+        allNeoforgeVersionSelect.style.display = 'none';
         // Versions url always gives list of versions from oldest to newest (exception of april fools versions which we will skip)
         // So iterating backwards will let us have newest be first option in dropdown.
         for (let index = versions.length - 1; index >= 0; index--) {   
@@ -146,11 +157,28 @@ async function loadVersions() {
                 if (index == 0) {
                     neoforgeVersionOption.selected = true;
                 }
-                // Hide versions that are not for the currently selected mc version
-                if (!neoforgeVersion.startsWith(neoforgeVersionPrefixForCurrentMinecraft)) {
-                    neoforgeVersionOption.hidden = true;
-                    neoforgeVersionOption.disabled = true;
-                    neoforgeVersionOption.style.display = 'hidden';
+                allNeoforgeVersionSelect.appendChild(neoforgeVersionOption);
+            }
+        }
+        document.querySelector(".fileinfo__body").appendChild(allNeoforgeVersionSelect);
+        
+        // Creates the select element for NeoForge versions
+        var neoforgeVersionSelect = document.createElement('select');
+        neoforgeVersionSelect.name = 'NeoForge Versions';
+        neoforgeVersionSelect.id = 'neoforgeversions';
+        neoforgeVersionSelect.onchange = function(){neoforgeValueChanged(this.value);};
+        var neoforgeVersionPrefixForCurrentMinecraft = latestNeoForgeVersion.slice(0, 4);
+        // Versions url always gives list of versions from oldest to newest (exception of april fools versions which we will skip)
+        // So iterating backwards will let us have newest be first option in dropdown.
+        for (let index = versions.length - 1; index >= 0; index--) {   
+            const neoforgeVersion = versions[index];
+             // Only get the neoforge versions for current minecraft version
+            if (!neoforgeVersion.startsWith("0") && neoforgeVersion.startsWith(neoforgeVersionPrefixForCurrentMinecraft)) {
+                var neoforgeVersionOption = document.createElement('option');
+                neoforgeVersionOption.value = neoforgeVersion;
+                neoforgeVersionOption.innerHTML = neoforgeVersion;
+                if (index == 0) {
+                    neoforgeVersionOption.selected = true;
                 }
                 neoforgeVersionSelect.appendChild(neoforgeVersionOption);
             }
