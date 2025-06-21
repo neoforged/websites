@@ -8,8 +8,14 @@ const DOWNLOAD_URL = "https://maven.neoforged.net/releases"
 // To filter a specific MC version: https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/neoforge?filter=20.4
 
 function setLinks(neoforgeVersion) {
+    const neoforgeDropdown = document.getElementById("neoforgeversions");
+    const latestNeoforgeVersion = neoforgeDropdown.options[0].value;
+
     const installerUrl = `${DOWNLOAD_URL}/${NEOFORGE_GAV}/${encodeURIComponent(neoforgeVersion)}/neoforge-${encodeURIComponent(neoforgeVersion)}-installer.jar`;
-    const changelogUrl = `${DOWNLOAD_URL}/${NEOFORGE_GAV}/${encodeURIComponent(neoforgeVersion)}/neoforge-${encodeURIComponent(neoforgeVersion)}-changelog.txt`;
+    let changelogUrl = "/changelog";
+    if (neoforgeVersion != latestNeoforgeVersion) {
+        changelogUrl = `${DOWNLOAD_URL}/${NEOFORGE_GAV}/${encodeURIComponent(neoforgeVersion)}/neoforge-${encodeURIComponent(neoforgeVersion)}-changelog.txt`;
+    }
 
     document.getElementById("installerlink").href = installerUrl;
     document.getElementById("changeloglink").href = changelogUrl;
@@ -24,9 +30,10 @@ function minecraftValueChanged(selectedMinecraftVersion) {
         const option = neoforgeDropdown.options[index];
         const neoforgeVersion = option.value;
         // Hide versions that are not for the currently selected mc version
-        if (!neoforgeVersion.startswith(neoforgeVersionPrefixForCurrentMinecraft)) {
+        if (!neoforgeVersion.startsWith(neoforgeVersionPrefixForCurrentMinecraft)) {
             option.hidden = true;
             option.disabled = true;
+            option.selected = false;
         }
         // Unhide versions that are for currently selected mc version
         else {
@@ -35,6 +42,7 @@ function minecraftValueChanged(selectedMinecraftVersion) {
 
             if (newestNeoforgeForCurrentMinecraft == undefined) {
                 newestNeoforgeForCurrentMinecraft = neoforgeVersion;
+                option.selected = true;
             }
         }
     }
@@ -61,15 +69,15 @@ async function loadVersions() {
     }
 
     if (neoforgeVersionsJson) {
-        const {neoforgeVersions} = neoforgeVersionsJson;
+        const {versions} = neoforgeVersionsJson;
         const minecraftVersions = new Set([]);
-        for (const neoforgeVersion of neoforgeVersions) {
-            if (!neoforgeVersion.startswith("0")) { // Skip 0.25w14craftmine and other april fools versions
+        for (const neoforgeVersion of versions) {
+            if (!neoforgeVersion.startsWith("0")) { // Skip 0.25w14craftmine and other april fools versions
                 minecraftVersions.add("1." + neoforgeVersion.slice(0, 4)); // Grab the Minecraft version from the NeoForge versions
             }
         }
         // Sorts the mc versions so newest is topmost. Done because we used a set to prevent duplicate minecraft versions quickly.
-        const sortedMinecraftVersion = minecraftVersions.sort(function (a,b) {
+        const sortedMinecraftVersion = Array.from(minecraftVersions).sort(function (a,b) {
             return b.localeCompare(a, undefined, { numeric: true, sensitivity: 'base' });
         });
         
@@ -88,8 +96,8 @@ async function loadVersions() {
                     </div>
                 </div>
                 <div class="download_row">
-                    <a id="installerlink" href="${latestInstallerUrl}><span>Click Here to Download:&nbsp;<br><span class="normal__font__weight">neoforge-${latestMinecraftVersion}-${latestNeoForgeVersion}-installer.jar</span></span></a>
-                    <a id="changeloglink" href="${latestChangelogUrl}><span>See changelog</span></a>
+                    <a id="installerlink" href="${latestInstallerUrl}"><span>Click Here to Download:&nbsp;<br><span class="normal__font__weight">neoforge-${latestMinecraftVersion}-${latestNeoForgeVersion}-installer.jar</span></span></a>
+                    <a id="changeloglink" href="${latestChangelogUrl}"><span>See changelog</span></a>
                 </div>
             </div>
         `;
@@ -123,9 +131,9 @@ async function loadVersions() {
         var neoforgeVersionPrefixForCurrentMinecraft = latestNeoForgeVersion.slice(0, 4);
         // Versions url always gives list of versions from oldest to newest (exception of april fools versions which we will skip)
         // So iterating backwards will let us have newest be first option in dropdown.
-        for (let index = neoforgeVersions.length - 1; index >= 0; index--) {   
-            const neoforgeVersion = neoforgeVersions[index];
-            if (!neoforgeVersion.startswith("0")) { // Skip 0.25w14craftmine and other april fools versions
+        for (let index = versions.length - 1; index >= 0; index--) {   
+            const neoforgeVersion = versions[index];
+            if (!neoforgeVersion.startsWith("0")) { // Skip 0.25w14craftmine and other april fools versions
                 var neoforgeVersionOption = document.createElement('option');
                 neoforgeVersionOption.value = neoforgeVersion;
                 neoforgeVersionOption.innerHTML = neoforgeVersion;
@@ -133,7 +141,7 @@ async function loadVersions() {
                     neoforgeVersionOption.selected = true;
                 }
                 // Hide versions that are not for the currently selected mc version
-                if (!neoforgeVersion.startswith(neoforgeVersionPrefixForCurrentMinecraft)) {
+                if (!neoforgeVersion.startsWith(neoforgeVersionPrefixForCurrentMinecraft)) {
                     neoforgeVersionOption.hidden = true;
                     neoforgeVersionOption.disabled = true;
                 }
