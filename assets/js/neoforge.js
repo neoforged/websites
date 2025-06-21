@@ -7,105 +7,139 @@ const DOWNLOAD_URL = "https://maven.neoforged.net/releases"
 // For legacy version(s): https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/forge?filter=1.20.1
 // To filter a specific MC version: https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/neoforge?filter=20.4
 
-async function loadVersions() {
-    let fn = "neoforge";
-    let mcvers;
-    let dropDown_VAL = ` open="open"`;
-    let badges_beta = "";
-    let badges_new = "";
-    let badges_legacy = "";
-    let changelogUrl = "/changelog";
-
-    let allVersionUrl = new URL(VERSIONS_ENDPOINT + encodeURIComponent(NEOFORGE_GAV));
-    let versionsJson;
-
-    try {
-        const response = await fetch(allVersionUrl);
-        versionsJson = await response.json();
-    } catch (error) {
-        if (error instanceof SyntaxError) {
-            console.log("There was a SyntaxError parsing the JSON response from the maven server.", error);
-        } else {
-            console.log("There was an error processing the request for a new version.", error);
-        }
-    }
-
-    if (versionsJson) {
-        const {versions} = versionJson;
-        if (mcVersion == "latest") {
-            mcvers = "1." + version.slice(0, 4);
-        }
-
-        const vs = `filelist${mcVersion}`.split(".").join("");
-
-        document.getElementById(vs).innerHTML = `
-            <details${dropDown_VAL}>
-            <summary class="fileinfo__header">${badges_beta} ${badges_new} ${badges_legacy} NeoForge <code>${version}</code> for Minecraft ${mcvers}</summary>
-            <div class="fileinfo__body">
-            <a href="${installerUrl}"><span class="fileinfo__icon"><i class="bi-file-earmark-zip-fill" style="font-size: 2rem;"></i></span>
-            <span class="fileinfo__content"><span>Latest <em>NeoForge</em> Installer</span><span class="installer-version">${fn}-${version}-installer.jar</span></span></a>
-            <a href="${changelogUrl}"><span class="fileinfo__icon"><i class="bi-file-earmark-text-fill" style="font-size: 2rem;"></i></span>
-            <span class="fileinfo__content"><span>Latest Changelog</span><span>${version}</span></span></a>
-            </div>
-            </details>
-        `;
-
-        document.querySelector(vs).innerHTML = `
-            <div class="fileinfo__body">
-                <div class="selection_row">
-                    <div class="selection_block">
-                        <label for="minecraftversions">Minecraft Version:&nbsp;</label>
-                        <select name="Minecraft Versions" id="minecraftversions" onchange="minecraftValueChanged(this.value)">
-                            <option value="">Loading...</option>
-                        </select>
-                    </div>
-                    <div class="selection_block">
-                        <label for="neoforgeversions">NeoForge Version:&nbsp;</label>
-                        <select name="Neoforge Versions" id="neoforgeversions" onchange="neoforgeValueChanged(this.value)">
-                            <option value="">Loading...</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="download_row">
-                    <a id="installerlink" href="${installerUrl}><span>Click Here to Download:&nbsp;<br><span class="normal__font__weight">neoforge-0.00.00-00.00.00-installer.jar</span></span></a>
-                    <a id="changeloglink" href="${changelogUrl}><span>See changelog</span></a>
-                </div>
-            </div>
-        `;
-    }
-}
-
-async function minecraftValueChanged(selectedMinecraftVersion) {
-
-    const selectedMinecraftVersion = document.getElementById("minecraftversions").value;
-    let allVersionUrl = new URL(VERSIONS_ENDPOINT + encodeURIComponent(NEOFORGE_GAV));
-
-    let versionJson;
-    try {
-        const response = await fetch(allVersionUrl);
-        versionJson = await response.json();
-    } catch (error) {
-        if (error instanceof SyntaxError) {
-            console.log("There was a SyntaxError parsing the JSON response from the maven server.", error);
-        } else {
-            console.log("There was an error processing the request for a new version.", error);
-        }
-    }
-
-    const neoforgeDropdown = document.getElementById("neoforgeversions");
-    //const selectedNeoforgeVersions = .value;
-
-    setLinks(selectedNeoforgeVersions);
-}
-
-async function neoforgeValueChanged(selectedNeoforgeVersions) {
-    setLinks(selectedNeoforgeVersions);
-}
-
-async function setLinks(neoforgeVersion) {
-    const installerUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(neoforgeVersion)}/${fn}-${encodeURIComponent(neoforgeVersion)}-installer.jar`;
-    const changelogUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(neoforgeVersion)}/${fn}-${encodeURIComponent(neoforgeVersion)}-changelog.txt`;
+function setLinks(neoforgeVersion) {
+    const installerUrl = `${DOWNLOAD_URL}/${NEOFORGE_GAV}/${encodeURIComponent(neoforgeVersion)}/neoforge-${encodeURIComponent(neoforgeVersion)}-installer.jar`;
+    const changelogUrl = `${DOWNLOAD_URL}/${NEOFORGE_GAV}/${encodeURIComponent(neoforgeVersion)}/neoforge-${encodeURIComponent(neoforgeVersion)}-changelog.txt`;
 
     document.getElementById("installerlink").href = installerUrl;
     document.getElementById("changeloglink").href = changelogUrl;
+}
+
+function minecraftValueChanged(selectedMinecraftVersion) {
+    var neoforgeVersionPrefixForCurrentMinecraft = selectedMinecraftVersion.slice(2, 6);
+
+    const neoforgeDropdown = document.getElementById("neoforgeversions");
+    let newestNeoforgeForCurrentMinecraft = undefined;
+    for (var index = 0; index < neoforgeDropdown.options.length; index++) {
+        const option = neoforgeDropdown.options[index];
+        const neoforgeVersion = option.value;
+        // Hide versions that are not for the currently selected mc version
+        if (!neoforgeVersion.startswith(neoforgeVersionPrefixForCurrentMinecraft)) {
+            option.hidden = true;
+            option.disabled = true;
+        }
+        // Unhide versions that are for currently selected mc version
+        else {
+            option.hidden = false;
+            option.disabled = false;
+
+            if (newestNeoforgeForCurrentMinecraft == undefined) {
+                newestNeoforgeForCurrentMinecraft = neoforgeVersion;
+            }
+        }
+    }
+
+    setLinks(newestNeoforgeForCurrentMinecraft);
+}
+
+function neoforgeValueChanged(selectedNeoforgeVersions) {
+    setLinks(selectedNeoforgeVersions);
+}
+
+async function loadVersions() {
+    let allVersionUrl = new URL(VERSIONS_ENDPOINT + encodeURIComponent(NEOFORGE_GAV));
+    let neoforgeVersionsJson;
+    try {
+        const response = await fetch(allVersionUrl);
+        neoforgeVersionsJson = await response.json();
+    } catch (error) {
+        if (error instanceof SyntaxError) {
+            console.log("There was a SyntaxError parsing the JSON response from the maven server.", error);
+        } else {
+            console.log("There was an error processing the request for a new version.", error);
+        }
+    }
+
+    if (neoforgeVersionsJson) {
+        const {neoforgeVersions} = neoforgeVersionsJson;
+        const minecraftVersions = new Set([]);
+        for (const neoforgeVersion of neoforgeVersions) {
+            if (!neoforgeVersion.startswith("0")) { // Skip 0.25w14craftmine and other april fools versions
+                minecraftVersions.add("1." + neoforgeVersion.slice(0, 4)); // Grab the Minecraft version from the NeoForge versions
+            }
+        }
+        // Sorts the mc versions so newest is topmost. Done because we used a set to prevent duplicate minecraft versions quickly.
+        const sortedMinecraftVersion = minecraftVersions.sort(function (a,b) {
+            return b.localeCompare(a, undefined, { numeric: true, sensitivity: 'base' });
+        });
+        
+        const latestNeoForgeVersion = versions[versions.length - 1];
+        const latestMinecraftVersion = sortedMinecraftVersion[0];
+        const latestInstallerUrl = `${DOWNLOAD_URL}/${NEOFORGE_GAV}/${encodeURIComponent(latestNeoForgeVersion)}/neoforge-${encodeURIComponent(latestNeoForgeVersion)}-installer.jar`;
+        const latestChangelogUrl = "/changelog";
+        document.getElementById("filelist").innerHTML = `
+            <div class="fileinfo__body">
+                <div class="selection_row">
+                    <div class="selection_block" id="minecraftversionscontainer">
+                        <label for="minecraftversions">Minecraft Version:&nbsp;</label>
+                    </div>
+                    <div class="selection_block"id="neoforgeversionscontainer">
+                        <label for="neoforgeversions">NeoForge Version:&nbsp;</label>
+                    </div>
+                </div>
+                <div class="download_row">
+                    <a id="installerlink" href="${latestInstallerUrl}><span>Click Here to Download:&nbsp;<br><span class="normal__font__weight">neoforge-${latestMinecraftVersion}-${latestNeoForgeVersion}-installer.jar</span></span></a>
+                    <a id="changeloglink" href="${latestChangelogUrl}><span>See changelog</span></a>
+                </div>
+            </div>
+        `;
+
+        
+        // Creates the select element for Minecraft versions
+        var minecraftVersionSelect = document.createElement('select');
+        minecraftVersionSelect.name = 'Minecraft Versions';
+        minecraftVersionSelect.id = 'minecraftversions';
+        minecraftVersionSelect.onchange = function(){minecraftValueChanged(this.value);};
+        let firstOption = true;
+        sortedMinecraftVersion.forEach(function(minecraftVersion) {
+
+            var minecraftVersionOption = document.createElement('option');
+            minecraftVersionOption.value = minecraftVersion;
+            minecraftVersionOption.innerHTML = minecraftVersion;
+            if (firstOption) {
+                minecraftVersionOption.selected = true;
+            }
+            minecraftVersionSelect.appendChild(minecraftVersionOption);
+
+            firstOption = false;
+        });
+        document.getElementById("minecraftversionscontainer").appendChild(minecraftVersionSelect);
+
+        // Creates the select element for NeoForge versions
+        var neoforgeVersionSelect = document.createElement('select');
+        neoforgeVersionSelect.name = 'NeoForge Versions';
+        neoforgeVersionSelect.id = 'neoforgeversions';
+        neoforgeVersionSelect.onchange = function(){neoforgeValueChanged(this.value);};
+        var neoforgeVersionPrefixForCurrentMinecraft = latestNeoForgeVersion.slice(0, 4);
+        // Versions url always gives list of versions from oldest to newest (exception of april fools versions which we will skip)
+        // So iterating backwards will let us have newest be first option in dropdown.
+        for (let index = neoforgeVersions.length - 1; index >= 0; index--) {   
+            const neoforgeVersion = neoforgeVersions[index];
+            if (!neoforgeVersion.startswith("0")) { // Skip 0.25w14craftmine and other april fools versions
+                var neoforgeVersionOption = document.createElement('option');
+                neoforgeVersionOption.value = neoforgeVersion;
+                neoforgeVersionOption.innerHTML = neoforgeVersion;
+                if (index == 0) {
+                    neoforgeVersionOption.selected = true;
+                }
+                // Hide versions that are not for the currently selected mc version
+                if (!neoforgeVersion.startswith(neoforgeVersionPrefixForCurrentMinecraft)) {
+                    neoforgeVersionOption.hidden = true;
+                    neoforgeVersionOption.disabled = true;
+                }
+                neoforgeVersionSelect.appendChild(neoforgeVersionOption);
+            }
+        }
+        document.getElementById("neoforgeversionscontainer").appendChild(neoforgeVersionSelect);
+    }
 }

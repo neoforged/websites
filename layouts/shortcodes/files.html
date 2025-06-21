@@ -1,4 +1,8 @@
-<script src="{{ "js/neoforge.js" | relURL }}"></script>
+{{ if not ( .Page.Scratch.Get "nfJS") }}
+  {{ $js:= resources.Get "js/neoforge.js" }}
+  <script src="{{ $js.RelPermalink }}"></script>
+  {{ .Page.Scratch.Set "nfJS" "hi" }}
+{{ end }}
 
     <div id="filelist" class="fileinfo">
         <div class="fileinfo__body">
