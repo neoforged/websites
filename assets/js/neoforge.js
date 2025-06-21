@@ -16,8 +16,8 @@ function removeAllOptions(selectElement) {
 }
 
 function setLinks(neoforgeVersion) {
-    const neoforgeDropdown = document.getElementById("neoforgeversions");
-    const latestNeoforgeVersion = neoforgeDropdown.options[0].value;
+    const allNeoforgeVersionDropdown = document.getElementById("allneoforgeversions");
+    const latestNeoforgeVersion = allNeoforgeVersionDropdown.options[0].value;
     const selectedMinecraftVersion = "1." + neoforgeVersion.slice(0, 4);
 
     const installerUrl = `${DOWNLOAD_URL}/${NEOFORGE_GAV}/${encodeURIComponent(neoforgeVersion)}/neoforge-${encodeURIComponent(neoforgeVersion)}-installer.jar`;
