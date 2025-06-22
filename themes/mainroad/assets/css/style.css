@@ -1108,17 +1108,14 @@ summary code:hover {
 	font-weight: 700;
 	display: flex;
 	flex-direction: row;
-	flex: 1 0 auto;
 	justify-content: center;
 	align-items: stretch;
-	gap: 10px;
 	gap: .625rem;
 }
 
 .fileinfo .fileinfo__body .selection_row {
 	display: flex;
 	flex-direction: column;
-	flex-grow: 1;
 	align-items: start;
 }
 
@@ -1308,7 +1305,7 @@ summary code:hover {
 	}
 }
 
-@media screen and (max-width: 1332px) {
+@media screen and (max-width: 1032px) {
 	.filelist {
 		margin-left: 0px;
 		margin-right: auto;
