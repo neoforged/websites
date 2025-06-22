@@ -1128,6 +1128,12 @@ summary code:hover {
 	position: relative;
 }
 
+.fileinfo .fileinfo__body .selection_row .selection_block select{
+	max-width: 200px;
+	flex-grow: 1;
+	margin-left: auto;
+}
+
 .fileinfo .fileinfo__body a {
 	margin: 0px 10px 10px 10px;
 	padding: .625rem;
@@ -1155,72 +1161,6 @@ summary code:hover {
 .installer-version {
 	font-family: monospace;
 }
-
-/* Modified custom dropdown element from: https://www.w3schools.com/howto/howto_js_dropdown.asp */
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-	position: relative;
-	margin-left: auto;
-	display: inline;
-}
-
-/* Dropdown Button */
-.dropbtn {
-	background-color: #efefef;
-	color: rgb(0, 0, 0);
-	text-align: left;
-	width: 200px;
-	font-size: 16px;
-	border-radius: 4px;
-	border: 1px rgb(146, 146, 146);
-	border-style: solid;
-	cursor: pointer;
-}
-
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-	background-color: #c5c5c5;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-	display: none;
-	position: absolute;
-	background-color: #f1f1f1;
-	width: 200px;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	z-index: 1;
-	border-radius: 4px;
-	max-height: 180px;
-	overflow: scroll;
-	overflow-x: hidden;
-}
-
-.selectedOption {
-	background-color: #e0c388;
-}
-
-/* Button inside the dropdown */
-.dropdown-content button {
-	color: black;
-	text-decoration: none;
-	display: block;
-	border-radius: 0;
-	border: none;
-	width: 100%;
-	text-align: left;
-	border-radius: 4px;
-}
-
-/* Change color of dropdown button on hover */
-.dropdown-content button:hover {
-	background-color: #d2d2d2;
-}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {
-	display: block;
-} 
 
 /* Badges */
 .badges {
@@ -1465,12 +1405,11 @@ summary code:hover {
 		flex-direction: column;
 	}
 
-	.fileinfo .fileinfo__body .selection_row .selection_block .dropdown {
-		max-width: fit-content;
+	.fileinfo .fileinfo__body .selection_row .selection_block select{
+		max-width: none;
 		margin-top: 4px;
 		margin-bottom: 4px;
-		margin-left: auto;
-		margin-right: auto;
+		margin-left: 0px;
 	}
 }
 
