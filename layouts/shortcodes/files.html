@@ -7,25 +7,33 @@
   {{ .Page.Scratch.Set "nfJS" "hi" }}
 {{ end }}
 
-    <div id="filelist" class="fileinfo">
-        <div class="fileinfo__body">
-            <div class="selection_row">
-                <div class="selection_block">
-                    <label for="minecraftversions">Minecraft Version:&nbsp;</label>
-                    <select name="Minecraft Versions" id="minecraftversions" class="select2-mode" disabled>
-                        <option value="">Loading...</option>
-                    </select>
+    <div id="installerSection" class="installer_section">
+        <div>
+            <h1>NeoForge installer files</h1>
+            <p>You can find a direct link to our installer files here:</p>
+        </div>
+
+        <div id="filelist" class="fileinfo">
+            <div class="fileinfo__body">
+                <div class="selection_row">
+                    <div class="selection_block">
+                        <label for="minecraftversions">Minecraft Version:&nbsp;</label>
+                        <select name="Minecraft Versions" id="minecraftversions" class="select2-mode" disabled>
+                            <option value="">Loading...</option>
+                        </select>
+                    </div>
+                    <div class="selection_block">
+                        <label for="neoforgeversions">NeoForge Version:&nbsp;</label>
+                        <select name="Neoforge Versions" id="neoforgeversions" class="select2-mode" disabled>
+                            <option value="">Loading...</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="selection_block">
-                    <label for="neoforgeversions">NeoForge Version:&nbsp;</label>
-                    <select name="Neoforge Versions" id="neoforgeversions" class="select2-mode" disabled>
-                        <option value="">Loading...</option>
-                    </select>
+                <!--Inlined styles to ensure the one time loading phase looks correct and matched populated phase-->
+                <div class="download_row" style="flex-grow: 2;">
+                    <a id="installerlink" style="line-height: 320%;"><span>Loading...</span></a>
+                    <a id="changeloglink"><span>Loading...</span></a>
                 </div>
-            </div>
-            <div class="download_row">
-                <a id="installerlink"><span>Loading...</span></a>
-                <a id="changeloglink"><span>Loading...</span></a>
             </div>
         </div>
     </div>

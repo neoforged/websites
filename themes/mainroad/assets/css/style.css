@@ -1091,7 +1091,6 @@ summary code:hover {
 	margin: 0 0 1.25rem;
 	margin-bottom: 16px;
 	border-radius: 0.2rem;
-	max-width: 500px;
 }
 
 .fileinfo .fileinfo__header {
@@ -1108,7 +1107,8 @@ summary code:hover {
 	font-size: 1rem;
 	font-weight: 700;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	flex: 1 0 auto;
 	justify-content: center;
 	align-items: stretch;
 	gap: 10px;
@@ -1118,6 +1118,14 @@ summary code:hover {
 .fileinfo .fileinfo__body .selection_row {
 	display: flex;
 	flex-direction: column;
+	flex-grow: 1;
+	align-items: start;
+}
+
+
+.fileinfo .fileinfo__body .download_row {
+	margin-top: 10px;
+	flex-grow: 1;
 }
 
 .fileinfo .fileinfo__body .selection_row .selection_block {
@@ -1135,8 +1143,9 @@ summary code:hover {
 
 .fileinfo .fileinfo__body .selection_row .selection_block .select2 {
 	flex-grow: 1;
-	max-width: 200px;
-	margin-left: auto;
+	width: 160px !important;
+	margin-left: 10px;
+	margin-right: auto;
 	text-align: left;
 	color: black;
 }
@@ -1299,6 +1308,31 @@ summary code:hover {
 	}
 }
 
+@media screen and (max-width: 1332px) {
+	.filelist {
+		margin-left: 0px;
+		margin-right: auto;
+	}
+
+	.fileinfo {
+		max-width: 500px;
+	}
+
+	.fileinfo .fileinfo__body {
+		flex-direction: column;
+	}
+
+	.fileinfo .fileinfo__body .selection_row .selection_block .select2 {
+		margin-left: auto;
+		margin-right: 0px;
+		flex-grow: 0;
+	}
+
+	.fileinfo .fileinfo__body .selection_row {
+		align-items: normal;
+	}
+}
+
 @media screen and (max-width: 900px) {
 	.container--outer {
 		width: 100%;
@@ -1438,7 +1472,7 @@ summary code:hover {
 	}
 
 	.fileinfo .fileinfo__body .selection_row .selection_block .select2 {
-		width: 100% !important; /* Override the select2's inlined width styling so we can do responsive display better */ 
+		width: 80% !important; /* Override the select2's inlined width styling so we can do responsive display better */ 
 		margin-top: 4px;
 		margin-bottom: 4px;
 		margin-right: auto;

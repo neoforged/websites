@@ -9,8 +9,6 @@ summary: |
 description: |
     NeoForged installer files, as well as news and other information from the NeoForged project
 ---
-# NeoForge installer files
-You can find a direct link to our latest installer files below.
 
 {{< files >}}
 
