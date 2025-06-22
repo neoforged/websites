@@ -1133,6 +1133,17 @@ summary code:hover {
 	max-width: 200px;
 	margin-left: auto;
 	text-align: left;
+	color: black;
+}
+
+.select2-search__field {
+	background-color: rgb(225, 225, 225);
+	color: black;
+}
+
+.select2-dropdown {
+	background-color: white;
+	color: black;
 }
 
 .fileinfo .fileinfo__body a {
@@ -1477,7 +1488,7 @@ a.anchor-wrapper:hover, a.anchor-wrapper:focus {
 	--color-border-badges-new: #8b5460;
 	--color-border-badges-legacy: #227778;
 	--color-background: #222427;
-	--color-download: #d7742f;
+	--color-download: #aa5518;
 	--color-download-highlight: #e68c37;
 	--color-box: #2e3135;
 	--color-outer: #111111;
