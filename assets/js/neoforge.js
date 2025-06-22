@@ -11,10 +11,10 @@ function setLinks(neoforgeVersion) {
     const selectedMinecraftVersion = "1." + neoforgeVersion.slice(0, 4);
 
     const mainMinecraftDropdown = document.getElementById("minecraft-versions");
-    mainMinecraftDropdown.innerHTML = `${selectedMinecraftVersion}<span style="float: inline-end;">⮟</span>`;
+    mainMinecraftDropdown.innerHTML = `${selectedMinecraftVersion}<span style="float: inline-end;">▼</span>`;
 
     const mainNeoforgeDropdown = document.getElementById("neoforge-versions");
-    mainNeoforgeDropdown.innerHTML = `${neoforgeVersion}<span style="float: inline-end;">⮟</span>`;
+    mainNeoforgeDropdown.innerHTML = `${neoforgeVersion}<span style="float: inline-end;">▼</span>`;
 
     const allNeoforgeVersionDropdown = document.getElementById("all-neoforge-versions");
     const latestNeoforgeVersion = allNeoforgeVersionDropdown.options[0].value;
@@ -221,7 +221,7 @@ function createDropdownButton(name, id, optionClass, dataname, listOfButtonOptio
     populateDropdown(dropdownContentDiv, optionClass, dataname, listOfButtonOptions, optionOnclickFunction);
 
     // Default to newest version displayed
-    dropdownMainButton.innerHTML = `${listOfButtonOptions[0]}<span style="float: inline-end;">⮟</span>`;
+    dropdownMainButton.innerHTML = `${listOfButtonOptions[0]}<span style="float: inline-end;">▼</span>`;
     
     dropdownContainer.appendChild(dropdownMainButton);
     dropdownContainer.appendChild(dropdownContentDiv);
