@@ -1129,11 +1129,11 @@ summary code:hover {
 }
 
 .fileinfo .fileinfo__body .selection_row .selection_block {
-	margin: 10px 10px 0px 10px;
+	margin: 5px 10px 5px 10px;
 	padding: .625rem;
 	display: flex;
 	flex-direction: row;
-	align-items: stretch;
+	align-items: center;
 	justify-content: center;
 	flex: 1 1 0px;
 	text-decoration: none;
@@ -1330,6 +1330,10 @@ summary code:hover {
 
 	.fileinfo .fileinfo__body .selection_row {
 		align-items: normal;
+	}
+
+	.fileinfo .fileinfo__body .download_row {
+		margin-top: 0px;
 	}
 }
 
