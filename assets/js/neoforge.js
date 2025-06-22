@@ -71,7 +71,7 @@ async function loadVersions() {
                     </div>
                 </div>
                 <div class="download_row">
-                    <a id="installerlink" href="${latestInstallerUrl}"><span>Click Here to Download:&nbsp;<br><span class="normal__font__weight">neoforge-${latestMinecraftVersion}-${latestNeoForgeVersion}-installer.jar</span></span></a>
+                    <a id="installerlink" href="${latestInstallerUrl}"><span>Click Here to Download Installer</span></span></a>
                     <a id="changeloglink" href="${latestChangelogUrl}"><span>See changelog</span></a>
                 </div>
             </div>

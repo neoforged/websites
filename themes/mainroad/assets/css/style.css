@@ -1117,6 +1117,8 @@ summary code:hover {
 	display: flex;
 	flex-direction: column;
 	align-items: start;
+	margin-top: 10px;
+	flex-grow: 1;
 }
 
 
@@ -1126,7 +1128,7 @@ summary code:hover {
 }
 
 .fileinfo .fileinfo__body .selection_row .selection_block {
-	margin: 5px 10px 5px 10px;
+	margin: 0px 10px 10px 10px;
 	padding: .625rem;
 	display: flex;
 	flex-direction: row;
