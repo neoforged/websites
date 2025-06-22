@@ -8,16 +8,30 @@
         <div class="fileinfo__body">
             <div class="selection_row">
                 <div class="selection_block">
-                    <label for="minecraftversions">Minecraft Version:&nbsp;</label>
-                    <select name="Minecraft Versions" id="minecraftversions">
-                        <option value="">Loading...</option>
-                    </select>
+                    <label for="minecraft-versions">Minecraft Version:&nbsp;</label>
+                    <div class="dropdown">
+                        <button
+                            name="Minecraft Versions"
+                            id="minecraft-versions"
+                            class="dropbtn"
+                            data-dropdown-content-id="minecraft-version-dropdown-content"
+                        >
+                            Loading...
+                        </button>
+                    </div> 
                 </div>
                 <div class="selection_block">
-                    <label for="neoforgeversions">NeoForge Version:&nbsp;</label>
-                    <select name="Neoforge Versions" id="neoforgeversions">
-                        <option value="">Loading...</option>
-                    </select>
+                    <label for="neoforge-versions">NeoForge Version:&nbsp;</label>
+                    <div class="dropdown">
+                        <button
+                            name="Neoforge Versions"
+                            id="neoforge-versions"
+                            class="dropbtn"
+                            data-dropdown-content-id="neoforge-version-dropdown-content"
+                        >
+                            Loading...
+                        </button>
+                    </div> 
                 </div>
             </div>
             <div class="download_row">

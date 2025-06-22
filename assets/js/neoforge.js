@@ -7,23 +7,20 @@ const DOWNLOAD_URL = "https://maven.neoforged.net/releases"
 // For legacy version(s): https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/forge?filter=1.20.1
 // To filter a specific MC version: https://maven.neoforged.net/api/maven/latest/version/releases/net/neoforged/neoforge?filter=20.4
 
-// Used for clearing the NeoForge version dropdown when a new Minecraft version is selected.
-// That way it can be populated with the new eligible NeoForge versions afterwards.
-function removeAllOptions(selectElement) {
-   let i;
-   let length = selectElement.options.length - 1
-   for(i = length; i >= 0; i--) {
-      selectElement.remove(i);
-   }
-}
-
 function setLinks(neoforgeVersion) {
-    const allNeoforgeVersionDropdown = document.getElementById("allneoforgeversions");
-    const latestNeoforgeVersion = allNeoforgeVersionDropdown.options[0].value;
     const selectedMinecraftVersion = "1." + neoforgeVersion.slice(0, 4);
 
+    const mainMinecraftDropdown = document.getElementById("minecraft-versions");
+    mainMinecraftDropdown.innerHTML = `${selectedMinecraftVersion}<span style="float: inline-end;">⮟</span>`;
+
+    const mainNeoforgeDropdown = document.getElementById("neoforge-versions");
+    mainNeoforgeDropdown.innerHTML = `${neoforgeVersion}<span style="float: inline-end;">⮟</span>`;
+
+    const allNeoforgeVersionDropdown = document.getElementById("all-neoforge-versions");
+    const latestNeoforgeVersion = allNeoforgeVersionDropdown.options[0].value;
+
     const installerUrl = `${DOWNLOAD_URL}/${NEOFORGE_GAV}/${encodeURIComponent(neoforgeVersion)}/neoforge-${encodeURIComponent(neoforgeVersion)}-installer.jar`;
-    const installerLink = document.getElementById("installerlink");
+    const installerLink = document.getElementById("installer-link");
     installerLink.href = installerUrl;
     installerLink.innerHTML = `<span>Click Here to Download:&nbsp;<br><span class="normal__font__weight">neoforge-${selectedMinecraftVersion}-${neoforgeVersion}-installer.jar</span></span>`;
     
@@ -33,52 +30,45 @@ function setLinks(neoforgeVersion) {
     if (neoforgeVersion != latestNeoforgeVersion) {
         changelogUrl = `${DOWNLOAD_URL}/${NEOFORGE_GAV}/${encodeURIComponent(neoforgeVersion)}/neoforge-${encodeURIComponent(neoforgeVersion)}-changelog.txt`;
     }
-    document.getElementById("changeloglink").href = changelogUrl;
+    document.getElementById("changelog-link").href = changelogUrl;
 }
 
-function minecraftValueChanged(selectedMinecraftVersion) {
-    var neoforgeVersionPrefixForCurrentMinecraft = selectedMinecraftVersion.slice(2, 6);
+function minecraftValueChanged(optionElement, optionClass) {
+    let neoforgeVersionPrefixForCurrentMinecraft = optionElement.dataset.minecraftVersion.slice(2, 6);
 
-    const allNeoforgeVersionDropdown = document.getElementById("allneoforgeversions");
-    const neoforgeDropdown = document.getElementById("neoforgeversions");
+    // Unselect previous option in dropdown
+    const allRelatedOptions = document.querySelectorAll(`.${optionClass}`);
+    allRelatedOptions.forEach((option) => option.classList.remove("selectedOption"));
+    optionElement.classList.add("selectedOption");
+
+    const allNeoforgeVersionOptions = document.querySelectorAll("#all-neoforge-versions option");
+    const allNeoforgeVersions = [...allNeoforgeVersionOptions].map((option) => option.value);
+    const neoforgeDropdown = document.getElementById("neoforge-versions-dropdown-content");
 
     // Nuke all options as we will re-add the new eligible versions
-    removeAllOptions(neoforgeDropdown);
+    neoforgeDropdown.innerHTML = '';
     
-    let newestNeoforgeForCurrentMinecraft = undefined;
-    for (var index = 0; index < allNeoforgeVersionDropdown.options.length; index++) {
-        const option = allNeoforgeVersionDropdown.options[index];
-        const neoforgeVersion = option.value;
+    // Creates the dropdown of visible eligible NeoForge versions. Already in order of newest to oldest
+    const orderedNeoforgeVersionList = allNeoforgeVersions
+        .filter((neoVersion) => neoVersion.startsWith(neoforgeVersionPrefixForCurrentMinecraft)); // Only get the neoforge versions for current minecraft version
 
-        // Skip versions that are not eligible for current minecraft version
-        if (!neoforgeVersion.startsWith(neoforgeVersionPrefixForCurrentMinecraft)) {
-            continue;
-        }
-
-        var neoforgeVersionOption = document.createElement('option');
-        neoforgeVersionOption.value = neoforgeVersion;
-        neoforgeVersionOption.innerHTML = neoforgeVersion;
-
-        // Since allNeoforgeVersionDropdown is sorted by newest to oldest,
-        // we want to have the newest eligible NeoForge version selected by default when switching Minecraft versions. 
-        if (newestNeoforgeForCurrentMinecraft == undefined) {
-            newestNeoforgeForCurrentMinecraft = neoforgeVersion;
-            neoforgeVersionOption.selected = true;
-        }
-
-        neoforgeDropdown.appendChild(neoforgeVersionOption);
-    }
-
-    setLinks(newestNeoforgeForCurrentMinecraft);
+    populateDropdown(neoforgeDropdown, optionClass, "neoforge-version", orderedNeoforgeVersionList, neoforgeValueChanged);
+    setLinks(orderedNeoforgeVersionList[0]);
 }
 
-function neoforgeValueChanged(selectedNeoforgeVersions) {
-    setLinks(selectedNeoforgeVersions);
+function neoforgeValueChanged(optionElement, optionClass) {
+    // Unselect previous option in dropdown
+    const allRelatedOptions = document.querySelectorAll(`.${optionClass}`);
+    allRelatedOptions.forEach((option) => option.classList.remove("selectedOption"));
+    optionElement.classList.add("selectedOption");
+
+    setLinks(optionElement.dataset.neoforgeVersion);
+    
 }
 
 async function loadVersions() {
     // Reminder, this endpoint will return all NeoForge versions with April Fools versions first, then oldest to newest versions afterwards.
-    let allVersionUrl = new URL(VERSIONS_ENDPOINT + encodeURIComponent(NEOFORGE_GAV));
+    const allVersionUrl = new URL(VERSIONS_ENDPOINT + encodeURIComponent(NEOFORGE_GAV));
     let neoforgeVersionsJson;
     try {
         const response = await fetch(allVersionUrl);
@@ -119,45 +109,36 @@ async function loadVersions() {
         document.getElementById("filelist").innerHTML = `
             <div class="fileinfo__body">
                 <div class="selection_row">
-                    <div class="selection_block" id="minecraftversionscontainer">
-                        <label for="minecraftversions">Minecraft Version:&nbsp;</label>
+                    <div class="selection_block" id="minecraft-versions-container">
+                        <label for="minecraft-versions">Minecraft Version:&nbsp;</label>
                     </div>
-                    <div class="selection_block"id="neoforgeversionscontainer">
-                        <label for="neoforgeversions">NeoForge Version:&nbsp;</label>
+                    <div class="selection_block" id="neoforge-versions-container">
+                        <label for="neoforge-versions">NeoForge Version:&nbsp;</label>
                     </div>
                 </div>
                 <div class="download_row">
-                    <a id="installerlink" href="${latestInstallerUrl}"><span>Click Here to Download:&nbsp;<br><span class="normal__font__weight">neoforge-${latestMinecraftVersion}-${latestNeoForgeVersion}-installer.jar</span></span></a>
-                    <a id="changeloglink" href="${latestChangelogUrl}"><span>See changelog</span></a>
+                    <a id="installer-link" href="${latestInstallerUrl}"><span>Click Here to Download:&nbsp;<br><span class="normal__font__weight">neoforge-${latestMinecraftVersion}-${latestNeoForgeVersion}-installer.jar</span></span></a>
+                    <a id="changelog-link" href="${latestChangelogUrl}"><span>See changelog</span></a>
                 </div>
             </div>
         `;
 
-        
         // Creates the select element for Minecraft versions
-        var minecraftVersionSelect = document.createElement('select');
-        minecraftVersionSelect.name = 'Minecraft Versions';
-        minecraftVersionSelect.id = 'minecraftversions';
-        minecraftVersionSelect.onchange = function(){minecraftValueChanged(this.value);};
-        // Populate the select with the Minecraft versions. First option selected by default.
-        let firstOption = true;
-        sortedMinecraftVersion.forEach(function(minecraftVersion) {
-            var minecraftVersionOption = document.createElement('option');
-            minecraftVersionOption.value = minecraftVersion;
-            minecraftVersionOption.innerHTML = minecraftVersion;
-            if (firstOption) {
-                minecraftVersionOption.selected = true;
-                firstOption = false;
-            }
-            minecraftVersionSelect.appendChild(minecraftVersionOption);
-        });
-        document.getElementById("minecraftversionscontainer").appendChild(minecraftVersionSelect);
+        const minecraftVersionDropdown = createDropdownButton(
+            "Minecraft Versions", 
+            "minecraft-versions",
+            "minecraftVersionOption", 
+            "minecraft-version",
+            sortedMinecraftVersion,
+            minecraftValueChanged);
+        document.getElementById("minecraft-versions-container").appendChild(minecraftVersionDropdown);
 
         // Creates the hidden select element for holding all neoforge versions.
-        // We need to do this because Safari will show hidden/disabled option elements.
-        // Thus this workaround by abusing a hidden select with all versions that we can use to populate the visible select with on Minecraft version change.
-        var allNeoforgeVersionSelect = document.createElement('select');
-        allNeoforgeVersionSelect.id = 'allneoforgeversions';
+        // This is so we can use this as version storage to use to populate the dropdowns on Minecraft version change.
+        // We could not use a normal visible Select because Safari will show disabled/hidden options and browsers will show massive dropdowns of all options.
+        // A custom dropdown is used to have more control over the dropdowns and this hidden select is just for helping to cache version data on page quickly.
+        const allNeoforgeVersionSelect = document.createElement('select');
+        allNeoforgeVersionSelect.id = 'all-neoforge-versions';
         allNeoforgeVersionSelect.hidden = true;
         allNeoforgeVersionSelect.disabled = true;
         allNeoforgeVersionSelect.style.display = 'none';
@@ -165,37 +146,103 @@ async function loadVersions() {
         // So iterating backwards will let us have newest be first option in dropdown.
         for (let index = neoforgeVersions.length - 1; index >= 0; index--) {   
             const neoforgeVersion = neoforgeVersions[index];
-            var neoforgeVersionOption = document.createElement('option');
+            const neoforgeVersionOption = document.createElement('option');
             neoforgeVersionOption.value = neoforgeVersion;
             neoforgeVersionOption.innerHTML = neoforgeVersion;
             allNeoforgeVersionSelect.appendChild(neoforgeVersionOption);
         }
         document.querySelector(".fileinfo__body").appendChild(allNeoforgeVersionSelect);
         
-        // Creates the select element for visible eligible NeoForge versions
-        var neoforgeVersionSelect = document.createElement('select');
-        neoforgeVersionSelect.name = 'NeoForge Versions';
-        neoforgeVersionSelect.id = 'neoforgeversions';
-        neoforgeVersionSelect.onchange = function(){neoforgeValueChanged(this.value);};
-        // Use the current Minecraft version to know which NeoForge versions are eligible for selection.
-        var neoforgeVersionPrefixForCurrentMinecraft = latestNeoForgeVersion.slice(0, 4);
-        // Versions url always gives list of versions from oldest to newest (exception of april fools versions which we already filtered)
-        // So iterating backwards will let us have newest be first option in dropdown.
-        firstOption = true;
-        for (let index = neoforgeVersions.length - 1; index >= 0; index--) {   
-            const neoforgeVersion = neoforgeVersions[index];
-             // Only get the neoforge versions for current minecraft version
-            if (neoforgeVersion.startsWith(neoforgeVersionPrefixForCurrentMinecraft)) {
-                var neoforgeVersionOption = document.createElement('option');
-                neoforgeVersionOption.value = neoforgeVersion;
-                neoforgeVersionOption.innerHTML = neoforgeVersion;
-                if (firstOption) {
-                    neoforgeVersionOption.selected = true;
-                    firstOption = false;
-                }
-                neoforgeVersionSelect.appendChild(neoforgeVersionOption);
-            }
-        }
-        document.getElementById("neoforgeversionscontainer").appendChild(neoforgeVersionSelect);
+        // Creates the dropdown of visible eligible NeoForge versions
+        const neoforgeVersionPrefixForCurrentMinecraft = latestNeoForgeVersion.slice(0, 4);
+        const orderedNeoforgeVersionList = neoforgeVersions
+            .filter((neoVersion) => neoVersion.startsWith(neoforgeVersionPrefixForCurrentMinecraft)) // Only get the neoforge versions for current minecraft version
+            .reverse(); // reverse as this function wants newest versions first.
+        const neoforgeVersionDropdown = createDropdownButton(
+            "NeoForge Versions", 
+            "neoforge-versions",
+            "neoforgeVersionOption", 
+            "neoforge-version",
+            orderedNeoforgeVersionList,
+            neoforgeValueChanged);
+        document.getElementById("neoforge-versions-container").appendChild(neoforgeVersionDropdown);
     }
+}
+
+
+/* Modified custom dropdown element from: https://www.w3schools.com/howto/howto_js_dropdown.asp */
+/* When the user clicks on the button, toggle between hiding and showing the dropdown content */
+function showDropdown(currentElement) {
+    document.getElementById(currentElement.dataset.dropdownContentId).classList.toggle("show");
+
+    // Move user focus to first dropdown element (Hoping this is better for keyboard users)
+    const firstOwningDropdown = document.querySelector(`#${currentElement.dataset.dropdownContentId} .selectedOption`);
+    firstOwningDropdown.focus();
+
+    // Close dropdown options of other dropdowns.
+    const otherDropdowns = document.querySelectorAll(`.dropdown-content:not(#${currentElement.dataset.dropdownContentId})`);
+    for (let i = 0; i < otherDropdowns.length; i++) {
+        const openDropdown = otherDropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+        }
+    }
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    const dropdowns = document.getElementsByClassName("dropdown-content");
+    for (let i = 0; i < dropdowns.length; i++) {
+      const openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+} 
+
+// Helper to create the custom dropdowns quickly
+function createDropdownButton(name, id, optionClass, dataname, listOfButtonOptions, optionOnclickFunction) {
+    const dropdownContainer = document.createElement('div');
+    dropdownContainer.classList.add("dropdown");
+
+    const dropdownMainButton = document.createElement('button');
+    dropdownMainButton.classList.add("dropbtn");
+    dropdownMainButton.name = name;
+    dropdownMainButton.id = id;
+    dropdownMainButton.dataset.dropdownContentId = `${id}-dropdown-content`;
+    dropdownMainButton.onclick = function(){showDropdown(this)};
+
+    // Creates the dropdown's options as buttons that when clicked, will set parent text and download links.
+    const dropdownContentDiv = document.createElement('div');
+    dropdownContentDiv.classList.add("dropdown-content");
+    dropdownContentDiv.id = `${id}-dropdown-content`;
+    populateDropdown(dropdownContentDiv, optionClass, dataname, listOfButtonOptions, optionOnclickFunction);
+
+    // Default to newest version displayed
+    dropdownMainButton.innerHTML = `${listOfButtonOptions[0]}<span style="float: inline-end;">⮟</span>`;
+    
+    dropdownContainer.appendChild(dropdownMainButton);
+    dropdownContainer.appendChild(dropdownContentDiv);
+    return dropdownContainer;
+}
+
+function populateDropdown(dropdownContentDiv, optionClass, dataname, listOfButtonOptions, optionOnclickFunction) {
+    let firstOption = true;
+    listOfButtonOptions.forEach(function(optionValue) {
+        const optionButton = document.createElement('button');
+        optionButton.classList.add(optionClass);
+        optionButton.setAttribute(`data-${dataname}`, optionValue);
+        optionButton.onclick = function(){optionOnclickFunction(this, optionClass)};
+        optionButton.innerHTML = optionValue;
+
+        if (firstOption) {
+            // visually show as the selected option in dropdown
+            optionButton.classList.add("selectedOption");
+            firstOption = false;
+        }
+
+        dropdownContentDiv.appendChild(optionButton);
+    });
 }
