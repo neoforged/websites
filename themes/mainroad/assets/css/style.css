@@ -1080,6 +1080,11 @@ summary code:hover {
 }
 
 /* Installer */
+#filelist {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .fileinfo {
 	text-align: center;
 	margin: 0 0 20px;
@@ -1181,6 +1186,20 @@ summary code:hover {
 	border-radius: 4px;
 	font-family: monospace;
 }
+
+#changeloglink {
+	background-color: var(--color-outlined-download-body);
+	border: solid var(--color-outlined-download) 2px;
+}
+
+#changeloglink:hover {
+	background-color: var(--color-outlined-download-body-highlight);
+	border: solid var(--color-outlined-download-highlight) 2px;
+}
+
+.fileinfo .fileinfo__body a {
+}
+
 
 /* Changelogs */
 .changelog_body {
@@ -1459,6 +1478,10 @@ a.anchor-wrapper:hover, a.anchor-wrapper:focus {
 	--color-border-badges-legacy: #53d8da;
 	--color-download: #e68c37;
 	--color-download-highlight: #e5b04c;
+	--color-outlined-download: #e68c37;
+	--color-outlined-download-highlight: #e5b04c;
+	--color-outlined-download-body: #d0dcdb;
+	--color-outlined-download-body-highlight: #eaeaea;
 	--color-selection-box-background: #b1b8be;
 	--color-box: #bdc7c7;
 	--color-outer: #bdc7c7;
@@ -1492,6 +1515,10 @@ a.anchor-wrapper:hover, a.anchor-wrapper:focus {
 	--color-background: #222427;
 	--color-download: #a94e0d;
 	--color-download-highlight: #d88231;
+	--color-outlined-download: #a94e0d;
+	--color-outlined-download-highlight: #d88231;
+	--color-outlined-download-body: #2e3135;
+	--color-outlined-download-body-highlight: #484a4d;
 	--color-box: #2e3135;
 	--color-outer: #111111;
 	--color-border: #5a5a5a;
