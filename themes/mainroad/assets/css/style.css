@@ -1187,10 +1187,11 @@ summary code:hover {
 	display: none;
 	position: absolute;
 	background-color: #f1f1f1;
-	max-height: 180px;
 	width: 200px;
-	z-index: 1;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+	border-radius: 4px;
+	max-height: 180px;
 	overflow: scroll;
 	overflow-x: hidden;
 }
@@ -1199,19 +1200,19 @@ summary code:hover {
 	background-color: #e0c388;
 }
 
-/* Clickable list element inside the dropdown */
+/* Button inside the dropdown */
 .dropdown-content button {
 	color: black;
 	text-decoration: none;
 	display: block;
+	border-radius: 0;
 	border: none;
-	padding-left: 4px;
 	width: 100%;
 	text-align: left;
-	font-weight: normal;
+	border-radius: 4px;
 }
 
-/* Change color of dropdown list element on hover */
+/* Change color of dropdown button on hover */
 .dropdown-content button:hover {
 	background-color: #d2d2d2;
 }

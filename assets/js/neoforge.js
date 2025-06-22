@@ -12,11 +12,9 @@ function setLinks(neoforgeVersion) {
 
     const mainMinecraftDropdown = document.getElementById("minecraft-versions");
     mainMinecraftDropdown.innerHTML = `${selectedMinecraftVersion}<span style="float: inline-end;">▼</span>`;
-    mainMinecraftDropdown.value = selectedMinecraftVersion;
 
     const mainNeoforgeDropdown = document.getElementById("neoforge-versions");
     mainNeoforgeDropdown.innerHTML = `${neoforgeVersion}<span style="float: inline-end;">▼</span>`;
-    mainNeoforgeDropdown.value = neoforgeVersion;
 
     const allNeoforgeVersionDropdown = document.getElementById("all-neoforge-versions");
     const latestNeoforgeVersion = allNeoforgeVersionDropdown.options[0].value;
@@ -40,9 +38,8 @@ function minecraftValueChanged(optionElement, optionClass) {
 
     // Unselect previous option in dropdown
     const allRelatedOptions = document.querySelectorAll(`.${optionClass}`);
-    allRelatedOptions.forEach((option) => { option.classList.remove("selectedOption"); option.setAttribute('aria-selected', 'false'); });
+    allRelatedOptions.forEach((option) => option.classList.remove("selectedOption"));
     optionElement.classList.add("selectedOption");
-    optionElement.setAttribute('aria-selected', 'true');
 
     const allNeoforgeVersionOptions = document.querySelectorAll("#all-neoforge-versions option");
     const allNeoforgeVersions = [...allNeoforgeVersionOptions].map((option) => option.value);
@@ -62,11 +59,11 @@ function minecraftValueChanged(optionElement, optionClass) {
 function neoforgeValueChanged(optionElement, optionClass) {
     // Unselect previous option in dropdown
     const allRelatedOptions = document.querySelectorAll(`.${optionClass}`);
-    allRelatedOptions.forEach((option) => { option.classList.remove("selectedOption"); option.setAttribute('aria-selected', 'false'); });
+    allRelatedOptions.forEach((option) => option.classList.remove("selectedOption"));
     optionElement.classList.add("selectedOption");
-    optionElement.setAttribute('aria-selected', 'true');
 
     setLinks(optionElement.dataset.neoforgeVersion);
+    
 }
 
 async function loadVersions() {
@@ -172,164 +169,80 @@ async function loadVersions() {
     }
 }
 
-let openedDropdownId = undefined;
-let currentOptionIndex = 0;
 
 /* Modified custom dropdown element from: https://www.w3schools.com/howto/howto_js_dropdown.asp */
 /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
 function showDropdown(currentElement) {
-    // Hide all dropdowns as we will re-open the currently selected dropdown option
-    closeAllDropdowns();
-
-    // Keep clicked dropdown closed if it was already opened before. Creates toggle behavior of show/hide when clicking the selected preview element
-    if (openedDropdownId == currentElement.id) {
-        openedDropdownId = undefined;
-        return;
-    }
-
-    // Display current dropdown's options
-    currentElement.setAttribute('aria-expanded', true);
     document.getElementById(currentElement.dataset.dropdownContentId).classList.toggle("show");
 
-    // Move user focus to selected dropdown element (Hoping this is better for keyboard users)
-    const selectedDropdown = document.querySelector(`#${currentElement.dataset.dropdownContentId} .selectedOption`);
-    selectedDropdown.focus();
-
-    currentOptionIndex = Number(selectedDropdown.dataset.index);
-    openedDropdownId = currentElement.id;
-}
-
-function closeAllDropdowns() {
-    // Mark all dropdown as closed
-    const otherDropdowns = document.querySelectorAll(`.dropbtn`);
-    for (let i = 0; i < otherDropdowns.length; i++) {
-        const otherDropdown = otherDropdowns[i];
-        otherDropdown.setAttribute('aria-expanded', false);
-    }
+    // Move user focus to first dropdown element (Hoping this is better for keyboard users)
+    const firstOwningDropdown = document.querySelector(`#${currentElement.dataset.dropdownContentId} .selectedOption`);
+    firstOwningDropdown.focus();
 
     // Close dropdown options of other dropdowns.
-    const otherDropdownDisplays = document.querySelectorAll(`.dropdown-content`);
-    for (let i = 0; i < otherDropdownDisplays.length; i++) {
-        const otherDropdownDisplay = otherDropdownDisplays[i];
-        if (otherDropdownDisplay.classList.contains('show')) {
-            otherDropdownDisplay.classList.remove('show');
+    const otherDropdowns = document.querySelectorAll(`.dropdown-content:not(#${currentElement.dataset.dropdownContentId})`);
+    for (let i = 0; i < otherDropdowns.length; i++) {
+        const openDropdown = otherDropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
         }
     }
 }
 
-function closeDropdownOnOutsideClick(event) {
-  if (openedDropdownId && !event.target.matches('.dropbtn')) {
-    closeAllDropdowns();
-    openedDropdownId = undefined;
-  }
-}
-
-function handleKeyPress(event) {
-  if (!openedDropdownId) {
-    return
-  } 
-
-  if (event.key === 'Escape') {
-    closeAllDropdowns();
-    openedDropdownId = undefined;
-    event.preventDefault();
-  }
-  else if (event.key === 'ArrowDown') {
-    const currentDropdownMain = document.querySelector(`#${openedDropdownId}`);
-    const currentOpenedDropdown = document.querySelector(`#${currentDropdownMain.dataset.dropdownContentId}`);
-    const currentSelectedOption = document.querySelector(`#${currentOpenedDropdown.id} .selectedOption`);
-    if (currentOptionIndex < currentOpenedDropdown.children.length - 1) {
-        currentOptionIndex++;
-
-        const newSelectedOption = currentOpenedDropdown.children[currentOptionIndex];
-        newSelectedOption.setAttribute('aria-selected', 'true');
-        newSelectedOption.focus({ focusVisible: true });
-        newSelectedOption.classList.add("selectedOption");
-
-        currentSelectedOption.classList.remove("selectedOption");
-        currentSelectedOption.setAttribute('aria-selected', 'false');
-        event.preventDefault();
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    const dropdowns = document.getElementsByClassName("dropdown-content");
+    for (let i = 0; i < dropdowns.length; i++) {
+      const openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
     }
   }
-  else if (event.key === 'ArrowUp') {
-    const currentDropdownMain = document.querySelector(`#${openedDropdownId}`);
-    const currentOpenedDropdown = document.querySelector(`#${currentDropdownMain.dataset.dropdownContentId}`);
-    const currentSelectedOption = document.querySelector(`#${currentOpenedDropdown.id} .selectedOption`);
-    if (currentOptionIndex > 0) {
-        currentOptionIndex--;
-        
-        const newSelectedOption = currentOpenedDropdown.children[currentOptionIndex];
-        newSelectedOption.setAttribute('aria-selected', 'true');
-        newSelectedOption.focus({ focusVisible: true });
-        newSelectedOption.classList.add("selectedOption");
-
-        currentSelectedOption.classList.remove("selectedOption");
-        currentSelectedOption.setAttribute('aria-selected', 'false');
-        event.preventDefault();
-    }
-  }
-}
-
-// Close the dropdown menu if the user clicks outside of it or clicks esc
-window.onclick = closeDropdownOnOutsideClick;
-window.onkeydown = handleKeyPress;
+} 
 
 // Helper to create the custom dropdowns quickly
 function createDropdownButton(name, id, optionClass, dataname, listOfButtonOptions, optionOnclickFunction) {
     const dropdownContainer = document.createElement('div');
     dropdownContainer.classList.add("dropdown");
 
-    const dropdownMainButton = document.createElement('button');;
-    dropdownMainButton.setAttribute("tab-index", "0");
+    const dropdownMainButton = document.createElement('button');
     dropdownMainButton.classList.add("dropbtn");
     dropdownMainButton.name = name;
     dropdownMainButton.id = id;
     dropdownMainButton.dataset.dropdownContentId = `${id}-dropdown-content`;
     dropdownMainButton.onclick = function(){showDropdown(this)};
-    dropdownMainButton.role = "combobox";
-    dropdownMainButton.setAttribute("aria-controls", "listbox");
-    dropdownMainButton.setAttribute("aria-haspopup", "listbox");
-    dropdownMainButton.setAttribute("aria-expanded", "true")
 
     // Creates the dropdown's options as buttons that when clicked, will set parent text and download links.
-    const dropdownContent = document.createElement('div');
-    dropdownContent.classList.add("dropdown-content");
-    dropdownContent.id = `${id}-dropdown-content`;
-    dropdownContent.role = "listbox";
-    populateDropdown(dropdownContent, optionClass, dataname, listOfButtonOptions, optionOnclickFunction);
+    const dropdownContentDiv = document.createElement('div');
+    dropdownContentDiv.classList.add("dropdown-content");
+    dropdownContentDiv.id = `${id}-dropdown-content`;
+    populateDropdown(dropdownContentDiv, optionClass, dataname, listOfButtonOptions, optionOnclickFunction);
 
     // Default to newest version displayed
     dropdownMainButton.innerHTML = `${listOfButtonOptions[0]}<span style="float: inline-end;">▼</span>`;
-    dropdownMainButton.value = listOfButtonOptions[0];
     
     dropdownContainer.appendChild(dropdownMainButton);
-    dropdownContainer.appendChild(dropdownContent);
+    dropdownContainer.appendChild(dropdownContentDiv);
     return dropdownContainer;
 }
 
 function populateDropdown(dropdownContentDiv, optionClass, dataname, listOfButtonOptions, optionOnclickFunction) {
     let firstOption = true;
-    let index = 0;
     listOfButtonOptions.forEach(function(optionValue) {
         const optionButton = document.createElement('button');
         optionButton.classList.add(optionClass);
         optionButton.setAttribute(`data-${dataname}`, optionValue);
-        optionButton.setAttribute(`data-index`, index);
         optionButton.onclick = function(){optionOnclickFunction(this, optionClass)};
         optionButton.innerHTML = optionValue;
-        optionButton.role = "option";
 
         if (firstOption) {
             // visually show as the selected option in dropdown
             optionButton.classList.add("selectedOption");
-            optionButton.setAttribute('aria-selected', 'true');
             firstOption = false;
-        }
-        else {
-            optionButton.setAttribute('aria-selected', 'false');
         }
 
         dropdownContentDiv.appendChild(optionButton);
-        index++;
     });
 }
