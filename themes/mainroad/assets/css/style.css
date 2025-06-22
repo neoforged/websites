@@ -1147,15 +1147,16 @@ summary code:hover {
 }
 
 .fileinfo .fileinfo__body a {
+	display: flex;
+	flex: 1 1 0px;
+	flex-direction: row;
 	margin: 0px 10px 10px 10px;
 	padding: .625rem;
-	display: flex;
-	flex-direction: row;
+	border-radius: 0.2rem;
 	align-items: stretch;
 	justify-content: center;
-	flex: 1 1 0px;
 	text-decoration: none;
-	border-radius: 0.2rem;
+	text-shadow: var(--text-shadow-download);
 }
 
 .normal__font__weight {
@@ -1474,6 +1475,7 @@ a.anchor-wrapper:hover, a.anchor-wrapper:focus {
 	--color-footer-link-text: #bdc7c7;
 	--color-ends-background: #323232;
 	--color-meta-caption: #666666;
+	--text-shadow-download: none;
 	.footer_modetoggle-dark {
 		display: none;
 	}
@@ -1488,8 +1490,8 @@ a.anchor-wrapper:hover, a.anchor-wrapper:focus {
 	--color-border-badges-new: #8b5460;
 	--color-border-badges-legacy: #227778;
 	--color-background: #222427;
-	--color-download: #9d4405;
-	--color-download-highlight: #e68c37;
+	--color-download: #a94e0d;
+	--color-download-highlight: #d88231;
 	--color-box: #2e3135;
 	--color-outer: #111111;
 	--color-border: #5a5a5a;
@@ -1505,6 +1507,7 @@ a.anchor-wrapper:hover, a.anchor-wrapper:focus {
 	--color-footer-link-text: #bdc7c7;
 	--color-ends-background: #222222;
 	--color-meta-caption: #aab0b3;
+	--text-shadow-download: 0px 0px 2px black;
 	.footer_modetoggle-light {
 		display: none;
 	}
