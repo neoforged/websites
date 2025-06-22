@@ -1128,10 +1128,11 @@ summary code:hover {
 	position: relative;
 }
 
-.fileinfo .fileinfo__body .selection_row .selection_block select{
-	max-width: 200px;
+.fileinfo .fileinfo__body .selection_row .selection_block .select2 {
 	flex-grow: 1;
+	max-width: 200px;
 	margin-left: auto;
+	text-align: left;
 }
 
 .fileinfo .fileinfo__body a {
@@ -1405,11 +1406,11 @@ summary code:hover {
 		flex-direction: column;
 	}
 
-	.fileinfo .fileinfo__body .selection_row .selection_block select{
-		max-width: none;
+	.fileinfo .fileinfo__body .selection_row .selection_block .select2 {
+		width: 100% !important; /* Override the select2's inlined width styling so we can do responsive display better */ 
 		margin-top: 4px;
 		margin-bottom: 4px;
-		margin-left: 0px;
+		margin-right: auto;
 	}
 }
 

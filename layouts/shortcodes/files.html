@@ -1,3 +1,6 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 {{ if not ( .Page.Scratch.Get "nfJS") }}
   {{ $js:= resources.Get "js/neoforge.js" }}
   <script src="{{ $js.RelPermalink }}"></script>
@@ -9,13 +12,13 @@
             <div class="selection_row">
                 <div class="selection_block">
                     <label for="minecraftversions">Minecraft Version:&nbsp;</label>
-                    <select name="Minecraft Versions" id="minecraftversions">
+                    <select name="Minecraft Versions" id="minecraftversions" class="select2-mode">
                         <option value="">Loading...</option>
                     </select>
                 </div>
                 <div class="selection_block">
                     <label for="neoforgeversions">NeoForge Version:&nbsp;</label>
-                    <select name="Neoforge Versions" id="neoforgeversions">
+                    <select name="Neoforge Versions" id="neoforgeversions" class="select2-mode">
                         <option value="">Loading...</option>
                     </select>
                 </div>
