@@ -101,7 +101,7 @@ function setLinks(neoforgeVersion) {
     const installerUrl = `${DOWNLOAD_URL}/${NEOFORGE_GAV}/${encodeURIComponent(neoforgeVersion)}/neoforge-${encodeURIComponent(neoforgeVersion)}-installer.jar`;
     const installerLink = document.getElementById("installerlink");
     installerLink.href = installerUrl;
-    installerLink.innerHTML = `<span>Click Here to Download:&nbsp;<br><span class="normal__font__weight">neoforge-${selectedMinecraftVersion}-${neoforgeVersion}-installer.jar</span></span>`;
+    installerLink.innerHTML = `<span>Click Here to Download Installer</span></span>`;
     
     // The latest changelog exists on the website at /changelog so we use that when latest NeoForge is selected.
     // Otherwise use the maven changelog text file link.
