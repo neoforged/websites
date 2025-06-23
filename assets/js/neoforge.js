@@ -28,8 +28,10 @@ async function loadVersions() {
     } catch (error) {
         if (error instanceof SyntaxError) {
             console.log("There was a SyntaxError parsing the JSON response from the maven server.", error);
+            setVersionFetchErrorState();
         } else {
             console.log("There was an error processing the request for a new version.", error);
+            setVersionFetchErrorState();
         }
     }
 
@@ -92,16 +94,35 @@ async function loadVersions() {
     }
 }
 
+function setVersionFetchErrorState() {
+    const minecraftVersionDropdown = document.getElementById("minecraftversions");
+    const option1 = document.createElement('option');
+    option1.value = "";
+    option1.innerHTML = "Error";
+    minecraftVersionDropdown.innerHTML = ``;
+    minecraftVersionDropdown.appendChild(option1);
+
+    const neoforgeVersionDropdown = document.getElementById("neoforgeversions");
+    const option2 = document.createElement('option');
+    option2.value = "";
+    option2.innerHTML = "Error";
+    neoforgeVersionDropdown.innerHTML = ``;
+    neoforgeVersionDropdown.appendChild(option2);
+
+    document.getElementById("installerlink").innerHTML = `<span>Unable to fetch version data</span>`;
+    document.getElementById("installerlink").innerHTML = `<span>Unable to fetch version data</span>`;
+    document.getElementById("changeloglink").innerHTML = `<span>Unable to fetch version data</span>`;
+}
+
 // Handles ensuring that the installer download and changelog links matches what the dropdown selections are.
 // Call this on dropdown value change.
 function setLinks(neoforgeVersion) {
     const latestNeoforgeVersion = allNeoforgeVersions[0].value;
-    const selectedMinecraftVersion = "1." + getFirstTwoVersionNumbers(neoforgeVersion);
 
     const installerUrl = `${DOWNLOAD_URL}/${NEOFORGE_GAV}/${encodeURIComponent(neoforgeVersion)}/neoforge-${encodeURIComponent(neoforgeVersion)}-installer.jar`;
     const installerLink = document.getElementById("installerlink");
     installerLink.href = installerUrl;
-    installerLink.innerHTML = `<span>Click Here to Download Installer</span></span>`;
+    installerLink.innerHTML = `<span>Click Here to Download Installer</span>`;
     
     // The latest changelog exists on the website at /changelog so we use that when latest NeoForge is selected.
     // Otherwise use the maven changelog text file link.
