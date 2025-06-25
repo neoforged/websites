@@ -1,5 +1,5 @@
 const VERSIONS_ENDPOINT = "https://maven.neoforged.net/api/maven/versions/releases/"
-const FALLBACK_VERSIONS_ENDPOINT = "https://maven.creeperhost.net/"
+const FALLBACK_VERSIONS_ENDPOINT = "https://maven.creeperhost.net/api/maven/versions/releases/"
 const NEOFORGE_GAV = "net/neoforged/neoforge"
 const LEGACY_GAV = "net/neoforged/forge"
 const LATEST_ENDPOINT = "https://maven.neoforged.net/api/maven/latest/version/releases/"
