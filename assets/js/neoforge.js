@@ -1,4 +1,5 @@
 const VERSIONS_ENDPOINT = "https://maven.neoforged.net/api/maven/versions/releases/"
+const FALLBACK_VERSIONS_ENDPOINT = "https://maven.creeperhost.net/"
 const NEOFORGE_GAV = "net/neoforged/neoforge"
 const LEGACY_GAV = "net/neoforged/forge"
 const LATEST_ENDPOINT = "https://maven.neoforged.net/api/maven/latest/version/releases/"
@@ -28,10 +29,23 @@ async function loadVersions() {
     } catch (error) {
         if (error instanceof SyntaxError) {
             console.log("There was a SyntaxError parsing the JSON response from the maven server.", error);
-            setVersionFetchErrorState();
         } else {
-            console.log("There was an error processing the request for a new version.", error);
-            setVersionFetchErrorState();
+            console.log("There was an error processing the request for a new version from the maven server.", error);
+        }
+
+        // Main maven is down. We will use fallback URL to get NeoForge installers. Permission was granted by CreeperHost to do this.
+        const fallbackAllVersionUrl = new URL(FALLBACK_VERSIONS_ENDPOINT + encodeURIComponent(NEOFORGE_GAV));
+        try {
+            const response = await fetch(fallbackAllVersionUrl);
+            neoforgeVersionsJson = await response.json();
+        } catch (error) {
+            if (error instanceof SyntaxError) {
+                console.log("There was a SyntaxError parsing the JSON response from the fallback maven server.", error);
+                setVersionFetchErrorState();
+            } else {
+                console.log("There was an error processing the request for a new version from the fallback maven server.", error);
+                setVersionFetchErrorState();
+            }
         }
     }
 
