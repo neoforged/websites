@@ -76,7 +76,7 @@ async function loadVersions() {
 
         const latestInstallerUrl = `${DOWNLOAD_URL}/${NEOFORGE_GAV}/${encodeURIComponent(latestNeoForgeVersion)}/neoforge-${encodeURIComponent(latestNeoForgeVersion)}-installer.jar`;
         const latestChangelogUrl = "/changelog"; // This URL is the latest version's changelog on site. Always kept up to date automatically.
-        var installerBoxHtml = `
+        const installerBoxHtml = `
             <div class="fileinfo__body">
                 <div class="selection_row">
                     <div class="selection_block" id="minecraftversionscontainer">
