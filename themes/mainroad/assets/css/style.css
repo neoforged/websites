@@ -1188,13 +1188,6 @@ summary code:hover {
 	font-family: monospace;
 }
 
-/* Badges */
-.badges {
-	padding: 0 5px;
-	border-radius: 4px;
-	font-family: monospace;
-}
-
 #changeloglink {
 	background-color: var(--color-outlined-download-body);
 	border: solid var(--color-outlined-download) 2px;
@@ -1205,7 +1198,15 @@ summary code:hover {
 	border: solid var(--color-outlined-download-highlight) 2px;
 }
 
-.fileinfo .fileinfo__body a {
+.fallback__instructions {
+	padding: 16px;
+	background-color: var(--color-selection-box-background);
+	border: 2px solid rgb(255, 0, 0);
+}
+
+.fallback__instructions .inlined {
+	display: inline-block;
+	font-weight: bold;
 }
 
 
@@ -1236,6 +1237,13 @@ summary code:hover {
 	border-radius: 5px;
 	margin-left: 20px;
 	padding: 0 4px;
+}
+
+/* Badges */
+.badges {
+	padding: 0 5px;
+	border-radius: 4px;
+	font-family: monospace;
 }
 
 /* News Section */
