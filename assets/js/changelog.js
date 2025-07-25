@@ -17,8 +17,8 @@ async function loadChangelog() {
 
     let currentMcVersionUrl;
     let mcParam = getQueryParam("mc");
-    if (mcParam != null && mcParam !== "")
-        currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav) + "?filter=" + mcParam);
+    if (mcParam)
+        currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav) + "?filter=" + encodeURIComponent(mcParam));
     else currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav));
 
     let versionJson;
@@ -36,7 +36,7 @@ async function loadChangelog() {
 
     if (versionJson) {
         const { version } = versionJson;
-        if (mcParam != null && mcParam !== "")
+        if (mcParam)
             mcvers += mcParam;
         else mcvers += version.slice(0, 4);
 

@@ -150,7 +150,7 @@ function setLinks(neoforgeVersion) {
     installerLink.href = installerUrl;
     installerLink.innerHTML = `<span>Click Here to Download Installer</span>`;
 
-    let changelogUrl = "/changelog?mc=" + neoforgeVersion.slice(0, 4);
+    let changelogUrl = "/changelog?mc=" + encodeURIComponent(neoforgeVersion.slice(0, 4));
     document.getElementById("changeloglink").href = changelogUrl;
 
     if (isInFallbackMode) {
