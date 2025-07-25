@@ -28,9 +28,9 @@ async function loadChangelog() {
         versionJson = await response.json();
     } catch (error) {
         if (error instanceof SyntaxError) {
-            console.log("There was a SyntaxError parsing the JSON response from the maven server.", error);
+            console.error("There was a SyntaxError parsing the JSON response from the maven server.", error);
         } else {
-            console.log("There was an error processing the request for a new version.", error);
+            console.error("There was an error processing the request for a new version.", error);
         }
     }
 
@@ -41,9 +41,21 @@ async function loadChangelog() {
         else mcvers += version.slice(0, 4);
 
         const vs = `.changelog_body`;
-        const changelogUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(version)}/${fn}-${encodeURIComponent(version)}-changelog.txt`;
-        const response = await fetch(`${changelogUrl}`);
-        const data = (await response.text()).split("\n");
+
+        let changelogUrl, response, data;
+        try {
+            changelogUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(version)}/${fn}-${encodeURIComponent(version)}-changelog.txt`;
+            response = await fetch(`${changelogUrl}`);
+            data = (await response.text()).split("\n");
+        } catch (error) {
+            document.getElementsByClassName("changelog").item(0).innerHTML = `Failed to load changelog. You can view it <a href="${changelogUrl}">here</a> instead.`;
+            if (error instanceof SyntaxError) {
+                console.error("There was a SyntaxError parsing the JSON response from the maven server.", error);
+            } else {
+                console.error("There was an error processing the request for a changelog.", error);
+            }
+            return;
+        }
 
         const resultArray = [];
 
