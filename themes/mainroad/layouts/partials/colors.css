@@ -373,8 +373,28 @@ details:hover {
 }
 
 .fileinfo .fileinfo__body .selection_row .selection_block {
-	background-color: var(--color-selection-box-background);
+	background-color: var(--color-box);
+	border-color: var(--color-border);
 	color: var(--color-text);
+}
+
+.select2-selection, .select2-dropdown {
+	background-color: var(--color-background) !important;
+	border-color: var(--color-border) !important;
+}
+
+.select2-selection__rendered {
+	color: var(--color-text) !important;
+}
+
+.select2-results__option--selected {
+	background-color: var(--color-box) !important;
+	color: var(--color-btn) !important;
+}
+
+.select2-results__option:hover, .select2-results__option--highlighted {
+	background-color: var(--color-box) !important;
+	color: var(--color-btn) !important;
 }
 
 .fileinfo .fileinfo__body a {
@@ -385,6 +405,26 @@ details:hover {
 .fileinfo .fileinfo__body a:hover {
 	background-color: var(--color-download-highlight);
 	color: var(--color-text);
+}
+
+.fileinfo .fileinfo__body .download_row {
+	background-color: var(--color-background);
+}
+
+#changeloglink {
+	background-color: var(--color-outlined-download-body);
+	border: solid var(--color-code) 2.5px;
+}
+
+#changeloglink:hover {
+	background-color: var(--color-code);
+	border: solid var(--color-code) 2.5px;
+	color: var(--color-footer-link-text);
+}
+
+.fallback__instructions {
+	background-color: var(--color-selection-box-background);
+	border: 2px solid rgb(255, 0, 0);
 }
 
 /* Installer Badges */

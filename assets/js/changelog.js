@@ -4,12 +4,23 @@ const LATEST_ENDPOINT = "https://maven.neoforged.net/api/maven/latest/version/re
 const DOWNLOAD_URL = "https://maven.neoforged.net/releases";
 const GITHUB_URL = "https://github.com/neoforged/NeoForge";
 
+function getQueryParam(param) {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    return urlParams.get(param);
+}
+
 async function loadChangelog() {
     let gav = FORGE_GAV;
     let fn = "neoforge";
-    let mcvers;
+    let mcvers = "1.";
 
-    let currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav));
+    let currentMcVersionUrl;
+    let mcParam = getQueryParam("mc");
+    if (mcParam != null && mcParam !== "")
+        currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav) + "?filter=" + mcParam);
+    else currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav));
+
     let versionJson;
 
     try {
@@ -25,7 +36,9 @@ async function loadChangelog() {
 
     if (versionJson) {
         const { version } = versionJson;
-        mcvers = "1." + version.slice(0, 4);
+        if (mcParam != null && mcParam !== "")
+            mcvers += mcParam;
+        else mcvers += version.slice(0, 4);
 
         const vs = `.changelog_body`;
         const changelogUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(version)}/${fn}-${encodeURIComponent(version)}-changelog.txt`;
