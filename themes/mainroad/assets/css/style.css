@@ -1122,8 +1122,10 @@ summary code:hover {
 
 
 .fileinfo .fileinfo__body .download_row {
-	margin-top: 10px;
+	margin: 10px;
 	flex-grow: 1;
+	padding-top: 10px;
+	border-radius: 0.2rem;
 }
 
 .fileinfo .fileinfo__body .selection_row .selection_block {
@@ -1145,17 +1147,6 @@ summary code:hover {
 	margin-left: 10px;
 	margin-right: auto;
 	text-align: left;
-	color: black;
-}
-
-.select2-search__field {
-	background-color: rgb(225, 225, 225);
-	color: black;
-}
-
-.select2-dropdown {
-	background-color: white;
-	color: black;
 }
 
 .fileinfo .fileinfo__body a {
@@ -1164,6 +1155,7 @@ summary code:hover {
 	flex-direction: row;
 	margin: 0px 10px 10px 10px;
 	padding: .625rem;
+	border-width: 2.5px;
 	border-radius: 0.2rem;
 	align-items: stretch;
 	justify-content: center;
@@ -1187,27 +1179,14 @@ summary code:hover {
 	font-family: monospace;
 }
 
-#changeloglink {
-	background-color: var(--color-outlined-download-body);
-	border: solid var(--color-outlined-download) 2px;
-}
-
-#changeloglink:hover {
-	background-color: var(--color-outlined-download-body-highlight);
-	border: solid var(--color-outlined-download-highlight) 2px;
-}
-
 .fallback__instructions {
 	padding: 16px;
-	background-color: var(--color-selection-box-background);
-	border: 2px solid rgb(255, 0, 0);
 }
 
 .fallback__instructions .inlined {
 	display: inline-block;
 	font-weight: bold;
 }
-
 
 /* Changelogs */
 .changelog_body {
