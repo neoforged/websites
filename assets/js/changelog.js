@@ -48,12 +48,8 @@ async function loadChangelog() {
             response = await fetch(`${changelogUrl}`);
             data = (await response.text()).split("\n");
         } catch (error) {
-            document.getElementsByClassName("changelog").item(0).innerHTML = `Failed to load changelog. You can view it <a href="${changelogUrl}">here</a> instead.`;
-            if (error instanceof SyntaxError) {
-                console.error("There was a SyntaxError parsing the JSON response from the maven server.", error);
-            } else {
-                console.error("There was an error processing the request for a changelog.", error);
-            }
+            document.getElementById("changelog").innerHTML = `<iframe src="${changelogUrl}" class="changelog_fallback" loading="lazy" />`;
+            console.error("There was an error processing the request for a changelog. Trying to use an iframe instead.", error);
             return;
         }
 

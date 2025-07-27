@@ -9,6 +9,7 @@
 *::before,
 *::after {
 	box-sizing: border-box;
+	transition: background-color 0.25s;
 }
 
 article,
@@ -1215,6 +1216,11 @@ summary code:hover {
 	border-radius: 5px;
 	margin-left: 20px;
 	padding: 0 4px;
+}
+
+.changelog_fallback {
+	width: 100%;
+	border: none;
 }
 
 /* Badges */
