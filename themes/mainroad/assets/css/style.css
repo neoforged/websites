@@ -1221,6 +1221,7 @@ summary code:hover {
 .changelog_fallback {
 	width: 100%;
 	border: none;
+	filter: var(--text-filter-changelog);
 }
 
 /* Badges */
@@ -1528,6 +1529,7 @@ a.anchor-wrapper:hover, a.anchor-wrapper:focus {
 	--color-ends-background: #323232;
 	--color-meta-caption: #666666;
 	--text-shadow-download: none;
+	--text-filter-changelog: none;
 	.footer_modetoggle-dark {
 		display: none;
 	}
@@ -1564,6 +1566,7 @@ a.anchor-wrapper:hover, a.anchor-wrapper:focus {
 	--color-ends-background: #222222;
 	--color-meta-caption: #aab0b3;
 	--text-shadow-download: 0px 0px 2px black;
+	--text-filter-changelog: invert(1) hue-rotate(180deg);
 	.footer_modetoggle-light {
 		display: none;
 	}
