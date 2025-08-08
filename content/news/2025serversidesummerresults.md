@@ -1,5 +1,5 @@
 ---
-title: "2025 Serverside Summer"
+title: "2025 Serverside Summer Results"
 date: 2025-08-08T12:00:00+01:00
 draft: false
 categories:
@@ -84,7 +84,7 @@ we expected many more people would join the contest. The high amount of winners 
 side. Also, we still had to get in touch with some contestants and disqualify some mods over requirements that were not met 
 due to confusion and lack of clarity.
 
-In future jams, we will try reducing the amount of winners to no more than 5. To compensate for the increased competition, 
+In future jams, we will try heavily reducing the amount of winners. To compensate for the increased competition, 
 we will also increase the value of the prizes for winners. We will also look into adding a pre-jam signup to gauge interest
 so that the jam will begin only if there are enough contestants or if changes needs to be done to the the contest's theme 
 and/or requirements.
