@@ -4,12 +4,23 @@ const LATEST_ENDPOINT = "https://maven.neoforged.net/api/maven/latest/version/re
 const DOWNLOAD_URL = "https://maven.neoforged.net/releases";
 const GITHUB_URL = "https://github.com/neoforged/NeoForge";
 
+function getQueryParam(param) {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    return urlParams.get(param);
+}
+
 async function loadChangelog() {
     let gav = FORGE_GAV;
     let fn = "neoforge";
-    let mcvers;
+    let mcvers = "1.";
 
-    let currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav));
+    let currentMcVersionUrl;
+    let mcParam = getQueryParam("mc");
+    if (mcParam)
+        currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav) + "?filter=" + encodeURIComponent(mcParam));
+    else currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav));
+
     let versionJson;
 
     try {
@@ -17,20 +28,30 @@ async function loadChangelog() {
         versionJson = await response.json();
     } catch (error) {
         if (error instanceof SyntaxError) {
-            console.log("There was a SyntaxError parsing the JSON response from the maven server.", error);
+            console.error("There was a SyntaxError parsing the JSON response from the maven server.", error);
         } else {
-            console.log("There was an error processing the request for a new version.", error);
+            console.error("There was an error processing the request for a new version.", error);
         }
     }
 
     if (versionJson) {
         const { version } = versionJson;
-        mcvers = "1." + version.slice(0, 4);
+        if (mcParam)
+            mcvers += mcParam;
+        else mcvers += version.slice(0, 4);
 
         const vs = `.changelog_body`;
-        const changelogUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(version)}/${fn}-${encodeURIComponent(version)}-changelog.txt`;
-        const response = await fetch(`${changelogUrl}`);
-        const data = (await response.text()).split("\n");
+
+        let changelogUrl, response, data;
+        try {
+            changelogUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(version)}/${fn}-${encodeURIComponent(version)}-changelog.txt`;
+            response = await fetch(`${changelogUrl}`);
+            data = (await response.text()).split("\n");
+        } catch (error) {
+            document.getElementById("changelog").innerHTML = `<iframe src="${changelogUrl}" class="changelog_fallback" loading="lazy" />`;
+            console.error("There was an error processing the request for a changelog. Trying to use an iframe instead.", error);
+            return;
+        }
 
         const resultArray = [];
 
