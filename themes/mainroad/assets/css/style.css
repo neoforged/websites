@@ -9,6 +9,7 @@
 *::before,
 *::after {
 	box-sizing: border-box;
+	transition: background-color 0.25s;
 }
 
 article,
@@ -1122,8 +1123,10 @@ summary code:hover {
 
 
 .fileinfo .fileinfo__body .download_row {
-	margin-top: 10px;
+	margin: 10px;
 	flex-grow: 1;
+	padding-top: 10px;
+	border-radius: 0.2rem;
 }
 
 .fileinfo .fileinfo__body .selection_row .selection_block {
@@ -1145,17 +1148,6 @@ summary code:hover {
 	margin-left: 10px;
 	margin-right: auto;
 	text-align: left;
-	color: black;
-}
-
-.select2-search__field {
-	background-color: rgb(225, 225, 225);
-	color: black;
-}
-
-.select2-dropdown {
-	background-color: white;
-	color: black;
 }
 
 .fileinfo .fileinfo__body a {
@@ -1164,6 +1156,7 @@ summary code:hover {
 	flex-direction: row;
 	margin: 0px 10px 10px 10px;
 	padding: .625rem;
+	border-width: 2.5px;
 	border-radius: 0.2rem;
 	align-items: stretch;
 	justify-content: center;
@@ -1187,27 +1180,14 @@ summary code:hover {
 	font-family: monospace;
 }
 
-#changeloglink {
-	background-color: var(--color-outlined-download-body);
-	border: solid var(--color-outlined-download) 2px;
-}
-
-#changeloglink:hover {
-	background-color: var(--color-outlined-download-body-highlight);
-	border: solid var(--color-outlined-download-highlight) 2px;
-}
-
 .fallback__instructions {
 	padding: 16px;
-	background-color: var(--color-selection-box-background);
-	border: 2px solid rgb(255, 0, 0);
 }
 
 .fallback__instructions .inlined {
 	display: inline-block;
 	font-weight: bold;
 }
-
 
 /* Changelogs */
 .changelog_body {
@@ -1236,6 +1216,12 @@ summary code:hover {
 	border-radius: 5px;
 	margin-left: 20px;
 	padding: 0 4px;
+}
+
+.changelog_fallback {
+	width: 100%;
+	border: none;
+	filter: var(--text-filter-changelog);
 }
 
 /* Badges */
@@ -1548,6 +1534,7 @@ a.anchor-wrapper:hover, a.anchor-wrapper:focus {
 	--color-ends-background: #323232;
 	--color-meta-caption: #666666;
 	--text-shadow-download: none;
+	--text-filter-changelog: none;
 	.footer_modetoggle-dark {
 		display: none;
 	}
@@ -1584,6 +1571,7 @@ a.anchor-wrapper:hover, a.anchor-wrapper:focus {
 	--color-ends-background: #222222;
 	--color-meta-caption: #aab0b3;
 	--text-shadow-download: 0px 0px 2px black;
+	--text-filter-changelog: invert(1) hue-rotate(180deg);
 	.footer_modetoggle-light {
 		display: none;
 	}
