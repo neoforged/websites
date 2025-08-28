@@ -1307,6 +1307,11 @@ summary code:hover {
 	justify-content: center;
 }
 
+.footer__disclaimer {
+	font-weight: bold;
+	font-variant-caps: all-small-caps;
+}
+
 @media screen and (max-width: 1420px) {
 	.container--outer {
 		width: 100%;
