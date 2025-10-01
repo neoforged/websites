@@ -88,7 +88,7 @@ async function loadVersions() {
                 </div>
                 <div class="download_row">
                     <a id="installerlink" href="${latestInstallerUrl}"><span>Click Here to Download Installer</span></span></a>
-                    <a id="changeloglink" href="${latestChangelogUrl}"><span>See changelog</span></a>
+                    <a id="changeloglink" href="${latestChangelogUrl}"><span>See Changelog</span></a>
                 </div>
             </div>
         `;
@@ -107,7 +107,7 @@ async function loadVersions() {
 
         // Versions url always gives list of versions from oldest to newest (exception of april fools versions which we filted already)
         // So iterating backwards will let us have newest be first option.
-        for (let index = neoforgeVersions.length - 1; index >= 0; index--) {   
+        for (let index = neoforgeVersions.length - 1; index >= 0; index--) {
             allNeoforgeVersions.push(neoforgeVersions[index]);
         }
         
@@ -149,15 +149,10 @@ function setLinks(neoforgeVersion) {
     const installerLink = document.getElementById("installerlink");
     installerLink.href = installerUrl;
     installerLink.innerHTML = `<span>Click Here to Download Installer</span>`;
-    
-    // The latest changelog exists on the website at /changelog so we use that when latest NeoForge is selected.
-    // Otherwise use the maven changelog text file link.
-    let changelogUrl = "/changelog";
-    if (neoforgeVersion != latestNeoforgeVersion) {
-        changelogUrl = `${DOWNLOAD_URL}/${NEOFORGE_GAV}/${encodeURIComponent(neoforgeVersion)}/neoforge-${encodeURIComponent(neoforgeVersion)}-changelog.txt`;
-    }
+
+    let changelogUrl = "/changelog?mc=" + encodeURIComponent(neoforgeVersion.slice(0, 4));
     document.getElementById("changeloglink").href = changelogUrl;
-    
+
     if (isInFallbackMode) {
         document.getElementById("fallbackInstructions").innerHTML = `<code>java -jar neoforge-${neoforgeVersion}-installer.jar --mirror https://maven.creeperhost.net</code>`;
     }
