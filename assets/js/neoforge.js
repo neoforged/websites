@@ -69,9 +69,11 @@ async function loadVersions() {
             // Remove 0.25w14craftmine and other april fools versions
             if (neoVersion.startsWith("0")) continue;
 
-            // Set the versions if not already set
-            if (latestNeoForgeVersion === undefined) latestNeoForgeVersion = neoVersion;
-            if (latestMinecraftVersion === undefined) latestMinecraftVersion = mcVersion;
+            // Set the versions if not already set (only for non-alpha versions, as to not promote snapshots by default)
+            if (!neoVersion.includes("-alpha")) {
+                if (latestNeoForgeVersion === undefined) latestNeoForgeVersion = neoVersion;
+                if (latestMinecraftVersion === undefined) latestMinecraftVersion = mcVersion;
+            }
 
             // Get and push version lists
             let neoVersionList = undefined;
@@ -202,6 +204,27 @@ function minecraftValueChanged(selectedMinecraftVersion) {
 
 function neoforgeValueChanged(selectedNeoforgeVersions) {
     setLinks(selectedNeoforgeVersions);
+}
+
+function mcVersionFromNeoForgeVersion(versionString) {
+    const spl = versionString.split('.');
+    // Handle the new versioning scheme first
+    if (parseInt(spl[0]) >= 26) {
+        // 26.1.0.X -> 26.1
+        var mcVersion = spl[0] + '.' + spl[1];
+        // 26.1.1.X -> 26.1.1
+        if (spl[2] != '0') {
+            mcVersion += '.' + spl[2];
+        }
+
+        // 26.1.0.0-alpha+snapshot-1
+        const splitBySnapshotIdentifier = versionString.split('+');
+        if (splitBySnapshotIdentifier.length == 2) {
+            mcVersion += '-' + splitBySnapshotIdentifier[1];
+        }
+        return mcVersion;
+    }
+    return "1." + getFirstTwoVersionNumbers(versionString);
 }
 
 // Split on first period and use everything afterwards.
