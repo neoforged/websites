@@ -64,7 +64,7 @@ async function loadVersions() {
         // So iterating backwards will let us have newest be first option
         for (let index = versions.length - 1; index >= 0; index--) {
             const neoVersion = versions[index];
-            const mcVersion = "1." + getFirstTwoVersionNumbers(neoVersion);
+            const mcVersion = getMcVersionFromNeoForgeVersion(neoVersion);
 
             // Remove 0.25w14craftmine and other april fools versions
             if (neoVersion.startsWith("0")) continue;
@@ -206,7 +206,7 @@ function neoforgeValueChanged(selectedNeoforgeVersions) {
     setLinks(selectedNeoforgeVersions);
 }
 
-function mcVersionFromNeoForgeVersion(versionString) {
+function getMcVersionFromNeoForgeVersion(versionString) {
     const spl = versionString.split('.');
     // Handle the new versioning scheme first
     if (parseInt(spl[0]) >= 26) {
