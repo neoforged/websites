@@ -124,10 +124,10 @@ async function loadVersions() {
         document.getElementById("filelist").innerHTML = installerBoxHtml;
         
         // Creates the select element for Minecraft versions
-        createAndPopulateSelectElement('Minecraft Versions', 'minecraftversions', minecraftValueChanged, sortedMinecraftVersion, "minecraftversionscontainer");
+        createAndPopulateSelectElement('Minecraft Versions', 'minecraftversions', minecraftValueChanged, sortedMinecraftVersion, latestMinecraftVersion, "minecraftversionscontainer");
        
         // Creates the select element with NeoForge versions that are for the latest Minecraft version initially
-        createAndPopulateSelectElement('NeoForge Versions', 'neoforgeversions', neoforgeValueChanged, allNeoforgeVersions.get(latestMinecraftVersion), "neoforgeversionscontainer");
+        createAndPopulateSelectElement('NeoForge Versions', 'neoforgeversions', neoforgeValueChanged, allNeoforgeVersions.get(latestMinecraftVersion), latestNeoForgeVersion, "neoforgeversionscontainer");
     }
 }
 
@@ -250,7 +250,7 @@ function removeAllOptions(selectElement) {
 }
 
 // Helper to setup the selects 
-function createAndPopulateSelectElement(name, id, valueChangeCallback, listOfOptionValues, idOfParentToAttachTo) {
+function createAndPopulateSelectElement(name, id, valueChangeCallback, listOfOptionValues, defaultSelection, idOfParentToAttachTo) {
     const select = document.createElement('select');
     select.name = name;
     select.id = id;
@@ -258,15 +258,12 @@ function createAndPopulateSelectElement(name, id, valueChangeCallback, listOfOpt
     select.onchange = function(){valueChangeCallback(this.value);};
     
     // Populate the select with the provided options.
-    // First option selected by default.
-    firstOption = true;
     listOfOptionValues.forEach((optionValue) => {
         const option = document.createElement('option');
         option.value = optionValue;
         option.innerHTML = optionValue;
-        if (firstOption) {
+        if (optionValue == defaultSelection) {
             option.selected = true;
-            firstOption = false;
         }
         select.appendChild(option);
     });
