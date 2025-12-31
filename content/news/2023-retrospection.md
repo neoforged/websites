@@ -4,6 +4,7 @@ date: 2024-01-01T00:00:00+00:00
 draft: false
 categories:
 - News
+- New Year
 author: neoforgedteam
 summary: "A retrospection on the past year"
 description: "A retrospection on the past year"
