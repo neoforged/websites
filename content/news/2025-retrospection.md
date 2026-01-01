@@ -71,7 +71,7 @@ In no particular order, here is a list with the most important changes made to F
 - Mixin configs can now be made conditional on the presence of specific mods ([#237](https://github.com/neoforged/FancyModLoader/pull/237));
 - A new FML config to enable OpenGL debugging and object labels ([#265](https://github.com/neoforged/FancyModLoader/pull/265));
 - Introduced a new early loading screen whose look & feel can be customized through [themes](https://github.com/neoforged/FancyModLoader/blob/main/earlydisplay/THEMING.md) ([#278](https://github.com/neoforged/FancyModLoader/pull/278));
-- The `lowcode` loader has been removed and replaced by making `javafml` the default. Most mods should not specify either the loader or loader version in their neoforge.mods.toml ([#237](https://github.com/neoforged/FancyModLoader/pull/237));
+- The `lowcode` loader has been removed and replaced by making `javafml` the default. Most mods should not specify either the loader or loader version in their neoforge.mods.toml ([#261](https://github.com/neoforged/FancyModLoader/pull/261));
 - FML now selects the same OpenGL version as Vanilla does to fix several rare startup issues due to graphics driver bugs ([#262](https://github.com/neoforged/FancyModLoader/pull/262));
 - When using `@EventBusSubscriber`, the type of bus no longer needs to be specified ([#290](https://github.com/neoforged/FancyModLoader/pull/290));
 - The project has been consolidated and no longer depends on external libraries such as ModLauncher, SecureJarHandler, or BootstrapLauncher to start the game; 
