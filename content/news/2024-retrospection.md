@@ -4,6 +4,7 @@ date: 2025-01-01T00:00:00+00:00
 draft: false
 categories:
 - News
+- New Year
 author: matyrobbrt
 summary: "A retrospection on the past year (take two)"
 description: "A retrospection on the past year (take two)"
