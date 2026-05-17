@@ -1,19 +1,28 @@
 const VERSIONS_ENDPOINT = "https://maven.neoforged.net/api/maven/versions/releases/";
-const FORGE_GAV = "net/neoforged/neoforge";
 const LATEST_ENDPOINT = "https://maven.neoforged.net/api/maven/latest/version/releases/";
+const DETAILS_ENDPOINT = "https://maven.neoforged.net/api/maven/details/releases/";
 const DOWNLOAD_URL = "https://maven.neoforged.net/releases";
 const GITHUB_URL = "https://github.com/neoforged/NeoForge";
+const FORGE_GAV = "net/neoforged/neoforge";
 
 async function loadChangelog() {
-    let gav = FORGE_GAV;
-    let fn = "neoforge";
+    const gav = FORGE_GAV;
+    const fn = "neoforge";
+    const vs = `.changelog_body`;
     let mcvers;
 
-    let currentMcVersionUrl = new URL(LATEST_ENDPOINT + encodeURIComponent(gav));
+    const currentMcVersionUrl = LATEST_ENDPOINT + encodeURIComponent(gav);
     let versionJson;
 
     try {
         const response = await fetch(currentMcVersionUrl);
+        
+        if (!response.ok) {
+            console.log("Latest version endpoint was not available");
+            displayChangelogError();
+            return;
+        }
+        
         versionJson = await response.json();
     } catch (error) {
         if (error instanceof SyntaxError) {
@@ -24,13 +33,56 @@ async function loadChangelog() {
     }
 
     if (versionJson) {
-        const { version } = versionJson;
+        let { version } = versionJson;
         mcvers = "1." + version.slice(0, 4);
 
-        const vs = `.changelog_body`;
         const changelogUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(version)}/${fn}-${encodeURIComponent(version)}-changelog.txt`;
-        const response = await fetch(`${changelogUrl}`);
-        const data = (await response.text()).split("\n");
+        let response = await fetch(`${changelogUrl}`);
+        const isSnapshot = version.includes("snapshot");
+        const changelogs = [];
+
+        if (response.ok) {
+            changelogs.push(await response.text());
+        }
+
+        if (isSnapshot || !response.ok) {
+            console.log(isSnapshot
+                ? `Changelog for ${version} is a snapshot; searching previous snapshots...`
+                : `No changelog for ${version}; searching previous versions...`);
+
+            const detailsUrl = DETAILS_ENDPOINT + encodeURIComponent(gav);
+            const detailsResponse = await fetch(detailsUrl);
+            const detailsJson = await detailsResponse.json();
+
+            if (detailsJson && detailsJson.files && Array.isArray(detailsJson.files)) {
+                const directories = detailsJson.files.filter(item => item.type === "DIRECTORY").reverse();
+
+                for (const dir of directories) {
+                    const versionToTry = dir.name;
+                    if (versionToTry === version) continue;
+
+                    const tryChangelogUrl = `${DOWNLOAD_URL}/${gav}/${encodeURIComponent(versionToTry)}/${fn}-${encodeURIComponent(versionToTry)}-changelog.txt`;
+                    try {
+                        const tryResponse = await fetch(tryChangelogUrl);
+                        if (tryResponse.ok) {
+                            changelogs.push(await tryResponse.text());
+                            console.log(`Found changelog in version: ${versionToTry}`);
+                            if (!versionToTry.includes("snapshot")) break;
+                        }
+                    } catch (error) {
+                        continue;
+                    }
+                }
+            }
+        }
+        
+        if (changelogs.length === 0) {
+            console.log("Could not find any available changelog");
+            displayChangelogError();
+            return;
+        }
+        
+        const data = changelogs.join("\n").split("\n");
 
         const resultArray = [];
 
@@ -48,8 +100,8 @@ async function loadChangelog() {
 
                 const mcBadgeText = line.substring(line.indexOf("[") + 1, line.indexOf("]", line.indexOf("[")));
                 line = line.replace(`[${mcBadgeText}]`, `<font class="badges badges_mc">${mcBadgeText}</font>`);
-            } else if (line != "") {
-                if (line != "   ") {
+            } else if (line !== "") {
+                if (line !== "   ") {
                     line = "▸" + line;
                 }
 
@@ -83,4 +135,14 @@ async function loadChangelog() {
         <div class="changelog">${result}</div>
         `;
     }
+}
+
+function displayChangelogError() {
+    const vs = `.changelog_body`;
+    document.querySelector(vs).innerHTML = `
+    <h2>Changelog</h2><hr>
+    <div class="changelog">
+        <li class="changelog_item">The changelog could not be loaded</li>
+    </div>
+    `;
 }
