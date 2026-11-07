@@ -114,9 +114,10 @@ async function loadVersions() {
         if (isInFallbackMode) {
             installerBoxHtml += `
                 <div class="fallback__instructions">
-                    <span class="inlined">NeoForge Maven is temporarily offline.</span>
-                    <span class="inlined">Run the installer with this command:</span>
-                    <br/><span id="fallbackInstructions"><code>java -jar neoforge-${latestNeoForgeVersion}-installer.jar --mirror https://maven.creeperhost.net</code></span>
+                    <span class="inlined">NeoForge Maven is temporarily unavailable.</span>
+                    <span class="inlined">It may be offline <a link="https://status.neoforged.net">(click here to check the status page)</a> or be blocked by your ISP.</span>
+                    <span class="inlined">Try run the installer with this command:</span>
+                    <br><span id="fallbackInstructions"><code>java -jar neoforge-21.6.19-beta-installer.jar --mirror https://maven.creeperhost.net</code></span>
                 </div>
             `
         }
